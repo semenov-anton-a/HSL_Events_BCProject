@@ -11,8 +11,8 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './pages/index/index.component';
 import { DetailsComponent } from './pages/details/details.component';
 
-import {CategoryListComponent} from './pages/index/category-list/category-list.component';
-import { CardsComponent } from './pages/index/cards/cards.component';
+import {CategoryListComponent} from './components/category-list/category-list.component';
+import { CardsComponent } from './components/cards/cards.component';
 
 
 @NgModule({
