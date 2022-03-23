@@ -1,3 +1,11 @@
+##### 
+# PLEASE  
+##### 
+NEVER COMMIT TO MASTER BRACH
+
+# GitHub Page URL
+-----> not yet
+
 # HSLEventsBCProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.4.
