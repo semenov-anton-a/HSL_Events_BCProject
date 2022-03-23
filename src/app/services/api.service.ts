@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
     providedIn: "root",
 })
-export class AlldataService {
+export class ApiService {
 
     private apiURL: string = './assets/json/';
     
@@ -20,7 +20,19 @@ export class AlldataService {
     ) {}
 
 
-    getAlldata() {
+    getFavorites() {
+        console.log( "NULL RETURNED" );
+        return [];
+        // let url = this.apiURL + "places/" + this.checkURL() + "language_filter=en";
+        // return this.http.get(url);
+    }
+
+
+    /**
+     *  
+     *  @returns 
+     */
+    getPlaces() {
         let url = this.apiURL + "places/" + this.checkURL() + "language_filter=en";
         return this.http.get(url);
     }

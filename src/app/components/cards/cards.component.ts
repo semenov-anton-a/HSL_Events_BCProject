@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,9 +12,10 @@ export class CardsComponent implements OnInit {
     faCoffee = faCoffee;
     faStar = faStar;
 
+    @Input() cardsData: any[] | undefined; 
+
     constructor() { }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
 }
