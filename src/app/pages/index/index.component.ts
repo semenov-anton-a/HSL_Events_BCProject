@@ -8,15 +8,22 @@ import { AlldataService } from 'src/app/services/alldata.service';
 })
 
 export class IndexComponent implements OnInit {
-
-    data = [];
-
+    
     constructor( private allData : AlldataService ) { }
+
 
     ngOnInit(): void {
 
-        this.allData.getAlldata().subscribe( (res : any) => {} );
+        // const prom = new Promise( res => {
+        //     console.log( this.allData.getAlldata() );
+        // } );
+        // const res = this.jsonPaces.subscribe( (data: any) => {console.log(data);});
+        const res = this.allData.getAlldata();
+        
+        console.log(res);
+        // .subscribe( (data: any) => { console.log(data) });
 
+        // console.log( res.subscribe() );
     }
 
 }

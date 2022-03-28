@@ -1,42 +1,75 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
-// import { catchError, map, tap } from 'rxjs/operators';
-// import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AlldataService {
 
-    private httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
+    private apiURL: string = './assets/json/';
+    // Fix CORS error 
+    // private apiURL : string = 'https://open-api.myhelsinki.fi/v2/';
+
+
+
+
+
+    // private httpOptions = {
+    //     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    // };
+
+
+
+    public jsonPaces$ : any = null;
 
     constructor(
         private http: HttpClient
-    ) { }
+    ) {}
 
 
-    getAlldata(){
-
-        // console.log( "getAllProducts")
-
-        // let url = "https://open-api.myhelsinki.fi/v2/places/?language_filter=en";
+    getAlldata() {
+        let url = this.apiURL + "places/" + this.checkURL() + "language_filter=en";
         
-        let url = "./assets/json/places.json";
+        if ( this.jsonPaces$ == null ) 
+        {
+            const fetchPromise = fetch(url);
+            
+            fetchPromise.then(response => {
+                this.jsonPaces$ = response
+                console.log( this.jsonPaces$ );
+            });
 
-        const json = this.http.get<any[]>( url )
-            // .pipe( 
-            //     tap( (response) => { console.log(response) } )
-            //  );
-             
-        return json;
+        }else{
 
-        // return this.http.get("");
+            return this.jsonPaces$;
+        }
 
+
+        // return this.http.get( url );
+
+        // if( this.jsonPaces == null ){
+        //     this.jsonPaces = 
+        // }
+
+        // return this.jsonPaces;
+
+
+        // return json;
     }
 
 
 
+
+
+
+
+    /**
+     * IF API HTTP | HTTPs
+     * @returns String
+     */
+    private checkURL(): string {
+        return this.apiURL.match(/^http|https/g) ? "?" : "";
+    }
 
 }
