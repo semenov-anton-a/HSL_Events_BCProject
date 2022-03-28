@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+
+// import { catchError, map, tap } from 'rxjs/operators';
+// import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AlldataService {
 
-    // private httpOptions = {
-    //     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    // };
+    private httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
 
     constructor(
         private http: HttpClient
@@ -24,9 +26,9 @@ export class AlldataService {
         let url = "./assets/json/places.json";
 
         const json = this.http.get<any[]>( url )
-            .pipe( 
-                tap( (response) => { console.log(response) } )
-             );
+            // .pipe( 
+            //     tap( (response) => { console.log(response) } )
+            //  );
              
         return json;
 
