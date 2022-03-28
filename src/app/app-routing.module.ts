@@ -2,15 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-
-import { IndexComponent, DetailsComponent } from './pages';
+// PAGES
+import { 
+    IndexComponent, DetailsComponent, 
+    PlacesComponent 
+} from './pages';
 
 const routes: Routes = [
     { path: "", component: IndexComponent, pathMatch: "full" },
 
     { path: 'd', component: DetailsComponent },
 
-    { path: 'places', component: IndexComponent },
+    { path: 'places', component: PlacesComponent },
     { path: 'activities', component: IndexComponent },
     { path: 'events', component: IndexComponent },
 

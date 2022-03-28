@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlldataService } from 'src/app/services/alldata.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
     selector: 'app-index',
