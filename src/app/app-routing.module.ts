@@ -13,9 +13,9 @@ const routes: Routes = [
 
     { path: 'd', component: DetailsComponent },
 
-    { path: 'places', component: PlacesComponent },
+    { path: 'places',     component: PlacesComponent },
+    { path: 'events',     component: IndexComponent },
     { path: 'activities', component: IndexComponent },
-    { path: 'events', component: IndexComponent },
 
 ];
 
