@@ -13,6 +13,7 @@ import { DetailsComponent } from './pages/details/details.component';
 
 import {CategoryListComponent} from './components/category-list/category-list.component';
 import { CardsComponent } from './components/cards/cards.component';
+import { LangsComponent } from './components/langs/langs.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CardsComponent } from './components/cards/cards.component';
     IndexComponent,
     CategoryListComponent,
     DetailsComponent,
-    CardsComponent
+    CardsComponent,
+    LangsComponent
   ],
   imports: [
     BrowserModule,
