@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule  } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { NgxMasonryModule  } from 'ngx-masonry/';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,11 +30,13 @@ import { CardsPipe } from './pipes/cards.pipe';
         PlacesComponent,
         CardsPipe
     ],
-    imports: [
+    imports: [        
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         FontAwesomeModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxMasonryModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,5 +1,4 @@
-<div class="row row-cols-1 row-cols-md-2 g-2">
-
+<!-- <div class="row row-cols-1 row-cols-md-2 g-2">
     <div class="col" *ngFor="let card of cardsData | slice:0:10 ">
         <div class="card">
             <div class="card-body"><span>ID: {{card.id}}</span>
@@ -41,15 +40,37 @@
             </div>
         </div>
     </div>
-
-    <!-- TEMPLATE -->
-    <!-- <div class="col">
+</div> -->
+<ngx-masonry [options]="{ gutter: 10 }">
+    <div ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData | slice:0:10 ">
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
+            <div class="card-body"><span>ID: {{card.id}}</span>
+                <h5 class="card-title">
+                    {{ (card.description.intro.length > 50 )? (card.description.intro | slice:0:
+                    50)+'..':(card.description.intro) }}
+                </h5>
+                <div *ngIf="card.description.images" id="carouselExampleControlsNoTouching" class="carousel slide"
+                    data-bs-touch="false" data-bs-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" *ngFor="let img of card.description.images">
+                            <img src={{img.url}} class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <p class="card-text">
+                    {{ (card.description.body.length > 200 )? (card.description.body | slice:0:
+                    200)+'..':(card.description.body) }}
+                </p>
                 <div class="justify-content-between d-flex input-group-sm">
                     <a routerLink="/d" type="button" class="btn btn-outline-primary col-md-2">Details</a>
                     <button class="btn btn-outline-primary">
@@ -59,7 +80,5 @@
 
             </div>
         </div>
-    </div> -->
-
-
-</div>
+    </div>
+</ngx-masonry>
