@@ -19,11 +19,4 @@ export class CardsComponent implements OnInit {
 
     ngOnInit(): void {  
     }
-
-    masonryItems = [
-        { title: 'item 1' },
-        { title: 'item 2' },
-        { title: 'item 3' },
-      ];
-
 }
