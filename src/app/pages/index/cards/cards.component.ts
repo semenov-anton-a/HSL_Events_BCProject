@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
+import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
-  selector: 'app-cards',
-  templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.css']
+    selector: 'app-cards',
+    templateUrl: './cards.component.html',
+    styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+    faCoffee = faCoffee;
+    faStar = faStar;
 
-  ngOnInit(): void {
-  }
+    constructor() { }
+
+    ngOnInit(): void {
+    }
 
 }
