@@ -6,6 +6,11 @@ import { IndexComponent , DetailsComponent } from './pages';
 
 const routes: Routes = [
     { path: 'd', component: DetailsComponent },
+    
+    { path: 'places',       component: IndexComponent },
+    { path: 'activities',   component: IndexComponent },
+    { path: 'events',       component: IndexComponent },
+    
     { path: '', component: IndexComponent },
 ];
 
