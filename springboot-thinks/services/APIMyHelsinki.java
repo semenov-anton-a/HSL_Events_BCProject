@@ -12,14 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class APIMyHelsinki {
 
-    private String apiUrl = "http://open-api.myhelsinki.fi/";
+    // private String apiUrl = "http://open-api.myhelsinki.fi/";
     
-
-
-
-
-
-
     public String get( String url ) throws IOException 
     {    
         StringBuilder result = new StringBuilder();
@@ -30,7 +24,7 @@ public class APIMyHelsinki {
         
         urlConnection.setReadTimeout(5000);
         urlConnection.setConnectTimeout(5000);
-        urlConnection.setUseCaches(true);
+        // urlConnection.setUseCaches(true);
 
         try (
             InputStream is = new URL(url).openStream();
@@ -46,4 +40,6 @@ public class APIMyHelsinki {
         return result.toString();
     }
     // END
+
+
 }
