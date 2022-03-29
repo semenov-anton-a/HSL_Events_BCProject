@@ -14,13 +14,22 @@ export class PlacesComponent implements OnInit {
     @Output() cardsData: any;
     
     // lang = this.langService.getLanguage();
-    @Input() currentLanguage = this.langService.currentLanguage;
-
+    // @Input() public currentLanguage : any = this.langService.getLanguage();
+    
     constructor(
         private apiService  : ApiService,
         private langService : LangService,
     ) {}
+        
+    private _currentLanguage : any = null;
+    
+    get currentLanguage () : any {
+        console.log( this.langService.currentLanguage.value )
 
+        return this._currentLanguage = this.langService.currentLanguage
+
+        return this._currentLanguage;
+    }
 
     // Data Items
     ngOnInit(): void {

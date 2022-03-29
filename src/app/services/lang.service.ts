@@ -19,7 +19,6 @@ export class LangService {
 
     @Output() currentLanguage : any;
 
-    
     private getDefaultLangIndex() : any { return this.langsData[ this.DEFAULT_LANGUAGE_INDEX ]; }
 
     getLanguagesCollection() : [] { return this.langsData; }
