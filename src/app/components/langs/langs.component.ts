@@ -1,40 +1,31 @@
 import { ChangeDetectionStrategy,
     Component, OnInit, Output } from '@angular/core';
-
-import { ApiService } from '../../services/api.service';
-// import { LangService } from '../../services/lang.service';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
     selector: 'app-langs',
     templateUrl: './langs.component.html',
     styleUrls: ['./langs.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LangsComponent implements OnInit {
+    
+    public langRadioData : any;
+    
+    public clang : any ; 
 
-    // public lang: string = 'fi'
-
-    public langRadioData: any = [
-        { value: 'fi', name: "Fin" },
-        { value: 'sv', name: "Sv" },
-        { value: 'en', name: "Eng" }
-    ]
-
-
-    // Current Language then app loaded
-    @Output() public currentLanguage: any = this.langRadioData[0];
-
-    constructor() {}
-
-    ngOnInit(): void {
-       console.log( this.currentLanguage )
-
+    constructor(
+        private langService: LangService
+    ){
+        this.langRadioData   = langService.getLanguagesCollection();
+        this.clang = langService.getLanguage();
     }
 
-    onItemChange( event: Event ) {
-        const target = event.target as HTMLInputElement;
-        this.currentLanguage = target.value;
-        console.log(" Language Value is : ", target.value );
+    ngOnInit(): void {}
+
+    onItemChange( langIndex: number) {
+        this.clang = this.langService.getLanguageByIndex( langIndex );
+        this.langService.setLanguageByIndex( langIndex );
     }
 
 }

@@ -10,9 +10,6 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ApiService {
 
-    @Input() public currentLanguage : string | undefined ;
-
-
     // private apiURL: string = './assets/json/';
     // private apiURL: string = '/api';
     
