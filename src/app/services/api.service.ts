@@ -13,7 +13,8 @@ export class ApiService {
     @Input() public currentLanguage : string | undefined ;
 
 
-    private apiURL: string = './assets/json/';
+    // private apiURL: string = './assets/json/';
+    // private apiURL: string = '/api';
     
     // Fix CORS error 
     // private apiURL : string = 'https://open-api.myhelsinki.fi/v2/';
@@ -36,7 +37,8 @@ export class ApiService {
      *  @returns 
      */
     getPlaces() {
-        let url = this.apiURL + "places/" + this.checkURL() + "language_filter=en";
+        // let url = this.apiURL + "places/" + this.checkURL() + "language_filter=en";
+        let url = "/api";
         return this.http.get(url);
     }
 
@@ -51,7 +53,8 @@ export class ApiService {
      * @returns String
      */
     private checkURL(): string {
-        return this.apiURL.match(/^http|https/g) ? "?" : "";
+        return "";
+        // return this.apiURL.match(/^http|https/g) ? "?" : "";
     }
 
 }
