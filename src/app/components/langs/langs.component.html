@@ -1,0 +1,46 @@
+<div class="d-flex">
+    
+    <div class="col-md-2 me-auto btn-group input-group-sm" role="group">
+    <ng-container *ngFor="let lang of langRadioData; let i = index" >
+        <input 
+            (change)="onItemChange($event)"
+            [checked]="(currentLanguage.value == lang.value)"
+            type="radio" class="btn-check" value="{{lang.value}}" name="langbtn" id="lang{{i}}" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="lang{{i}}">{{ lang.name }}</label>
+
+    </ng-container>
+
+    </div>
+
+    <!-- <div class="col-md-2 me-auto btn-group input-group-sm" role="group">
+        <input 
+            [(ngModel)]="lang"
+            (change)="onItemChange($event.target)"
+            type="radio" class="btn-check" value="fi" name="langbtn" id="lang1" autocomplete="off" checked>
+        <label class="btn btn-outline-secondary" for="lang1">FI</label>
+
+        <input
+            [(ngModel)]="lang" 
+            (change)="onItemChange($event.target)" 
+            type="radio" class="btn-check" value="sv" name="langbtn" id="lang2" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="lang2">SV</label>
+
+        <input
+            [(ngModel)]="lang" 
+            (change)="onItemChange($event.target)" 
+            type="radio" class="btn-check" value="en" name="langbtn" id="lang3" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="lang3">EN</label>
+    </div> -->
+
+    <!-- <div class="col-md-2 ms-auto btn-group input-group-sm" role="group">
+        <input (change)="onItemChange($event.target)" 
+            type="radio" class="btn-check" name="btnhours" id="btnhours1" autocomplete="off" checked>
+        <label class="btn btn-outline-secondary" for="btnhours1">5 Hours</label>
+
+        <input type="radio" class="btn-check" name="btnhours" id="btnhours2" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btnhours2">3 Hours</label>
+
+        <input type="radio" class="btn-check" name="btnhours" id="btnhours3" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btnhours3">1 Hours</label>
+    </div> -->
+</div>

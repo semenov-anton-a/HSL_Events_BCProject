@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Launch ServerApplication",
+      "request": "launch",
+      "mainClass": "com.hsl.server.ServerApplication",
+      "projectName": "server"
+    },
+    {
       "name": "ng serve",
       "type": "pwa-chrome",
       "request": "launch",

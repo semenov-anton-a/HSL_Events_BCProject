@@ -1,10 +1,29 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+// PAGES
+import { 
+    IndexComponent, DetailsComponent, 
+    PlacesComponent 
+} from './pages';
+
+const routes: Routes = [
+    { path: "", component: IndexComponent, pathMatch: "full" },
+
+    { path: 'd', component: DetailsComponent },
+
+    { path: 'places',     component: PlacesComponent },
+    { path: 'events',     component: IndexComponent },
+    { path: 'activities', component: IndexComponent },
+
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [
+        RouterModule.forRoot( routes ),
+        CommonModule
+    ],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
