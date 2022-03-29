@@ -19,6 +19,7 @@ import { CardsComponent } from './components/cards/cards.component';
 import { LangsComponent } from './components/langs/langs.component';
 import { PlacesComponent } from './pages/places/places.component';
 import { CardsPipe } from './pipes/cards.pipe';
+import { TestcomponentComponent } from './testcomponent/testcomponent.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CardsPipe } from './pipes/cards.pipe';
         CardsComponent,
         LangsComponent,
         PlacesComponent,
-        CardsPipe
+        CardsPipe,
+        TestcomponentComponent
     ],
     imports: [        
         AppRoutingModule,
