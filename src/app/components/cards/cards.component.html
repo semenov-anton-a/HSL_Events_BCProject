@@ -41,8 +41,8 @@
         </div>
     </div>
 </div> -->
-<ngx-masonry [options]="{ gutter: 10 }">
-    <div ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData | slice:0:30 ">
+<ngx-masonry [options]="{ gutter: 10 }" [ordered]="true">
+    <div ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData | slice:0:50 ">
         <div class="card">
             <div class="card-body"><span>ID: {{card.id}}</span>
                 <h5 class="card-title">
