@@ -49,14 +49,12 @@
                     {{ (card.description.intro.length > 50 )? (card.description.intro | slice:0:
                     50)+'..':(card.description.intro) }}
                 </h5>
-                <div *ngIf="card.description.images" id="carousel_{{card.id}}" class="carousel slide"
-                    data-bs-touch="false" data-bs-interval="false">
+                <div class="carousel slide" data-bs-ride="carousel" *ngIf="card.description.images" id="carousel_{{card.id}}" >
                     <div class="carousel-inner">
                         <div class="carousel-item" 
-                            *ngFor="let img of card.description.images; let i = index" 
-                            [class.active]="(++i==0)?'active':''"
-                            >
-                            <img src={{img.url}} class="d-block w-100" alt="...">
+                            *ngFor="let img of card.description.images; let i = index; first as isFirst" 
+                            [class.active]="(isFirst)?'active':''" >
+                            <img src={{img.url}} class="d-block w-100">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button"

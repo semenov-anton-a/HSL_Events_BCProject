@@ -22,7 +22,8 @@ export class PlacesComponent implements OnInit {
     ngOnInit(): void {
         this.apiService.getPlaces().subscribe( (places:any) => {
             
-            // console.log( places.data.reverse() );
+            console.log( places.data.reverse() );
+            
             this.cardsData = places.data;
             
         });
