@@ -15,8 +15,10 @@ export class TestcomponentComponent implements OnInit {
 
 
     getPlaces(){
-        let url = "https://open-api.myhelsinki.fi/v2/places/?language_filter=fi";
+        // let url = "https://open-api.myhelsinki.fi/v2/places/?language_filter=fi";
+        // let url = "http://open-api.myhelsinki.fi/v2/place/2257?language_filter=en";
 
+        let url = "http://localhost:8080/api";
 
         fetch( url )
             .then( (response) => response.json() )
@@ -33,7 +35,7 @@ export class TestcomponentComponent implements OnInit {
 
         fetch( url )
             .then( (response) => response.json() )
-            .then( data => console.log( data));
+            .then( (data : any) => { console.log(data) });
 
         console.log("OK");
     }
