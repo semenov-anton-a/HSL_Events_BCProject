@@ -1,8 +1,9 @@
-import { Injectable, Input } from '@angular/core';
+import { Injectable, Input, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subscription, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { LangService } from './lang.service';
 
 
 @Injectable({
@@ -17,9 +18,17 @@ export class ApiService {
     // private apiURL : string = 'https://open-api.myhelsinki.fi/v2/';
 
     constructor(
-        private http: HttpClient
-    ) {}
+        private http: HttpClient,
+        private langService: LangService
+    ) {
 
+        this.langService.getObsData().subscribe( data => { 
+            console.log(  " SERVICE HELLO ->>  ", data  )
+            // this.lng = data;
+        });
+
+    }
+    
 
     getFavorites() {
         console.log( "NULL RETURNED" );
@@ -28,12 +37,12 @@ export class ApiService {
         // return this.http.get(url);
     }
 
-
     /**
      *  
      *  @returns 
      */
     getPlaces() {
+        // console.log( "HELLO  API SERVICE - > ",_lang )
         // let url = this.apiURL + "places/" + this.checkURL() + "language_filter=en";
         let url = "/api";
         return this.http.get(url);

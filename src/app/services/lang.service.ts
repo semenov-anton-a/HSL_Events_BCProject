@@ -59,7 +59,7 @@ export class LangService {
         } else {
             lang = this.getLanguageByIndex(parseInt(int));
         }
-        // this.currentLanguageEmitBef(" GET ");
+        
         return this.currentLanguage = lang;
     }
 }
