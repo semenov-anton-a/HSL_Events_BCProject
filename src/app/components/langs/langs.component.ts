@@ -1,12 +1,14 @@
-import { ChangeDetectionStrategy,
-    Component, OnInit, Output } from '@angular/core';
+import { 
+    ChangeDetectionStrategy,
+    Component, OnInit } from '@angular/core';
+
 import { LangService } from 'src/app/services/lang.service';
 
 @Component({
     selector: 'app-langs',
     templateUrl: './langs.component.html',
     styleUrls: ['./langs.component.css'],
-    // changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LangsComponent implements OnInit {
     
@@ -22,7 +24,6 @@ export class LangsComponent implements OnInit {
     }
 
     ngOnInit(): void {}
-
     onItemChange( langIndex: number) {
         this.clang = this.langService.getLanguageByIndex( langIndex );
         this.langService.setLanguageByIndex( langIndex );

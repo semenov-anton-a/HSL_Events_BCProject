@@ -6,42 +6,60 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 })
 export class LangService {
 
-    private LOCAL_STORAGE_KEYNAME : string = 'langindex';
-    private DEFAULT_LANGUAGE_INDEX : number = 0;
-    
-    private langsData : any = [
-        { value: 'fi', name: "Fin" }, 
-        { value: 'sv', name: "Sv" },
+    private readonly LOCAL_STORAGE_KEYNAME: string = 'langindex';
+    private readonly DEFAULT_LANGUAGE_INDEX: number = 0;
+
+    private readonly langsData: { value: string, name: string }[] =
+        [{ value: 'fi', name: "Fin" },
         { value: 'en', name: "Eng" }
-    ]
+            // { value: 'sv', name: "Sv" },
+        ]; // langData
 
-    constructor(){}
+    constructor() { }
 
-    @Output() currentLanguage : any;
 
-    private getDefaultLangIndex() : any { return this.langsData[ this.DEFAULT_LANGUAGE_INDEX ]; }
-
-    getLanguagesCollection() : [] { return this.langsData; }
-    
-    getLanguageByIndex(index : number) : [] { return this.langsData[index]; }
-    
-    setLanguageByIndex( index : number ) {
-        localStorage.setItem( this.LOCAL_STORAGE_KEYNAME, index.toString() );
-
-        return this.currentLanguage = this.getLanguageByIndex( index );
+    /*******************************
+     *  BehaviorSubject
+     *  
+     */
+    private obsData = new BehaviorSubject<{}>(this.getLanguage());
+    private setObsData(data: { value?: string; name?: string; }) {
+        this.obsData.next({ value: data.value, name: data.name });
     }
-    
-    getLanguage() : any {
-        let int = localStorage.getItem( this.LOCAL_STORAGE_KEYNAME );
-        
-        let lang;
-        if(int == null){
-            this.setLanguageByIndex( this.DEFAULT_LANGUAGE_INDEX );
-            lang = this.getDefaultLangIndex()
-        }else{
-            lang = this.getLanguageByIndex( parseInt( int ) );
-        }
+    public getObsData(): Observable<{}> { return this.obsData; }
+    /*
+     * 
+     *******************************/
 
+    // Current Language
+    private currentLanguage: {} = {};
+
+    private getDefaultLangIndex(): {} { return this.langsData[this.DEFAULT_LANGUAGE_INDEX]; }
+
+    getLanguagesCollection(): {} { return this.langsData; }
+
+    getLanguageByIndex(index: number): {} { return this.langsData[index]; }
+
+    setLanguageByIndex(index: number): {} {
+        localStorage.setItem(this.LOCAL_STORAGE_KEYNAME, index.toString());
+
+        this.currentLanguage = this.getLanguageByIndex(index);
+        this.setObsData(this.currentLanguage);
+
+        return this.currentLanguage
+    }
+
+    getLanguage(): {} {
+        let int = localStorage.getItem(this.LOCAL_STORAGE_KEYNAME);
+
+        let lang;
+        if (int == null) {
+            this.setLanguageByIndex(this.DEFAULT_LANGUAGE_INDEX);
+            lang = this.getDefaultLangIndex()
+        } else {
+            lang = this.getLanguageByIndex(parseInt(int));
+        }
+        // this.currentLanguageEmitBef(" GET ");
         return this.currentLanguage = lang;
     }
 }
