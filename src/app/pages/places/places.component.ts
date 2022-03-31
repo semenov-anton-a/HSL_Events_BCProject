@@ -12,22 +12,27 @@ export class PlacesComponent implements OnInit {
 
     @Output() cardsData: any;
 
+    private readonly category: string = "palces";
+
     constructor(
         private apiService: ApiService,
         private langService: LangService,
     ) { }
-
+    
     // Data Items
     ngOnInit(): void {
+        
+        this.langService.getObsData().subscribe( (lang : any) => {
+            
+            this.apiService.getAllPlaces().subscribe((places: any) => {
+                this.cardsData = places.data.reverse();
+            });
 
-        // this.langService.getObsData().subscribe( data => { 
-        //     console.log(  data  )
-        //     // this.lng = data;
-        // });
-
-        this.apiService.getPlaces().subscribe((places: any) => {
-            this.cardsData = places.data.reverse();
         });
+        
+        // this.apiService.getAllPlaces().subscribe((places: any) => {
+        //     this.cardsData = places.data.reverse();
+        // });
     }
 
 
