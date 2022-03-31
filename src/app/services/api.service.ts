@@ -68,7 +68,7 @@ export class ApiService {
     
     private generateApiUrl( category : string ) : string {
         let lang = this.langService.getLanguage();
-        return this.apiURL +'/'+ category + APIOptions.lang + lang.value
+        return this.apiURL + '/' + category+ '/' + APIOptions.lang + lang.value
     }
 
     /**
