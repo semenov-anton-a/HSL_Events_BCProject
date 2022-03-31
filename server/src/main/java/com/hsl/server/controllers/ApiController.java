@@ -1,6 +1,9 @@
 package com.hsl.server.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import com.hsl.server.services.APIMyHelsinkiService;
 
@@ -28,9 +31,30 @@ public class ApiController {
     }
 
 
+
+
     @RequestMapping(value = "/api/test")
-    public String getFoos(@RequestParam(defaultValue = "test") String id) {
-        return "ID: " + id;
+    public String getFoos(@RequestParam Map<String,String> requestParams) throws Exception {
+        
+        Iterator<String> i =  requestParams.keySet().iterator();
+        
+        String str = "123";
+
+        if( requestParams.containsKey( new String("language_filter") ) ){
+            return "ok";
+        }
+
+
+        while( i.hasNext() ){
+            String key = i.next();
+
+            str += key + " : " + requestParams.get(key) + "\n";
+
+            // System.out.println(key + " : " + requestParams.get(key) );
+        }
+
+
+        return str;
     }
 
 }
