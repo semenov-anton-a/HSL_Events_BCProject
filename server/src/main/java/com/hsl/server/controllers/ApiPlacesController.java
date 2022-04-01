@@ -1,11 +1,14 @@
 package com.hsl.server.controllers;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.hsl.server.JsonFetcher;
 import com.hsl.server.services.APIMyHelsinkiService;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +27,11 @@ public class ApiPlacesController {
         APIMyHelsinkiService myhelsinki = new APIMyHelsinkiService();
         String apiHostUrl = myhelsinki.getApiURL_ver2();
         String queryString = this.categoryName + "/?" + request.getQueryString();
-        return myhelsinki.get( apiHostUrl + queryString );
+        
+        JSONObject res = JsonFetcher.urlToJson( new URL( apiHostUrl + queryString ) );
+        return res.toString();
+        
+        // return myhelsinki.get( apiHostUrl + queryString );
     }
 
 }

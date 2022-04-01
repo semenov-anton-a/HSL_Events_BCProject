@@ -33,11 +33,11 @@ public class APIMyHelsinkiService {
 
         HttpURLConnection urlConnection = (HttpURLConnection) new URL(url).openConnection();
         urlConnection.setRequestProperty("Cache-Control", "no-cache");
-        urlConnection.setRequestProperty("Content-Type", "application/json;charset=utf-8");
-        urlConnection.setRequestProperty("Accept-Encoding", "gzip,deflate");
-        urlConnection.setRequestProperty("Accept", "*/*");
+        // urlConnection.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+        // urlConnection.setRequestProperty("Accept-Encoding", "gzip,deflate");
+        // urlConnection.setRequestProperty("Accept", "*/*");
         
-        urlConnection.setDoOutput(true);
+        // urlConnection.setDoOutput(true);
 
 
         urlConnection.setReadTimeout(5000);
