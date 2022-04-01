@@ -17,7 +17,10 @@ import { CardsComponent } from './components/cards/cards.component';
 import { LangsComponent } from './components/langs/langs.component';
 import { PlacesComponent } from './pages/places/places.component';
 import { CardsPipe } from './pipes/cards.pipe';
-
+import { MapComponent } from './components/map/map.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
     declarations: [
@@ -28,13 +31,18 @@ import { CardsPipe } from './pipes/cards.pipe';
         CardsComponent,
         LangsComponent,
         PlacesComponent,
-        CardsPipe
+        CardsPipe,
+        MapComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FontAwesomeModule,
-        HttpClientModule
+        HttpClientModule,
+        AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCCC3qK6wGayyJDCP4dz5efeDfczNMnBWk',
+      libraries: ['places']
+    })
     ],
     providers: [],
     bootstrap: [AppComponent]
