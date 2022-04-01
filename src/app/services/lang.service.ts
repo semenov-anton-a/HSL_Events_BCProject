@@ -45,24 +45,23 @@ export class LangService {
     getLanguageByIndex(index: number): ILangObject { return this.langsData[index]; }
 
     setLanguageByIndex(index: number): {} {
-        localStorage.setItem(this.LOCAL_STORAGE_KEYNAME, index.toString());
-
+        localStorage.setItem( this.LOCAL_STORAGE_KEYNAME, index.toString() );
         this.currentLanguage = this.getLanguageByIndex(index);
         this.setObsData(this.currentLanguage);
-
         return this.currentLanguage
     }
 
     getLanguage(): ILangObject {
-        let int = localStorage.getItem(this.LOCAL_STORAGE_KEYNAME);
-
+        let int : number | string | null ; 
+        int = Number( localStorage.getItem( this.LOCAL_STORAGE_KEYNAME ) );
+        
         let lang : ILangObject ;
 
-        if (int == null) {
-            this.setLanguageByIndex(this.DEFAULT_LANGUAGE_INDEX);
+        if ( int == null ) {
+            this.setLanguageByIndex( this.DEFAULT_LANGUAGE_INDEX );
             lang = this.getDefaultLangIndex()
         } else {
-            lang = this.getLanguageByIndex(parseInt(int));
+            lang = this.getLanguageByIndex( int );
         }
         
         return this.currentLanguage = lang;
