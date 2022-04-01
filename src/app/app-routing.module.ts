@@ -7,6 +7,8 @@ import {
     IndexComponent, DetailsComponent, 
     PlacesComponent 
 } from './pages';
+import { ActivitiesComponent } from './pages/activities/activities.component';
+import { EventsComponent } from './pages/events/events.component';
 
 const routes: Routes = [
     { path: "", component: IndexComponent, pathMatch: "full" },
@@ -14,8 +16,8 @@ const routes: Routes = [
     { path: 'd', component: DetailsComponent },
 
     { path: 'places',     component: PlacesComponent },
-    { path: 'events',     component: IndexComponent },
-    { path: 'activities', component: IndexComponent },
+    { path: 'activities', component: ActivitiesComponent },
+    { path: 'events',     component: EventsComponent },
 
 ];
 
