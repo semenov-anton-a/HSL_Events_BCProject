@@ -61,9 +61,9 @@ export class ApiService {
 
     getAllPlaces(){
         let api = this.generateApiUrl( APICategories.PLACES );
-        console.log(api)
+        console.log( api )
 
-        return this.http.get( this.apiURL );
+        return this.http.get( api );
     }
     
     private generateApiUrl( category : string ) : string {

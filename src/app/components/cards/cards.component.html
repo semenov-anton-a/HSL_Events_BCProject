@@ -54,7 +54,7 @@
                         <div class="carousel-item" 
                             *ngFor="let img of card.description.images; let i = index; first as isFirst" 
                             [class.active]="(isFirst)?'active':''" >
-                            <img src={{img.url}} class="d-block w-100">
+                            <img src={{img.url}} class="d-block w-100 h-50">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button"
