@@ -46,7 +46,7 @@
         <div class="card">
             <div class="card-body"><span>ID: {{card.id}}</span>
                 <h5 class="card-title">
-                    {{ (card.description.intro.length > 50 )? (card.description.intro | slice:0:
+                    {{ (card.description.intro.length > maxTitleLength )? (card.description.intro | slice:0:
                     50)+'..':(card.description.intro) }}
                 </h5>
                 <div class="carousel slide" data-bs-ride="carousel" *ngIf="card.description.images" id="carousel_{{card.id}}" >
@@ -71,8 +71,11 @@
                     </button>
                 </div>
                 <p class="card-text">
-                    {{ (card.description.body.length > 200 )? (card.description.body | slice:0:
-                    200)+'..':(card.description.body) }}
+                    {{ 
+                        (card.description.body.length > maxDescriptionLength )
+                            ? (card.description.body | slice:0 : maxDescriptionLength) + '...'
+                            : (card.description.body) 
+                    }}
                 </p>
                 <div class="justify-content-between d-flex input-group-sm">
                     <a routerLink="/d" type="button" class="btn btn-outline-primary col-md-2">Details</a>

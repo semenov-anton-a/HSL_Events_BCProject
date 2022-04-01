@@ -10,6 +10,9 @@ import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
 })
 export class CardsComponent implements OnInit {
 
+    public readonly maxTitleLength:  number = 50;
+    public readonly maxDescriptionLength:  number = 200;
+
     faCoffee = faCoffee;
     faStar = faStar;
 
