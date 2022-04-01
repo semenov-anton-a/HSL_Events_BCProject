@@ -42,21 +42,24 @@ public class ApiTestController {
 
     @ResponseBody()
     @RequestMapping(value = "/api/test", headers = {"Content-type=application/json" })
-    public String getFoos(HttpServletRequest request) throws Exception {
-        // String url_str = "http://open-api.myhelsinki.fi/v2/places/?language_filter=en";
-        String url_str = "http://open-api.myhelsinki.fi/v2/place/2287";
+    public String getFoos(
+        HttpServletRequest request,
+        @RequestParam Map<String,String> requestParams
+    ) throws Exception {
+        // // String url_str = "http://open-api.myhelsinki.fi/v2/places/?language_filter=en";
+        // String url_str = "http://open-api.myhelsinki.fi/v2/place/2287";
 
-        URL url = new URL(url_str);
+        // URL url = new URL(url_str);
 
-        JSONObject res = JsonFetcher.urlToJson( url );
-        System.out.println( res );
+        // JSONObject res = JsonFetcher.urlToJson( url );
+        // System.out.println( res );
 
 
-        return res.toString();
+        // return res.toString();
 
         // return "";
         // return "";
-        // Iterator<String> i =  requestParams.keySet().iterator();
+        Iterator<String> i =  requestParams.keySet().iterator();
         // APIMyHelsinkiService myhelsinki = new APIMyHelsinkiService();
 
         // return myhelsinki.getApiURL_ver2();
@@ -65,12 +68,18 @@ public class ApiTestController {
 
         // // String regex = "^(\/api\/)";
 
-        // return "?" + request.getQueryString();
-        // if( requestParams.containsKey( new String("language_filter") ) ){
-        //     return "ok";
+        // // return "?" + request.getQueryString();
+        // if( requestParams.containsKey(new String("language_filter")) ){
+            
+        //     return requestParams.get( requestParams.get( new String("language_filter")) );
+        //     // return "ok";
         // }
 
+        String s = "";
+        return s = requestParams.get( new String("language_filter")) ;
 
+        // return "";
+        // String str = "";
         // while( i.hasNext() ){
         //     String key = i.next();
 
