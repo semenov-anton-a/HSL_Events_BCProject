@@ -19,6 +19,7 @@ public class JsonFetcher {
     public static JSONObject urlToJson(URL urlString) {
         StringBuilder sb = null;
         URL url;
+        
         URLConnection urlCon;
         try {
             url = urlString;
@@ -48,7 +49,8 @@ public class JsonFetcher {
             return new JSONObject(sb.toString());
         } else {
             LOGGER.warn("No JSON Found in given URL");
-            return new JSONObject("");
+            
+            return new JSONObject("{'error':'Not Found'}");
         }
     }
 }

@@ -21,7 +21,7 @@ public class ApiActivitiesController {
         @RequestParam Map<String,String> requestParams 
     ) throws IOException {
         
-        return APIMyHelsinkiService.getDataByCategoryAPIVersion2( "activities", request, requestParams );
+        return APIMyHelsinkiService.getDataByCategoryAPIVersion2( "activities", false, request, requestParams );
     
     }
 

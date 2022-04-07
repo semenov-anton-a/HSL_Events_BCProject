@@ -26,7 +26,7 @@ public class ApiPlacesController {
         @RequestParam Map<String,String> requestParams 
     ) throws IOException {
 
-        return APIMyHelsinkiService.getDataByCategoryAPIVersion2( "places", request, requestParams );
+        return APIMyHelsinkiService.getDataByCategoryAPIVersion2( "places", true, request, requestParams );
     
     }
 
