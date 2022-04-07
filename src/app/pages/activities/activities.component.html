@@ -5,7 +5,8 @@
         <app-category-list></app-category-list>
     </div>
     <div class="col-md-9">
-        <h1>Activities</h1>
+        <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>
+        <!-- <h4 class="text-secondary" *ngIf="error != null">{{error}}</h4> -->
         <!-- <app-cards [cardsData]="cardsData"></app-cards> -->
     </div>
 </div>

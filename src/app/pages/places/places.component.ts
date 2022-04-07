@@ -12,7 +12,9 @@ export class PlacesComponent implements OnInit {
 
     @Output() cardsData: any;
 
-    private readonly category: string = "palces";
+    private readonly category: string = "places";
+
+    public error: string | null = null;
 
     constructor(
         private apiService: ApiService,
@@ -24,25 +26,14 @@ export class PlacesComponent implements OnInit {
         
         this.langService.getObsData().subscribe( (lang : any) => {
             
-            this.apiService.getAllPlaces().subscribe((places: any) => {
-                this.cardsData = places.data.reverse();
+            this.apiService.getAllByCategory( this.category ).subscribe((json: any) => {
+                if( ! json.error ){ return this.cardsData = json.data.reverse(); }
+                this.error = "Error : not found";
             });
 
         });
-        
-        // this.apiService.getAllPlaces().subscribe((places: any) => {
-        //     this.cardsData = places.data.reverse();
-        // });
     }
 
-
-
-    // private lng : any;
-    // private sbs(){
-        
-    //     // console.log( lang );
-    //     return this.lng;
-    // }
 
 }
 

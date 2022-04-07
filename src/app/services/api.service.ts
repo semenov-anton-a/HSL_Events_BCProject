@@ -49,7 +49,13 @@ export class ApiService {
 
 
 
+    getAllByCategory( category : string ){
+        let api = this.generateApiUrl( category );
+        console.log( api )
 
+        // return this.http.get( api );
+        return this.http.get( api );
+    }
     
     
     getPlacesByLanguage( category: string, lng : string ){
