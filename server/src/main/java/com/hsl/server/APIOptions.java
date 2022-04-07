@@ -9,7 +9,8 @@ public class APIOptions {
     private static final Number limitOfData = 100;
     private static final Number startOfData = 0;
 
-
+    public static final String apiUrl1 = "http://open-api.myhelsinki.fi/v1/"; 
+    public static final String apiUrl2 = "http://open-api.myhelsinki.fi/v2/"; 
 
 
 
