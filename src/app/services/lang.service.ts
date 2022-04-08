@@ -52,6 +52,11 @@ export class LangService {
         return this.currentLanguage
     }
 
+    /**
+     * Get currrent language 
+     * @ReturnType { value: 'fi', name: "Fin" }
+     * @returns 
+     */
     getLanguage(): ILangObject {
         let int : number | string | null ; 
         int = Number( localStorage.getItem( this.LOCAL_STORAGE_KEYNAME ) );

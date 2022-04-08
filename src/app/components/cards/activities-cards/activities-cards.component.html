@@ -7,7 +7,9 @@
                     <a [href]="card.siteUrl" target="_blank">{{card.company.name}}</a>
                 </h3>
 
-                <div class="carousel col-6 mx-auto" data-bs-ride="carousel" *ngIf="card.media"
+                <div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false" 
+                    
+                    *ngIf="card.media"
                     id="carousel_{{card.id}}">
                     <div class="carousel-inner">
                         <div

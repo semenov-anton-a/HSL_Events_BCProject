@@ -9,7 +9,8 @@
                             : (card.description.intro) 
                     }}
                 </h5>
-                <div class="carousel slide" data-bs-ride="carousel" *ngIf="card.description.images" id="carousel_{{card.id}}" >
+                <div class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" 
+                    *ngIf="card.description.images" id="carousel_{{card.id}}" >
                     <div class="carousel-inner">
                         <div class="carousel-item" 
                             *ngFor="let img of card.description.images; let i = index; first as isFirst" 
