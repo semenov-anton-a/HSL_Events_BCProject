@@ -5,15 +5,15 @@ import { BehaviorSubject, Observable, Subscription, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { LangService } from './lang.service';
 
-enum APICategories{
+export enum APICategories{
     PLACES = 'places',
     EVENTS = 'events',
     ACTIVITIES = 'activities',
 }
 
-enum APIOptions{
+export enum APIParams{
     lang = "?language_filter=",
-    tags = "?tags_filter="
+    tags = "?tags_filter=",
 }
 
 @Injectable({
@@ -23,22 +23,26 @@ export class ApiService {
     // Fix CORS error 
     // private apiURL : string = 'https://open-api.myhelsinki.fi/v2/';
 
+    private apiExcludeParamsFromURLReqex : any = {
+        // activity : /(\? +APIParams.lang+ ).*/g,
+        activity : { reqex : new RegExp( "(\/"+APIParams.lang+").*", "g" ) },
+    }
+
     private readonly apiURL : string = '/api';
 
-    private apiOptions: any = {
-        lang : "",
-        
-    }
+
 
     constructor(
         private http: HttpClient,
         private langService: LangService
-    ) {
-
-        
-
-    }
+    ) {}
     
+
+    getApiExcludeParamsFromURLReqex( byName: string ) : any {
+        return( this.apiExcludeParamsFromURLReqex[byName] != undefined ) 
+            ? this.apiExcludeParamsFromURLReqex[byName]
+            : false
+    }
 
     getFavorites() {
         console.log( "NULL RETURNED" );
@@ -47,6 +51,10 @@ export class ApiService {
         // return this.http.get(url);
     }
 
+
+    getOnceItemByUrl( qUrl: string ){
+        return this.http.get( this.apiURL + qUrl );
+    }
 
 
     getAllByCategory( category : string ){
@@ -58,23 +66,13 @@ export class ApiService {
     }
     
     
-    getPlacesByLanguage( category: string, lng : string ){
-        // this.generateApiUrl( category, lng );
 
-        console.log ( this.apiURL +'/'+category+ this.apiOptions.lang + lng )
-        return this.http.get( this.apiURL + this.apiOptions.lang + lng );
-    }
 
-    getAllPlaces(){
-        let api = this.generateApiUrl( APICategories.PLACES );
-        console.log( api )
 
-        return this.http.get( api );
-    }
-    
+
     private generateApiUrl( category : string ) : string {
         let lang = this.langService.getLanguage();
-        return this.apiURL + '/' + category+ '/' + APIOptions.lang + lang.value
+        return this.apiURL + '/' + category+ '/' + APIParams.lang + lang.value
     }
 
     /**
