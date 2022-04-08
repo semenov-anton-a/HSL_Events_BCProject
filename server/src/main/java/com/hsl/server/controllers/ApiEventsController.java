@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 // @RequestMapping(headers = "Accept=application/json", produces = "text/plain;charset=UTF-8")
 @RestController
-public class ApiActivitiesController {
+public class ApiEventsController {
     
 
-    @RequestMapping( value = "/api/activities" )
+    @RequestMapping( value = "/api/events" )
     public String getAllActivities( 
         HttpServletRequest request,
-        @RequestParam Map<String,String> requestParams 
+        @RequestParam Map<String,String> requestParams
     ) throws IOException {
         
-        return APIMyHelsinkiService.getDataArrayByParams( "activities", false, request, requestParams, 2 );
+        return APIMyHelsinkiService.getDataArrayByParams( "events", false, request, requestParams, 1 );
     
     }
 
@@ -39,7 +39,7 @@ public class ApiActivitiesController {
         System.out.println( id );
         System.out.println( "=================================" );
     
-        return APIMyHelsinkiService.getOnceItem( "activity/"+id, request, 2 );
+        return APIMyHelsinkiService.getOnceItem( "event/"+id, request, 1 );
     }
 
 

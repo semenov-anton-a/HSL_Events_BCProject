@@ -12,9 +12,13 @@ public class APIOptions {
     public static final String apiUrl1 = "http://open-api.myhelsinki.fi/v1/"; 
     public static final String apiUrl2 = "http://open-api.myhelsinki.fi/v2/"; 
 
+    private static final String baseAPIUrl = "http://open-api.myhelsinki.fi/";
 
 
 
+    public final static String getAPIUrlByVersion( Number version ) {
+        return APIOptions.baseAPIUrl + "v" + version + "/"; 
+    }
 
     /**
      * IF in a RequestParam &limit=?
