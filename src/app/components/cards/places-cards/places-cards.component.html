@@ -1,10 +1,13 @@
 <ngx-masonry [options]="{ gutter: 10 }" [ordered]="true">
-    <div ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData | slice:0:50 ">
-        <div class="card">
-            <div class="card-body"><span>ID: {{card.id}}</span>
+    <ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData">
+        <div class="card" *ngIf="( card.description.body.length > 0 )">
+            <div class="card-body">
                 <h5 class="card-title">
-                    {{ (card.description.intro.length > maxTitleLength )? (card.description.intro | slice:0:
-                    50)+'..':(card.description.intro) }}
+                    {{ 
+                        (card.description.intro.length > maxTitleLength )
+                            ? (card.description.intro | slice:0:maxTitleLength) + '..'
+                            : (card.description.intro) 
+                    }}
                 </h5>
                 <div class="carousel slide" data-bs-ride="carousel" *ngIf="card.description.images" id="carousel_{{card.id}}" >
                     <div class="carousel-inner">
@@ -14,13 +17,13 @@
                             <img src={{img.url}} class="d-block w-100 h-50">
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button"
+                    <button class="carousel-control-prev" type="button" (click)="reloadItems()"
                         [attr.data-bs-target]="'#carousel_'+card.id" 
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button"
+                    <button class="carousel-control-next" type="button" (click)="reloadItems()"
                         [attr.data-bs-target]="'#carousel_'+card.id" 
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -34,13 +37,16 @@
                             : (card.description.body) 
                     }}
                 </p>
+                <hr class="mb-0"/>
+                <span class="d-block mb-3"><a [href]="card?.info_url" target="_blank">{{card?.info_url}}</a></span>
+                
                 <div class="justify-content-between d-flex input-group-sm">
-                    <a routerLink="/d" type="button" class="btn btn-outline-primary col-md-2">Details</a>
+                    <a routerLink="/place/{{card.id}}" type="button" class="btn btn-outline-primary col-md-2">Details</a>
                     <button class="btn btn-outline-primary">
-                        Favorte&nbsp;<fa-icon [icon]="faStar"></fa-icon>
+                        Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+    </ngxMasonryItem>
 </ngx-masonry>

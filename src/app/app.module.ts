@@ -22,6 +22,7 @@ import { TestcomponentComponent } from './testcomponent/testcomponent.component'
 import { ActivitiesComponent } from './pages/activities/activities.component';
 import { EventsComponent } from './pages/events/events.component';
 import { PlacesCardsComponent } from './components/cards/places-cards/places-cards.component';
+import { ActivitiesCardsComponent } from './components/cards/activities-cards/activities-cards.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { PlacesCardsComponent } from './components/cards/places-cards/places-car
         TestcomponentComponent,
         ActivitiesComponent,
         EventsComponent,
-        PlacesCardsComponent
+        PlacesCardsComponent,
+        ActivitiesCardsComponent
     ],
     imports: [        
         AppRoutingModule,
