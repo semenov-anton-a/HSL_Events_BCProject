@@ -15,11 +15,14 @@ import { IndexComponent } from './pages/index/index.component';
 import { DetailsComponent } from './pages/details/details.component';
 
 import { CategoryListComponent } from './components/category-list/category-list.component';
-import { CardsComponent } from './components/cards/cards.component';
 import { LangsComponent } from './components/langs/langs.component';
 import { PlacesComponent } from './pages/places/places.component';
 import { CardsPipe } from './pipes/cards.pipe';
 import { TestcomponentComponent } from './testcomponent/testcomponent.component';
+import { ActivitiesComponent } from './pages/activities/activities.component';
+import { EventsComponent } from './pages/events/events.component';
+import { PlacesCardsComponent } from './components/cards/places-cards/places-cards.component';
+import { ActivitiesCardsComponent } from './components/cards/activities-cards/activities-cards.component';
 
 
 @NgModule({
@@ -28,11 +31,14 @@ import { TestcomponentComponent } from './testcomponent/testcomponent.component'
         IndexComponent,
         CategoryListComponent,
         DetailsComponent,
-        CardsComponent,
         LangsComponent,
         PlacesComponent,
         CardsPipe,
-        TestcomponentComponent
+        TestcomponentComponent,
+        ActivitiesComponent,
+        EventsComponent,
+        PlacesCardsComponent,
+        ActivitiesCardsComponent
     ],
     imports: [        
         AppRoutingModule,

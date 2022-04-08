@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.masonry-item { 
+    width: 477px;
+    margin-bottom: 5px;; 
+}
+
+.card .card-title a{ text-decoration: none; }

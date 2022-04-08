@@ -7,15 +7,33 @@ import {
     IndexComponent, DetailsComponent, 
     PlacesComponent 
 } from './pages';
+import { ActivitiesComponent } from './pages/activities/activities.component';
+import { EventsComponent } from './pages/events/events.component';
 
 const routes: Routes = [
     { path: "", component: IndexComponent, pathMatch: "full" },
 
-    { path: 'd', component: DetailsComponent },
+    /**
+     *  @RouteName
+     *  PLACEs ROUTE
+     */
+    { path: 'places',    component: PlacesComponent },
+    { path: 'place/:id', component: DetailsComponent },
+    
 
-    { path: 'places',     component: PlacesComponent },
-    { path: 'events',     component: IndexComponent },
-    { path: 'activities', component: IndexComponent },
+    /**
+     *  @RouteName
+     *  ACTIVITIEs ROUTE
+     */
+    { path: 'activities',   component: ActivitiesComponent },
+    { path: 'activity/:id', component: DetailsComponent },
+    
+    /**
+     *  @RouteName
+     *  EVENTs ROUTE
+     */
+    { path: 'events',     component: EventsComponent },
+    { path: 'event/:id',  component: DetailsComponent },
 
 ];
 

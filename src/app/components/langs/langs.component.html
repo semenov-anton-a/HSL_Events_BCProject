@@ -3,8 +3,8 @@
     <div class="col-md-2 me-auto btn-group input-group-sm" role="group">
     <ng-container *ngFor="let lang of langRadioData; let i = index" >
         <input 
-            (change)="onItemChange($event)"
-            [checked]="(currentLanguage.value == lang.value)"
+            (change)="onItemChange( i )"
+            [checked]="(clang.value == lang.value)"
             type="radio" class="btn-check" value="{{lang.value}}" name="langbtn" id="lang{{i}}" autocomplete="off">
         <label class="btn btn-outline-secondary" for="lang{{i}}">{{ lang.name }}</label>
 
