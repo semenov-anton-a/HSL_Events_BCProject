@@ -19,18 +19,18 @@ public class ApiEventsController {
     
 
     @RequestMapping( value = "/api/events" )
-    public String getAllActivities( 
+    public String getAllEvents( 
         HttpServletRequest request,
         @RequestParam Map<String,String> requestParams
     ) throws IOException {
         
-        return APIMyHelsinkiService.getDataArrayByParams( "events", false, request, requestParams, 1 );
+        return APIMyHelsinkiService.getDataArrayByParams( "events", true, request, requestParams, 1 );
     
     }
 
 
-    @RequestMapping( value = "/api/activity/{id}" )
-    public String getActivityById( 
+    @RequestMapping( value = "/api/event/{id}" )
+    public String getEventById( 
         @PathVariable("id") String id,
         HttpServletRequest request
     ) throws MalformedURLException  {
