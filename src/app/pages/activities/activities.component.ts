@@ -25,7 +25,11 @@ export class ActivitiesComponent implements OnInit {
         this.langService.getObsData().subscribe( (lang : any) => {
             
             this.apiService.getAllByCategory( this.category ).subscribe((json: any) => {
-                if( ! json.error ){ return this.cardsData = json.rows.reverse(); }
+                if( ! json.error ){
+                    console.log(json)
+                    return this.cardsData = json.rows; 
+                    // return this.cardsData = json.rows.reverse(); 
+                }
                 this.error = "Error : not found";
             });
 

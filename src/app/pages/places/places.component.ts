@@ -27,6 +27,8 @@ export class PlacesComponent implements OnInit {
         this.langService.getObsData().subscribe( (lang : any) => {
             
             this.apiService.getAllByCategory( this.category ).subscribe((json: any) => {
+                console.log( json )
+                
                 if( ! json.error ){ return this.cardsData = json.data.reverse(); }
                 this.error = "Error : not found";
             });

@@ -7,7 +7,8 @@ interface ILangObject{ value: string; name: string; }
     providedIn: 'root'
 })
 export class LangService {
-
+    // Current Language
+    
     private readonly LOCAL_STORAGE_KEYNAME: string = 'langindex';
     private readonly DEFAULT_LANGUAGE_INDEX: number = 0;
 
