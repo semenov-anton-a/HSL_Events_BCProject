@@ -26,7 +26,7 @@ public class ApiPlacesController {
         @RequestParam Map<String,String> requestParams 
     ) throws IOException {
 
-        return APIMyHelsinkiService.getDataArrayByParams( "places", true, request, requestParams );
+        return APIMyHelsinkiService.getDataArrayByParams( "places", true, request, requestParams, 2 );
     
     }
 
@@ -42,7 +42,7 @@ public class ApiPlacesController {
         System.out.println( "=================================" );
         
 
-        return APIMyHelsinkiService.getOnceItem( "place/"+id, request );
+        return APIMyHelsinkiService.getOnceItem( "place/"+id, request, 2 );
         // return requestParams.toString();
         // return APIMyHelsinkiService.getDataByCategoryAPIVersion2( "places", true, request, requestParams );
     

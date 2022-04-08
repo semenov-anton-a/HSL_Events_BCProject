@@ -25,7 +25,8 @@ public class APIMyHelsinkiService {
         String category,
         Boolean useDelimiter,
         HttpServletRequest request,
-        @RequestParam Map<String,String> requestParams  
+        @RequestParam Map<String,String> requestParams, 
+        Number version 
     ) throws MalformedURLException {
 
         String queryString = category + ( (useDelimiter)? "/?" : "?" )
@@ -37,7 +38,7 @@ public class APIMyHelsinkiService {
         // System.out.println( "Debug: APIMyHelsinkiService : " + APIOptions.apiUrl2 + queryString );
         // System.out.println( "===============================" );
 
-        JSONObject res = JsonFetcher.urlToJson( new URL( APIOptions.apiUrl2 + queryString ) );
+        JSONObject res = JsonFetcher.urlToJson( new URL( APIOptions.getAPIUrlByVersion(version) + queryString ) );
         return res.toString();
     }
 
@@ -49,7 +50,8 @@ public class APIMyHelsinkiService {
      */
     public static String getOnceItem( 
         String queryString,
-        HttpServletRequest request
+        HttpServletRequest request,
+        Number version 
     ) throws MalformedURLException{
         if( request.getQueryString() != null ) {
             queryString += "?" + request.getQueryString();
@@ -60,7 +62,7 @@ public class APIMyHelsinkiService {
         System.out.println( "Debug: APIMyHelsinkiService : " + APIOptions.apiUrl2 + queryString );
         System.out.println( "===============================" );
 
-        JSONObject res = JsonFetcher.urlToJson( new URL( APIOptions.apiUrl2 + queryString ) );
+        JSONObject res = JsonFetcher.urlToJson( new URL( APIOptions.getAPIUrlByVersion(version) + queryString ) );
         return res.toString();
     }
     
