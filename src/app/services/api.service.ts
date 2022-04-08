@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, pipe, throwError } from 'rxjs';
+import { catchError, map, retry } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { DetailsComponent } from '../pages';
 
 
 @Injectable({
@@ -37,10 +39,7 @@ export class ApiService {
         return this.http.get(url);
     }
 
-
-
-
-
+    
 
 
     /**
