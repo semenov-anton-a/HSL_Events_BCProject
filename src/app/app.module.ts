@@ -23,6 +23,7 @@ import { ActivitiesComponent } from './pages/activities/activities.component';
 import { EventsComponent } from './pages/events/events.component';
 import { PlacesCardsComponent } from './components/cards/places-cards/places-cards.component';
 import { ActivitiesCardsComponent } from './components/cards/activities-cards/activities-cards.component';
+import { GoogleMapComponent } from './components/google-map/google-map.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ActivitiesCardsComponent } from './components/cards/activities-cards/ac
         ActivitiesComponent,
         EventsComponent,
         PlacesCardsComponent,
-        ActivitiesCardsComponent
+        ActivitiesCardsComponent,
+        GoogleMapComponent
     ],
     imports: [        
         AppRoutingModule,

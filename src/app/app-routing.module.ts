@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 // PAGES
 import { 
-    IndexComponent, DetailsComponent, 
+    IndexComponent, 
+    DetailsComponent, 
     PlacesComponent 
 } from './pages';
+
 import { ActivitiesComponent } from './pages/activities/activities.component';
 import { EventsComponent } from './pages/events/events.component';
 
