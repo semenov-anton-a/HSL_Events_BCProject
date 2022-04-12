@@ -1,29 +1,52 @@
-<div class="container ">
-    
-    <ng-container *ngIf="error != null"><h1 class="text-danger">{{error}}</h1></ng-container>
-    
-    
-    <!-- 
-        place 
-    -->
-    <ng-container *ngIf="( itemCategoryName == 'place' )">
-        <h2>THIS IS <div class="text-danger">PLACE</div> CONTAINER</h2>
-    </ng-container>
+<div class="container">
+  <ng-container *ngIf="error != null">
+    <h1 class="text-danger">{{ error }}</h1>
+  </ng-container>
 
-    <!-- 
+  <!-- place-->
+  <ng-container *ngIf="itemCategoryName == 'place'" class="container">
+    <div class="mx-auto" style="width: 200px; margin-bottom: 2rem;">
+      <h3>{{ itemData.name.fi }}</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mt-2" *ngIf="itemData.description.images.length > 0">
+        <div>
+          <img
+            src="{{ itemData.description.images[0].url }}"
+            alt=""
+            class="d-block w-100 h-50"
+          />
+        </div>
+      </div>
+
+      <div class="col">
+        <p>{{ itemData.description.intro }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="itemData.description.images.length > 1" class="row">
+      <div *ngFor="let img of itemData.description.images" class="col mt-2">
+        <img src="{{ img.url }}" alt="" class="d-block" />
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- 
         activity 
     -->
-    <ng-container *ngIf="( itemCategoryName == 'activity' )">
-        <h2>THIS IS <div class="text-danger">ACTIVITY</div> CONTAINER</h2>
-    </ng-container>
-    
-    <!-- 
+  <ng-container *ngIf="itemCategoryName == 'activity'">
+    <h2>
+      THIS IS
+      <div class="text-danger">ACTIVITY</div>
+      CONTAINER
+    </h2>
+  </ng-container>
+
+  <!-- 
         Event 
         not ready yet base <events> component
     -->
-    <!-- <ng-container *ngIf="( itemCategoryName == 'Event' )">
+  <!-- <ng-container *ngIf="( itemCategoryName == 'Event' )">
         <h2>THIS IS <div class="text-danger">EVENT</div> CONTAINER</h2>
     </ng-container> -->
-
-
 </div>

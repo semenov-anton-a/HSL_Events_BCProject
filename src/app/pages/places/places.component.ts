@@ -23,7 +23,7 @@ export class PlacesComponent implements OnInit {
     
     // Data Items
     ngOnInit(): void {
-        
+        console.log("########");
         this.langService.getObsData().subscribe( (lang : any) => {
             
             this.apiService.getAllByCategory( this.category ).subscribe((json: any) => {

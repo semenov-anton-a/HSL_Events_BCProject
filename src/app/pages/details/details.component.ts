@@ -28,14 +28,17 @@ export class DetailsComponent implements OnInit {
 
 
     ngOnInit(): void {
-        console.log(  this._routerParse() )
+        console.log(  this._routerParse() );
+        this.langService.getObsData().subscribe( (lang : any) => {
         this.apiService.getOnceItemByUrl( this._routerParse() ).subscribe( (json :any) => {
             console.log(json)
             if( ! json.error ){
                 return this.itemData = json; 
                 // return this.cardsData = json.rows.reverse(); 
             }
+            console.log(this.itemData)
             this.error = "Error : not found";
+        });
         });
     }
 

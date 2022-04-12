@@ -31,7 +31,9 @@ export class LangService {
     private setObsData( data: ILangObject ) {
         this.obsData.next({ value: data.value, name: data.name });
     }
-    public getObsData(): Observable<{}> { return this.obsData; }
+    public getObsData(): Observable<{}> { 
+        return this.obsData; 
+    }
     /*
      * 
      *******************************/

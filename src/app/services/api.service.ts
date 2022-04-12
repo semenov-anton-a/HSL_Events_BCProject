@@ -53,7 +53,15 @@ export class ApiService {
 
 
     getOnceItemByUrl( qUrl: string ){
-        return this.http.get( this.apiURL + qUrl );
+
+         let api = this.generateApiUrl1( qUrl );
+         console.log("67867869");
+         return this.http.get( api );
+        // return this.http.get( this.apiURL + qUrl);
+    }
+     private generateApiUrl1( qurl : string ) : string {
+        let lang = this.langService.getLanguage();
+        return this.apiURL + '/' + qurl + '/' + APIParams.lang + lang.value
     }
 
 
