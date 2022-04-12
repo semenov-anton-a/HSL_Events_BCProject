@@ -10,3 +10,18 @@
 </div> -->
 
 <h5>Google MAPS</h5>
+<div class="embed-responsive embed-responsive-1by1">
+    <google-map [zoom]="zoom" [center]="center" [options]="options" height="350px" width="100%">
+
+        <map-marker 
+            *ngFor="let marker of cardsData" 
+            
+            (change)="addMarker(marker)"
+        >   
+        </map-marker>
+    </google-map>
+    <!-- <ng-container>{{yourMethod(cardsData)}}</ng-container> -->
+    <!-- <ng-container *ngFor="let card of cardsData" >
+        <span>{{yourMethod(card)}}</span>
+    </ng-container> -->
+</div>

@@ -4,6 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule  } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+
+// Google MAPs
+import { GoogleMapsModule } from '@angular/google-maps'
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxMasonryModule  } from 'ngx-masonry/';
 
@@ -46,6 +50,7 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
+        GoogleMapsModule,
         FormsModule,
         ReactiveFormsModule,
         FontAwesomeModule,
