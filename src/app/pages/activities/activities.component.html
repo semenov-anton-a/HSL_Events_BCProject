@@ -3,6 +3,7 @@
     <p  [innerText]="currentLanguage.name"></p> -->
     <div class="col-3">
         <app-category-list></app-category-list>
+        <app-google-map [cardsData]="cardsData"></app-google-map>
     </div>
     <div class="col-md-9">
         <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>

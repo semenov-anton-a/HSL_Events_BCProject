@@ -1,8 +1,32 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { GoogleMap } from '@angular/google-maps';
-import { Observable } from 'rxjs/internal/Observable';
-import { PlacesComponent } from 'src/app/pages';
-import { PlacesCardsComponent } from '../cards/places-cards/places-cards.component';
+/******* 
+    ####################################
+    
+    --- DO NOT DELETE THESE LINKS ---
+    
+    ####################################
+
+    // Google Maps API DOCUMENTATION
+    @link https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
+
+    @ Compoent INFO -> Modified March 17, 2022
+    @link https://timdeschryver.dev/blog/google-maps-as-an-angular-component#info-window-mehods
+
+
+    @ HELPs Links
+    @link https://stackoverflow.com/questions/62142893/how-to-show-dynamic-content-in-angular-google-maps-infowindow 
+    @link https://stackoverflow.com/questions/62142893/how-to-show-dynamic-content-in-angular-google-maps-infowindow
+    @link https://github.com/angular/components/tree/master/src/google-maps#readme
+    @link https://stackoverflow.com/questions/62845428/google-map-angular9-error-with-opening-info-window-getanchor-is-not-found
+
+
+    @ Close infoWindow if is Oppend 
+    @link https://www.angularfix.com/2021/10/how-to-show-dynamic-content-in.html
+*/
+
+import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
+
+
 
 @Component({
     selector: 'app-google-map',
@@ -16,11 +40,13 @@ export class GoogleMapComponent implements OnInit {
      *  @link https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions
      */
     @ViewChild(GoogleMap, { static: false }) map: GoogleMap | undefined
+    @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow
+    @ViewChildren(MapInfoWindow) infoWindowsView?: QueryList<MapInfoWindow> | any;
 
     zoom = 8
     center: google.maps.LatLngLiteral | any;
     options: google.maps.MapOptions = {
-        mapTypeId: 'roadmap', // https://developers.google.com/maps/documentation/javascript/reference/map#MapTypeId
+        mapTypeId: 'roadmap',
         zoomControl: true,
         scrollwheel: true,
         disableDoubleClickZoom: false,
@@ -28,21 +54,57 @@ export class GoogleMapComponent implements OnInit {
         // minZoom: 8,
         clickableIcons: true
     }
-
-    @Input() markers: any;
     /* GOOGLE OPTIONS END */
 
-    constructor() {
+    constructor() { }
 
-    }
-
-    // @ViewChild( PlacesCardsComponent )  cardsData$: any[] | undefined;
     @Input() cardsData?: any[];
 
-    addMarker(data : any) : void {
-        console.log(data);
+
+    // openInfoWindow( marker: MapMarker, infoWindow: MapInfoWindow ) { infoWindow.open(marker) }
+    // 
+    openInfoWindow(marker: MapMarker, windowIndex: number) {
+        /// stores the current index in forEach
+        let curIdx = 0;
+        this.infoWindowsView.forEach((window: MapInfoWindow) => {
+            if (windowIndex === curIdx) {
+                window.open(marker);
+                curIdx++;
+            } else {
+                window.close();
+                curIdx++;
+            }
+        });
     }
-    
+
+    setTitle(data: any) {
+        return {};
+    }
+    setLabel(data: any) {
+        return {};
+    }
+
+
+
+    /**
+     * 
+     * @param data 
+     * @returns 
+     */
+    setPosition(data: any) {
+        return (!data.location) ? {
+            lat: data.address.location.lat,
+            lng: data.address.location.long
+        }
+            : {
+                lat: data.location.lat,
+                lng: data.location.lon
+            };
+
+    }
+
+
+
     ngOnInit(): void {
         navigator.geolocation.getCurrentPosition((position) => {
             this.center = {
