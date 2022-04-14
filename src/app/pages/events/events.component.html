@@ -3,9 +3,11 @@
     <p  [innerText]="currentLanguage.name"></p> -->
     <div class="col-3">
         <app-category-list></app-category-list>
+        <app-google-map [cardsData]="cardsData"></app-google-map>
     </div>
     <div class="col-md-9">
-        <h1>EVENTS</h1>
-        <!-- <app-cards [cardsData]="cardsData"></app-cards> -->
+        <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>
+        <h4 class="text-secondary" *ngIf="error != null">{{error}}</h4>
+        <app-events-cards [cardsData]="cardsData"></app-events-cards>
     </div>
 </div>

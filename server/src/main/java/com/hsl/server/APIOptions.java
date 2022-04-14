@@ -26,10 +26,11 @@ public class APIOptions {
      * @return
      */
     public static String getLimit( @RequestParam Map<String,String> requestParams  ){  
-        if( requestParams.containsKey(new String("limit")) ){
+        if( requestParams.containsKey(new String("limit")) ) {
             String n = requestParams.get( new String("limit") ) ;
             return new String( "&limit=" + n );
         }
+        // return ( limitOfData.intValue() == -1 ) ? "" : new String( "&limit=" + limitOfData );
         return new String( "&limit=" + limitOfData ); 
     }
 

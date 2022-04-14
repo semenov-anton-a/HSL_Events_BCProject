@@ -18,7 +18,7 @@ public class JsonFetcher {
     public static JSONObject urlToJson(URL urlString) {
         StringBuilder sb = null;
         URL url;
-        
+        System.out.println( urlString );
         URLConnection urlCon;
         try {
             url = urlString;

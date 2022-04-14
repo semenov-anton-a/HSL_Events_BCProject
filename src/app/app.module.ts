@@ -28,6 +28,7 @@ import { EventsComponent } from './pages/events/events.component';
 import { PlacesCardsComponent } from './components/cards/places-cards/places-cards.component';
 import { ActivitiesCardsComponent } from './components/cards/activities-cards/activities-cards.component';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
+import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
         EventsComponent,
         PlacesCardsComponent,
         ActivitiesCardsComponent,
-        GoogleMapComponent
+        GoogleMapComponent,
+        EventsCardsComponent
     ],
     imports: [        
         AppRoutingModule,

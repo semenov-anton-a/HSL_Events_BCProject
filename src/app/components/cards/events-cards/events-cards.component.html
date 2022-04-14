@@ -1,0 +1,55 @@
+<ngx-masonry [options]="{ gutter: 10 }" [ordered]="true">
+    <ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData ">
+
+        <div class="card" *ngIf="( card.description.body.length > 0 )">
+            <div class="card-body">
+                <h5 class="card-title fs-3 ">
+                    {{ setTitleByLanguage(card) | slice : 0 : maxTitleLength }}
+                </h5>
+
+                <!-- CAROUSEL -->
+                <div class="carousel slide" data-bs-ride="carousel" data-bs-interval="false"
+                    *ngIf="card.description.images" id="carousel_{{replaseWordFromID(card.id)}}">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item"
+                            *ngFor="let img of card.description.images; let i = index; first as isFirst"
+                            [class.active]="(isFirst)?'active':''">
+                            <img src={{img.url}} class="d-block w-100 h-50">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" (click)="reloadItems()"
+                        [attr.data-bs-target]="'#carousel_'+replaseWordFromID(card.id)" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" (click)="reloadItems()"
+                        [attr.data-bs-target]="'#carousel_'+replaseWordFromID(card.id)" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-- CAROUSEL END -->
+
+                <p class="card-text" class="" 
+                    [innerHTML]="(card.description.body.length > maxDescriptionLength )
+                    ? (card.description.body | slice:0 : maxDescriptionLength) + '...'
+                    : (card.description.body)">
+                </p>
+                <hr/>
+                <span class="d-block">{{ setAddressFormat( card?.location.address )}}</span>
+                <span class="d-block">{{ card?.event_dates.starting_day  | date:"d/M/YYYY" }}</span>
+                <span class="d-block mb-3"><a [href]="card?.info_url" target="_blank">{{card?.info_url}}</a></span>
+
+                <div class="justify-content-between d-flex input-group-sm">
+                    <a routerLink="/event/{{card.id}}" type="button"
+                        class="btn btn-outline-primary col-md-2">Details</a>
+                    <button class="btn btn-outline-primary">
+                        Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </ngxMasonryItem>
+</ngx-masonry>
