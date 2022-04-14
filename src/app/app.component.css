@@ -1,0 +1,16 @@
+.container {
+    /* padding: 20px; */
+    background-color: rgb(31, 48, 69);
+    border-radius: 15px;
+    margin-top: 22px;
+    border: solid lightgrey 1px;
+
+
+}
+
+nav {
+
+    background: linear-gradient(65.5deg, rgb(23, 205, 205) -15.1%, rgb(23, 25, 95) 71.5%);
+}
+
+
