@@ -14,8 +14,9 @@ export class DetailsComponent implements OnInit {
 
     public error ? : string;
     public itemCategoryName ? : string; 
-
-
+    public textShow : boolean = false;
+    public selectedLanguage: any;
+    public description: any;
     @Output() public itemData : any;
 
     constructor(
@@ -24,7 +25,7 @@ export class DetailsComponent implements OnInit {
         private apiService: ApiService
     ) { }
 
-
+   
 
 
     ngOnInit(): void {
@@ -33,8 +34,12 @@ export class DetailsComponent implements OnInit {
         this.apiService.getOnceItemByUrl( this._routerParse() ).subscribe( (json :any) => {
             console.log(json)
             if( ! json.error ){
+                console.log(this.itemData = json);
+                this.selectedLanguage = lang.value;
+                console.log(this.selectedLanguage);
                 return this.itemData = json; 
                 // return this.cardsData = json.rows.reverse(); 
+                 
             }
             console.log(this.itemData)
             this.error = "Error : not found";
@@ -44,6 +49,15 @@ export class DetailsComponent implements OnInit {
 
 
 
+    getEventNameByLang( desc : any, lang : any ){ 
+        return desc[lang].name;
+    }
+
+
+     getDescriptionByLang( desc : any, lang : any ) : string{ 
+        return desc[lang].description; 
+    }
+    
     private _routerParse() : string {
         let routerArr = this.router.url.split("/").slice(1);        
         this.itemCategoryName = routerArr[0];
@@ -52,4 +66,8 @@ export class DetailsComponent implements OnInit {
             ? this.router.url.replace( option, "" )
             : this.router.url;
     }
+
+    // showText(){
+    //     this.textShow = true;
+    // }
 }

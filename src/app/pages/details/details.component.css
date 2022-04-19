@@ -1,6 +1,15 @@
 .image{
     display: block;
 }
-img{
+.place-img{
     max-width: 100%;
 }
+
+/* 
+.activity-img-div{
+   display: block;
+}
+
+.activity-img{
+  max-width: 500%;
+} */
