@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule  } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +24,7 @@ import { EventsComponent } from './pages/events/events.component';
 import { PlacesCardsComponent } from './components/cards/places-cards/places-cards.component';
 import { ActivitiesCardsComponent } from './components/cards/activities-cards/activities-cards.component';
 import { WeatherComponent } from './weather/weather.component';
+// import { FutureweatherComponent } from './futureweather/futureweather.component';
 
 
 @NgModule({
@@ -40,9 +41,10 @@ import { WeatherComponent } from './weather/weather.component';
         EventsComponent,
         PlacesCardsComponent,
         ActivitiesCardsComponent,
-        WeatherComponent
+        WeatherComponent,
+        // FutureweatherComponent
     ],
-    imports: [        
+    imports: [
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
