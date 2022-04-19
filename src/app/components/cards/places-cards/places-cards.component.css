@@ -1,0 +1,22 @@
+.card-body {
+
+
+}
+
+a {
+    color: rgb(15, 125, 155);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+h5 {
+    color: rgb(5, 88, 124);
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: rgb(52, 171, 198);
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
