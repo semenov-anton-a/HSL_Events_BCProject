@@ -3,6 +3,7 @@
     <p  [innerText]="currentLanguage.name"></p> -->
     <div class="col-3">
         <app-category-list></app-category-list>
+        <app-weather></app-weather>
     </div>
     <div class="col-md-9">
         <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>
