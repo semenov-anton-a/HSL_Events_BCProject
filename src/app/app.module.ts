@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule  } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,8 @@ import { PlacesCardsComponent } from './components/cards/places-cards/places-car
 import { ActivitiesCardsComponent } from './components/cards/activities-cards/activities-cards.component';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
+import { WeatherComponent } from './weather/weather.component';
+// import { FutureweatherComponent } from './futureweather/futureweather.component';
 
 
 @NgModule({
@@ -46,9 +48,11 @@ import { EventsCardsComponent } from './components/cards/events-cards/events-car
         PlacesCardsComponent,
         ActivitiesCardsComponent,
         GoogleMapComponent,
-        EventsCardsComponent
+        EventsCardsComponent,
+        WeatherComponent,
+        // FutureweatherComponent
     ],
-    imports: [        
+    imports: [
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,

@@ -1,29 +1,30 @@
 <div class="container ">
-    
+
     <ng-container *ngIf="error != null"><h1 class="text-danger">{{error}}</h1></ng-container>
-    
-    
-    <!-- 
-        place 
+
+
+    <!--
+        place
     -->
     <ng-container *ngIf="( itemCategoryName == 'place' )">
         <h2>THIS IS <div class="text-danger">PLACE</div> CONTAINER</h2>
     </ng-container>
 
-    <!-- 
-        activity 
+    <!--
+        activity
     -->
     <ng-container *ngIf="( itemCategoryName == 'activity' )">
         <h2>THIS IS <div class="text-danger">ACTIVITY</div> CONTAINER</h2>
     </ng-container>
-    
-    <!-- 
-        Event 
+
+    <!--
+        Event
         not ready yet base <events> component
     -->
     <!-- <ng-container *ngIf="( itemCategoryName == 'Event' )">
         <h2>THIS IS <div class="text-danger">EVENT</div> CONTAINER</h2>
     </ng-container> -->
+
 
 
 </div>

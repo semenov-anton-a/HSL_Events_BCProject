@@ -7,8 +7,8 @@
                     <a [href]="card.siteUrl" target="_blank">{{card.company.name}}</a>
                 </h3>
 
-                <div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false" 
-                    
+                <div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false"
+
                     *ngIf="card.media"
                     id="carousel_{{card.id}}">
                     <div class="carousel-inner">
@@ -51,7 +51,7 @@
                             [class.active]="setActiveClassByLang(desc.key)" [attr.id]="'target-'+card.id+'-i'+i"
                             role="tabpanel" aria-labelledby="home-tab">
                             <h5>{{ getEventNameByLang(card.descriptions, desc.key) }}</h5>
-                            <div>{{
+                            <div style="font-size: 14px; color: rgb(22, 77, 116)">{{
                                 ( getDescriptionByLang(card.descriptions, desc.key).length > maxDescriptionLength )
                                     ? (getDescriptionByLang(card.descriptions, desc.key)
                                         | slice:0:maxDescriptionLength) + "..."
