@@ -92,40 +92,26 @@ export class GoogleMapComponent implements OnInit {
      * @returns 
      */
     setPosition(data: any) {
-        // let lat = 0;
-        // let lng = 0;
-        return { lat : 0 , lng : 0 }
-        
-        // return (!data.location) ? {
-        //     lat: data.address.location?.lat,
-        //     lng: data.address.location?.long
-        // }
-        //     : {
-        //         lat: data.location?.lat,
-        //         lng: data.location?.long
-        //     }
+        let lat = '0';   
+        let lng = '0';
 
         if( ( data.hasOwnProperty('location') ) )
         {
-            return {
-                lat: data.location?.lat,
-                lng: data.location?.long
-            }
-            // lat = data.location.lat  ;
-            // lng = data.location.long ;
+            lat = data.location?.lat 
+            lng = data.location?.lon
+        }       
+
+        if( data.hasOwnProperty('address') ) {
+            lat = data.address.location?.lat;
+            lng = data.address.location?.long;
         }
-        
-        // if( data.hasOwnProperty('address') ) {
-        //     lat = ( data.address.location.lat )  ? data.address.location.lat :  0;
-        //     lng = ( data.address.location.long ) ? data.address.location.long : 0;
-        // }
 
-        
-        
-        
-        
+        let pos = { 
+            lat : parseFloat(lat), 
+            lng : parseFloat(lng) 
+        };
 
-
+        return pos;
     }
 
 

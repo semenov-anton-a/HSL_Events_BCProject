@@ -1,7 +1,7 @@
 <h5>Google MAPS</h5>
 <div class="embed-responsive embed-responsive-1by1">
     <google-map [zoom]="zoom" [center]="center" [options]="options" height="350px" width="100%">
-        
+
         <ng-container *ngFor="let elem of cardsData; let i = index">
             <map-marker 
                 #marker="mapMarker" 
@@ -9,14 +9,15 @@
                 [options]="elem.markerOptions"
                 (mapClick)="openInfoWindow(marker, i)">
             </map-marker>
-            
-            <map-info-window #infoWindow="mapInfoWindow"> 
-            
+
+            <map-info-window #infoWindow="mapInfoWindow">
+
                 <span>ID {{elem.id}}</span>
-            
+
             </map-info-window>
-            
+
         </ng-container>
 
     </google-map>
+
 </div>

@@ -37,4 +37,12 @@ export class PlacesCardsComponent implements OnInit {
 
     ngOnInit(): void {  
     }
+
+
+     /**
+     *  Ser address format 
+     *  @param data 
+     */
+      setAddressFormat( data : any){ return data.locality + ", " + data.street_address; }
+
 }
