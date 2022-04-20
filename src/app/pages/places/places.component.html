@@ -3,7 +3,9 @@
     <p  [innerText]="currentLanguage.name"></p> -->
     <div class="col-3">
         <app-category-list></app-category-list>
+        <app-weather></app-weather>
     </div>
+
     <div class="col-md-9">
         <h4 class="text-secondary" *ngIf="( error != null )">{{error}}</h4>
         <!-- <app-cards [cardsData]="cardsData"></app-cards> -->
