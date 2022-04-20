@@ -22,14 +22,13 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { LangsComponent } from './components/langs/langs.component';
 import { PlacesComponent } from './pages/places/places.component';
 import { CardsPipe } from './pipes/cards.pipe';
-import { TestcomponentComponent } from './testcomponent/testcomponent.component';
 import { ActivitiesComponent } from './pages/activities/activities.component';
 import { EventsComponent } from './pages/events/events.component';
 import { PlacesCardsComponent } from './components/cards/places-cards/places-cards.component';
 import { ActivitiesCardsComponent } from './components/cards/activities-cards/activities-cards.component';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
-import { WeatherComponent } from './weather/weather.component';
+import { WeatherComponent } from './components/weather/weather.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
 
 
@@ -42,7 +41,6 @@ import { WeatherComponent } from './weather/weather.component';
         LangsComponent,
         PlacesComponent,
         CardsPipe,
-        TestcomponentComponent,
         ActivitiesComponent,
         EventsComponent,
         PlacesCardsComponent,
