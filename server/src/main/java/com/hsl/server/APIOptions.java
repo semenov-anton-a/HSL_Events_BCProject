@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class APIOptions {
     
-    private static final Number limitOfData = 50; // if value -1 onlimit get data
+    private static final Number limitOfData = 5; // if value -1 onlimit get data
     private static final Number startOfData = 0;
 
     public static final String apiUrl1 = "http://open-api.myhelsinki.fi/v1/"; 
