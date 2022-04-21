@@ -29,6 +29,7 @@ import { ActivitiesCardsComponent } from './components/cards/activities-cards/ac
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
 import { WeatherComponent } from './components/weather/weather.component';
+import { PlaceComponent } from './components/details/place/place.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
 
 
@@ -48,6 +49,7 @@ import { WeatherComponent } from './components/weather/weather.component';
         GoogleMapComponent,
         EventsCardsComponent,
         WeatherComponent,
+        PlaceComponent,
         // FutureweatherComponent
     ],
     imports: [

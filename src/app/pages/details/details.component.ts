@@ -14,7 +14,9 @@ export class DetailsComponent implements OnInit {
 
     public error ? : string;
     public itemCategoryName ? : string; 
-
+    public textShow : boolean = false;
+    public selectedLanguage: any;
+    public description: any;
 
     @Output() public itemData : any;
 
@@ -29,13 +31,20 @@ export class DetailsComponent implements OnInit {
 
     ngOnInit(): void {
         console.log(  this._routerParse() )
+        this.langService.getObsData().subscribe( (lang : any) => {
         this.apiService.getOnceItemByUrl( this._routerParse() ).subscribe( (json :any) => {
             console.log(json)
             if( ! json.error ){
+                console.log(this.itemData = json);
+                this.selectedLanguage = lang.value;
+                console.log(this.selectedLanguage);
                 return this.itemData = json; 
                 // return this.cardsData = json.rows.reverse(); 
+                 
             }
+            console.log(this.itemData)
             this.error = "Error : not found";
+        });
         });
     }
 
@@ -48,5 +57,8 @@ export class DetailsComponent implements OnInit {
         return this.queryApiUrl = ( option )
             ? this.router.url.replace( option, "" )
             : this.router.url;
+    }
+     showText(){
+        this.textShow = true;
     }
 }

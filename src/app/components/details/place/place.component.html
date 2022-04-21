@@ -1,0 +1,95 @@
+<div class="row mt-2">
+  <div class="col-md-3">
+    <app-category-list></app-category-list>
+    <app-google-map></app-google-map>
+    <app-weather></app-weather>
+  </div>
+
+  <div
+    class="col-md-9 mt-4"
+    style="color: white; text-align: center; letter-spacing: 2px;"
+  >
+    <h1>{{ itemData.name.fi }}</h1>
+    <div class="row">
+      <div
+        class="col-md-12 mt-2"
+        *ngIf="itemData.description.images.length > 0"
+      >
+        <!-- <div>
+          <img
+            src="{{ itemData.description.images[0].url }}"
+            alt=""
+            class="d-block w-100 h-100 place-img"
+          />
+        </div> -->
+        <div
+          class="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-interval="false"
+          *ngIf="itemData.description.images"
+          id="carousel_{{ itemData.id }}"
+        >
+          <div class="carousel-inner">
+            <div
+              class="carousel-item"
+              *ngFor="
+                let img of itemData.description.images;
+                let i = index;
+                first as isFirst
+              "
+              [class.active]="isFirst ? 'active' : ''"
+            >
+              <img src="{{ img.url }}" class="d-block w-100 h-50" />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            (click)="reloadItems()"
+            [attr.data-bs-target]="'#carousel_' + itemData.id"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            (click)="reloadItems()"
+            [attr.data-bs-target]="'#carousel_' + itemData.id"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col mt-4">
+        <p style="">{{ itemData.description.intro }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col">
+        <fa-icon [icon]="faHouseChimney"></fa-icon>
+        <p>
+          {{ itemData.location.address.street_address }}
+          {{ itemData.location.address.postal_code }}
+        </p>
+      </div>
+      <div class="col">
+        <fa-icon [icon]="faLink"></fa-icon>
+        <p>
+          <a
+            [href]="itemData?.info_url"
+            target="_blank"
+            style="text-decoration: none; color: white;"
+          >
+            {{ itemData?.info_url }}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
