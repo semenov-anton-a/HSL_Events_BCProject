@@ -64,9 +64,19 @@ export class ApiService {
      *  @param category 
      *  @returns 
      */
-    private generateApiUrl( category: string ): string {
-        console.log( this.apiURL + '/' + category + '/' + APIParams.lang + this.langService.getLanguage().value );
-        return this.apiURL + '/' + category + '/' + APIParams.lang + this.langService.getLanguage().value
+    // private generateApiUrl( category: string ): string {
+    //     console.log( this.apiURL + '/' + category + '/' + APIParams.lang + this.langService.getLanguage().value );
+    //     return this.apiURL + '/' + category + '/' + APIParams.lang + this.langService.getLanguage().value
+    // }
+
+    private generateApiUrl(category: string): string {
+        let lng: { value: string, name: string } = this.langService.getLanguage();
+
+        if (lng.value == "") {
+            return this.apiURL + '/' + category;
+        }
+
+        return this.apiURL + '/' + category + '/' + APIParams.lang + lng.value
     }
 
     /**
