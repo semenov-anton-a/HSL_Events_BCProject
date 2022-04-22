@@ -4,12 +4,7 @@
 NEVER COMMIT TO MASTER BRACH
 
 # GitHub Page URL
-
-# INSTRUCTIONS
-npm install
-ng serve
-.\mvnw spring-boot:run
-
+-----> not yet
 
 # HSLEventsBCProject
 
