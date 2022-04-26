@@ -7,18 +7,20 @@
         place
     -->
   <ng-container *ngIf="itemCategoryName == 'place'">
-    <app-place></app-place>
+    <app-place
+      [placeDetailData]="itemData"
+      [selectedLang]="selectedLanguage"
+    ></app-place>
   </ng-container>
 
   <!--
         activity
     -->
   <ng-container *ngIf="itemCategoryName == 'activity'">
-    <h2>
-      THIS IS
-      <div class="text-danger">ACTIVITY</div>
-      CONTAINER
-    </h2>
+    <app-activity
+      [activityDetailData]="itemData"
+      [selectedLang]="selectedLanguage"
+    ></app-activity>
   </ng-container>
 
   <!--

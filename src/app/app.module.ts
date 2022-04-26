@@ -30,8 +30,12 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { PlaceComponent } from './components/details/place/place.component';
+import { ActivityComponent, ModalContentComponent } from './components/details/activity/activity.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MonthModalComponent } from './components/details/activity/month-modal/month-modal.component';
 
 @NgModule({
     declarations: [
@@ -50,6 +54,10 @@ import { PlaceComponent } from './components/details/place/place.component';
         EventsCardsComponent,
         WeatherComponent,
         PlaceComponent,
+        ActivityComponent,
+        ModalContentComponent,
+        MonthModalComponent,
+    
         // FutureweatherComponent
     ],
     imports: [
@@ -61,8 +69,12 @@ import { PlaceComponent } from './components/details/place/place.component';
         ReactiveFormsModule,
         FontAwesomeModule,
         HttpClientModule,
-        NgxMasonryModule
+        NgxMasonryModule,
+        // ModalModule.forRoot(),
+        NgbModule
+
     ],
+    entryComponents: [],
     providers: [],
     bootstrap: [AppComponent]
 })

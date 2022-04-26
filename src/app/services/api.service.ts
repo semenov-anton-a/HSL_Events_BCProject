@@ -49,7 +49,8 @@ export class ApiService {
      *  @param qUrl 
      *  @returns 
      */
-    getOnceItemByUrl(qUrl: string) { return this.http.get(this.apiURL + qUrl); }
+    getOnceItemByUrl(qUrl: string) {
+         return this.http.get(this.generateApiUrl(qUrl)); }
 
     /**
      *  Get Data from

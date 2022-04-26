@@ -25,7 +25,7 @@ const routes: Routes = [
 
     /**
      *  @RouteName
-     *  ACTIVITIEs ROUTE
+     *  ACTIVITIEs ROUTEp
      */
     { path: 'activities',   component: ActivitiesComponent },
     { path: 'activity/:id', component: DetailsComponent },

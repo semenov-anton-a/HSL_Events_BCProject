@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { LangService } from 'src/app/services/lang.service';
 
@@ -18,7 +18,7 @@ export class DetailsComponent implements OnInit {
     public selectedLanguage: any;
     public description: any;
 
-    @Output() public itemData : any;
+    public itemData : any;
 
     constructor(
         private router: Router,
@@ -30,10 +30,10 @@ export class DetailsComponent implements OnInit {
 
 
     ngOnInit(): void {
-        console.log(  this._routerParse() )
+        
         this.langService.getObsData().subscribe( (lang : any) => {
         this.apiService.getOnceItemByUrl( this._routerParse() ).subscribe( (json :any) => {
-            console.log(json)
+            console.log(lang);
             if( ! json.error ){
                 console.log(this.itemData = json);
                 this.selectedLanguage = lang.value;
@@ -61,4 +61,9 @@ export class DetailsComponent implements OnInit {
      showText(){
         this.textShow = true;
     }
+     /**
+     *  Ser address format 
+     *  @param data 
+     */
+     
 }
