@@ -1,7 +1,6 @@
-<ngx-masonry (layoutComplete)="layoutCompleteRender($event)"
-    [options]="{ gutter: 10, percentPosition: true }" [ordered]="true">
-    <ngxMasonryItem
-        class="masonry-item" *ngFor="let card of cardsData">
+<ngx-masonry (layoutComplete)="layoutCompleteRender()" [options]="{ gutter: 10, percentPosition: true }"
+    [ordered]="true">
+    <ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData">
         <div class="card">
             <div class="card-body">
                 <!-- <span>ID: {{card.id}}</span> -->
@@ -31,7 +30,7 @@
 
                 <div class="card-text">
                     <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation" 
+                        <li class="nav-item" role="presentation"
                             *ngFor="let desc of card.descriptions | keyvalue;  let i = index; ">
 
                             <button (click)="reloadItems()" [class.active]="setActiveClassByLang(desc.key)"
@@ -77,21 +76,9 @@
 </ngx-masonry>
 
 
-<!-- <button (click)="addItem()">ADD</button>
-<ngx-masonry (layoutComplete)="doStuff($event)" (removeComplete)="doOtherStuff($event)">
-    <div ngxMasonryItem *ngFor="let card of cardsData; let i = index; last as isFirst; last as isLast">
-
-        <span style="color:#fff">{{ isLastFn(i) }} {{card.id}}</span>
-    </div>
-</ngx-masonry> -->
-
-
-<!-- <ng-container *ngIf="cardsData">
-    {{ console() }}
-    <ngx-masonry (layoutComplete)="doStuff($event)" (removeComplete)="doOtherStuff($event)">
-        <div ngxMasonryItem *ngFor="let card of masonryItems; let i = index; last as isFirst; last as isLast">
-
-            <span style="color:#fff">{{ isLastFn(i) }} {{card.id}}</span>
-        </div>
-    </ngx-masonry>
-</ng-container> -->
+<ng-container *ngIf="cardsData">
+    <button [disabled]="!allowLoadMoreData"
+        (click)="addItem()" class="mt-3 btn btn-primary col-12">ADD 
+        <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+</ng-container>

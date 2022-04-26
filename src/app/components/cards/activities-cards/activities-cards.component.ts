@@ -1,6 +1,11 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
-import { faCoffee, faStar, faEarthAmerica } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCoffee,
+    faStar,
+    faEarthAmerica,
+    faPlus
+} from '@fortawesome/free-solid-svg-icons';
 import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
 import { LangService } from 'src/app/services/lang.service';
 // import { NgxMasonryComponent } from 'ngx-masonry/lib/ngx-masonry.component';
@@ -20,10 +25,13 @@ export class ActivitiesCardsComponent implements OnInit {
     faCoffee = faCoffee;
     faStar = faStar;
     faEarthAmerica = faEarthAmerica;
+    faPlus = faPlus;
 
     @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
 
     @Input() cardsData: any[] | undefined;
+
+    @Input() allowLoadMoreData : boolean = true;
 
     private currentLanguage = this.langService.getLanguage();
 
@@ -34,26 +42,24 @@ export class ActivitiesCardsComponent implements OnInit {
         this.langService.getObsData().subscribe((lang: any) => {
             this.currentLanguage = lang;
         })
-
-        //    setInterval( () => { 
-        //         this.masonry.reloadItems();
-        //         this.masonry.layout();  
-        //     }, 500)
     }
 
 
+    /**
+     *  Masonry
+     *  @params reload items 
+     */
     reloadItems() {
-        // if( this.masonry !== undefined){
-        //     this.masonry.reloadItems();
-        //     this.masonry.layout();
-        //     // return ;
-        // }
-
+        this.activeClassSetted = true
         setTimeout(() => {
             this.masonry.reloadItems();
             this.masonry.layout();
+
         }, 500)
+
+        return this;
     }
+
     /**
      * Object key convert to string && toUpperCase
      * @param value 
@@ -61,49 +67,70 @@ export class ActivitiesCardsComponent implements OnInit {
      */
     keyAsString(value: any) { return value.toUpperCase(); }
 
+    /**
+     * set active for tab by current language
+     * @param lang 
+     * @returns 
+     */
     setActiveClassByLang(lang: any) {
         let langStr = lang.toString();
         return (this.currentLanguage.value === lang) ? "active" : "";
     }
 
 
+    // 
+    getEventNameByLang(desc: any, lang: any) { return desc[lang].name; }
 
-    getEventNameByLang(desc: any, lang: any) {
-        return desc[lang].name;
+    //
+    getDescriptionByLang(desc: any, lang: any): string { return desc[lang].description; }
+
+    /**
+     *  Load mode data
+     */
+    private _uploadItemClick = false;
+    @Output() addItemEmitter = new EventEmitter();
+    async addItem() {
+        this._uploadItemClick = true;
+        await this.addItemEmitter.emit();
+        this.layoutCompleteRender();
     }
 
-    getDescriptionByLang(desc: any, lang: any): string {
-        return desc[lang].description;
-    }
-    // getDescriptionByCurrentLang( data: any ){
-    //     console.log( data );
-    // }
 
+    private activeClassSetted: boolean = false;
+    layoutCompleteRender(): any {
 
-    addItem() {
-        this.cardsData?.push({ id: "HELLO" })
-        
-    }
-
-
-    private activeClassSetted : boolean = false;
-    layoutCompleteRender(e: any) : any {
-
-        if( this.currentLanguage.value != "" ) { this.activeClassSetted = false; }
-        if( this.currentLanguage.value != "" || this.activeClassSetted ) return;
+        if (this.currentLanguage.value != "") { this.activeClassSetted = false; }
+        if (this.currentLanguage.value != "" || this.activeClassSetted) return;
         
         let button = document.querySelectorAll('.masonry-item .card .nav-item:first-child button');
-            button.forEach( (el) => { el.classList.add('active') } )    
-        
+        button.forEach((el) => { el.classList.add('active') })
+
         let content = document.querySelectorAll('.masonry-item .card .tab-content .tab-pane:first-child');
-            content.forEach((el) => { el.classList.add('active') })
-            
-        this.activeClassSetted = true;
+        content.forEach((el) => { el.classList.add('active') })
+
+        this.reloadItems()
+        this.activeClassSetted = false;
+        return this;
     }
 
 
     doOtherStuff(e: any) {
         // console.log("other")
+    }
+
+    objectKeys(obj: any) {
+        return Object.values(obj.tags);
+    }
+
+    getTags(obj: any) {
+        return Object.values(obj.tags);
+        console.log();
+        return ""
+    }
+
+
+    console(obj: any) {
+        console.log(obj);
     }
 
 
