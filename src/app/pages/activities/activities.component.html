@@ -1,15 +1,36 @@
 <div class="row mt-2">
-    <!-- <p>CURRENT Lang from Places.Conponent {{ currentLanguage.name }}</p>
-    <p  [innerText]="currentLanguage.name"></p> -->
     <div class="col-3">
         <app-category-list></app-category-list>
         <app-google-map [cardsData]="cardsData"></app-google-map>
         <app-weather></app-weather>
+
+        <div class="row mx-auto">
+            <h3 class="text-light mx-auto d-block"># TAGs</h3>
+            <!-- <a *ngFor="let tag of tags; let i = index;" (click)="setTag(tag, i)"
+                [class.active]="selectedIndex === i || currentTag === tag" routerLink="/activities/{{tag}}"
+                class="link-light"> {{tag | tagsActivities }}</a>
+            -->
+            <a  class="link-light"
+                *ngFor="let tag of tags; let i = index;" 
+                (click)="setTag(tag, i)"
+                routerLink="/activities/{{tag}}" 
+                routerLinkActive="active"> 
+                {{tag | tagsActivities }}
+            </a>
+            
+            <a routerLink="/activities" class="mt-2 btn btn-primary">Reset</a>
+        </div>
     </div>
+
     <div class="col-md-9">
         <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>
         <h4 class="text-secondary" *ngIf="error != null">{{error}}</h4>
-        <app-activities-cards [cardsData]="cardsData"></app-activities-cards>
+        <app-activities-cards
+            [allowLoadMoreData]="allowLoadMoreData"
+            (addItemEmitter)="addItem()" 
+            [cardsData]="cardsData">
+        </app-activities-cards>
         <!-- <app-cards [cardsData]="cardsData"></app-cards> -->
     </div>
+
 </div>

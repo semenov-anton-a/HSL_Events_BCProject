@@ -12,8 +12,9 @@ export enum APICategories {
 }
 
 export enum APIParams {
-    lang = "?language_filter=",
-    tags = "?tags_filter=",
+    lang  = "?language_filter=",
+    tags  = "?tags_search=",
+    shift = "&start="
 }
 
 @Injectable({
@@ -28,9 +29,12 @@ export class ApiService {
         activity: { reqex: new RegExp("(\/" + APIParams.lang + ").*", "g") },
     }
 
+    //
     private readonly apiURL: string = '/api';
 
-
+    //
+    public readonly itemShift = 10;
+    public currentItemShift : number = 0;
 
     constructor(
         private http: HttpClient,
@@ -52,12 +56,28 @@ export class ApiService {
     getOnceItemByUrl(qUrl: string) { return this.http.get(this.apiURL + qUrl); }
 
     /**
+     *  Make Shift of load items
+     *  @returns void
+     */
+    loadMoreItems() : void { this.currentItemShift += this.itemShift; }
+
+    private getItemsShiftUrl() : string { 
+        if( this.currentItemShift == 0 ){
+            return "";
+        }
+
+        return (APIParams.shift + this.currentItemShift).toString();
+    }
+
+    /**
      *  Get Data from
      *  @param category 
      *  @returns 
      */
-    getAllByCategory(category: string) { 
-        return this.http.get(this.generateApiUrl(category)); }
+    getAllByCategory(category: string, tag?: string) { 
+        let url = this.generateApiUrl( category , tag);
+        console.log(url);
+        return this.http.get( url ); }
 
     /**
      *  Generate API url
@@ -69,15 +89,33 @@ export class ApiService {
     //     return this.apiURL + '/' + category + '/' + APIParams.lang + this.langService.getLanguage().value
     // }
 
-    private generateApiUrl(category: string): string {
+    private generateApiUrl(category: string, tag ?: string): string {
         let lng: { value: string, name: string } = this.langService.getLanguage();
 
+        let tagParam = this.addTagParam(tag);
+
         if (lng.value == "") {
-            return this.apiURL + '/' + category;
+            return this.apiURL + '/' + category + '?' + tagParam + this.getItemsShiftUrl() ;
+        }
+        return this.apiURL + '/' + category + '/' + APIParams.lang + lng.value + ( ( tagParam ) ? '&' + tagParam : ''); 
+    }
+
+
+    private addTagParam( tag ?: string ) : string {
+        let tagParam = '';
+
+        if( tag ){
+            tagParam = APIParams.tags + tag;
+        }else{
+            return '';
         }
 
-        return this.apiURL + '/' + category + '/' + APIParams.lang + lng.value
+        return tagParam.replace('?','');
     }
+
+
+
+    
 
     /**
      * IF API HTTP | HTTPs

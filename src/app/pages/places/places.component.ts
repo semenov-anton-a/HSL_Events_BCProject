@@ -21,6 +21,9 @@ export class PlacesComponent implements OnInit {
         private langService: LangService,
     ) { }
     
+    tags = new Array<string>();
+
+
     // Data Items
     ngOnInit(): void {
         
@@ -29,7 +32,12 @@ export class PlacesComponent implements OnInit {
             this.apiService.getAllByCategory( this.category ).subscribe((json: any) => {
                 console.log( json )
                 
+                let tags = new Array();
+                
+                console.log( Object.values( json.tags ));
+                
                 if( ! json.error ){ return this.cardsData = json.data.reverse(); }
+                
                 this.error = "Error : not found";
             });
 
