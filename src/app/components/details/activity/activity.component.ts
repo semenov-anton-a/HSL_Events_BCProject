@@ -1,81 +1,90 @@
-import { Component,Input, OnInit, ViewChild } from '@angular/core';
-import {  NgxMasonryComponent } from 'ngx-masonry';
-import {faHouseChimney,faLink,faSackDollar,faClock,faCalendar} from '@fortawesome/free-solid-svg-icons';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgxMasonryComponent } from 'ngx-masonry';
+import { faHouseChimney, faLink, faSackDollar, faClock, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { MonthModalComponent } from './month-modal/month-modal.component';
 @Component({
-  selector: 'app-activity',
-  templateUrl: './activity.component.html',
-  styleUrls: ['./activity.component.css']
+    selector: 'app-activity',
+    templateUrl: './activity.component.html',
+    styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
 
-  @Input() public activityDetailData: any;
-  @Input() public selectedLang:any;
-  @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any ;
+    @Input() public activityDetailData: any;
+    @Input() public selectedLang: any;
+    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
 
-  public faSackDollar = faSackDollar;
-  public faHouseChimney = faHouseChimney;
-  public faLink = faLink;
-  public faClock = faClock;
-  public faCalendar = faCalendar;
+    public faSackDollar = faSackDollar;
+    public faHouseChimney = faHouseChimney;
+    public faLink = faLink;
+    public faClock = faClock;
+    public faCalendar = faCalendar;
 
-  constructor( private modalService: NgbModal) { }
+    constructor(private modalService: NgbModal) { }
 
-  ngOnInit(): void {
-    
-  }
-  reloadItems(){
-        setTimeout(() => { 
+    ngOnInit(): void {
+
+    }
+    reloadItems() {
+        setTimeout(() => {
             this.masonry.reloadItems();
-            this.masonry.layout();  
+            this.masonry.layout();
         }, 500)
     }
-  
-  openClockModal(){
-   this.openModalWithComponent();
-  }
-  openMonthModal(){
-    this.openMonthModalComponent();
-  }
 
-  openModalWithComponent() {
-    const modalRef = this.modalService.open(ModalContentComponent,{
-      scrollable: true,
-        // windowClass: 'myCustomModalClass',
-        // keyboard: false,
-        // backdrop: 'static'
-    });
-    let detail = this.activityDetailData;
-    console.log("####" +this.activityDetailData + '#####');
-    modalRef.componentInstance.fromParent = detail;
-    modalRef.result.then((result) => {
-      console.log(result);
-    }, (reason) => {
-    });
-  }
-  openMonthModalComponent(){
-    const modalRef = this.modalService.open(MonthModalComponent,{
-      scrollable: true,
-        // windowClass: 'myCustomModalClass',
-        // keyboard: false,
-        // backdrop: 'static'
-    });
-    let detail = this.activityDetailData;
-    console.log("####" +this.activityDetailData + '#####');
-    modalRef.componentInstance.fromParent1 = detail;
-    modalRef.result.then((result) => {
-      console.log(result);
-    }, (reason) => {
-    });
-  }
+    openClockModal() {
+        this.openModalWithComponent();
+    }
+    openMonthModal() {
+        this.openMonthModalComponent();
+    }
+
+    openModalWithComponent() {
+        const modalRef = this.modalService.open(ModalContentComponent, {
+            scrollable: true,
+            // windowClass: 'myCustomModalClass',
+            // keyboard: false,
+            // backdrop: 'static'
+        });
+        let detail = this.activityDetailData;
+        console.log("####" + this.activityDetailData + '#####');
+        modalRef.componentInstance.fromParent = detail;
+        modalRef.result.then((result) => {
+            console.log(result);
+        }, (reason) => {
+        });
+    }
+    openMonthModalComponent() {
+        const modalRef = this.modalService.open(MonthModalComponent, {
+            scrollable: true,
+            // windowClass: 'myCustomModalClass',
+            // keyboard: false,
+            // backdrop: 'static'
+        });
+        let detail = this.activityDetailData;
+        console.log("####" + this.activityDetailData + '#####');
+        modalRef.componentInstance.fromParent1 = detail;
+        modalRef.result.then((result) => {
+            console.log(result);
+        }, (reason) => {
+        });
+    }
+
+    /**
+     * TODO: return description by lang property has { description { fi : ... , en: ....}} 
+     * @param description  
+     */
+    getDescriptionByLang(description: any) {
+        // return description.fi
+        console.log( "DESC", description);
+    }
 
 }
 // ¤¤¤¤  opening hours modal component ¤¤¤¤¤
 @Component({
-  selector: 'model-content',
-  template:`
+    selector: 'model-content',
+    template: `
   <table class="table">
   <thead>
     <tr style="background-color: #1F3045;color:white">
@@ -157,18 +166,18 @@ export class ActivityComponent implements OnInit {
 
 })
 
-export class ModalContentComponent implements OnInit{
-  
-  @Input()  fromParent : any;
+export class ModalContentComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal){}
+    @Input() fromParent: any;
 
-  ngOnInit(): void {
-     console.log(this.fromParent); 
-  }
-  closeModal(sendData:any) {
-    this.activeModal.close(sendData);
-  }
+    constructor(public activeModal: NgbActiveModal) { }
+
+    ngOnInit(): void {
+        console.log(this.fromParent);
+    }
+    closeModal(sendData: any) {
+        this.activeModal.close(sendData);
+    }
 }
 
 

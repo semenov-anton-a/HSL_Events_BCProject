@@ -84,7 +84,9 @@ export class GoogleMapComponent implements OnInit {
         return {};
     }
 
-
+    // test(cardsData : any) {
+    //     console.log( "GOOGLE MAP ", cardsData )
+    // }
 
     /**
      * 

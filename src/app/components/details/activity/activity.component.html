@@ -1,7 +1,7 @@
 <div class="row mt-2">
 	<div class="col-md-3">
 		<app-category-list></app-category-list>
-		<app-google-map [cardsData]="activityDetailData"></app-google-map>
+		<!-- <app-google-map [cardsData]="activityDetailData"></app-google-map> -->
 		<app-weather></app-weather>
 	</div>
 	<div class="col-md-9 mt-4" style="color: white; text-align: center; letter-spacing: 2px;">
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div class="col mt-4">
-				<p>{{ activityDetailData?.descriptions[selectedLang]?.description }}</p>
+				<p>{{ getDescriptionByLang(activityDetailData?.descriptions[selectedLang]?.description)}}</p>
 			</div>
 		</div>
 		<hr />
