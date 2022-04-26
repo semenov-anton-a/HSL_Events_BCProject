@@ -11,7 +11,7 @@ import { LangService } from 'src/app/services/lang.service';
 export class ActivitiesComponent implements OnInit {
 
     // Limit items load of this category
-    private readonly limitLoad = 4;
+    private readonly limitLoad = 6;
 
     @Output() cardsData: any;
     

@@ -5,11 +5,11 @@ import { BehaviorSubject, Observable, Subscription, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { LangService } from './lang.service';
 
-export enum APICategories {
-    PLACES = 'places',
-    EVENTS = 'events',
-    ACTIVITIES = 'activities',
-}
+// export enum APICategories {
+//     PLACES = 'places',
+//     EVENTS = 'events',
+//     ACTIVITIES = 'activities',
+// }
 
 export enum APIParams {
     lang  = "?language_filter=",
@@ -30,12 +30,15 @@ export class ApiService {
         activity: { reqex: new RegExp("(\/" + APIParams.lang + ").*", "g") },
     }
 
+    // 
+    private readonly globalStartLimitShift = 4;
+
     //
     private readonly apiURL: string = '/api';
 
     // Limit load items
-    public readonly limitDefault = 10;
-    public limitLoad = 9;
+    public readonly limitDefault = 4;
+    public limitLoad = 0;
 
     // Shift of load data
     public readonly itemShift = 4;
@@ -131,11 +134,24 @@ export class ApiService {
     }
 
 
-    public setLimitUriParam( value : number ){ this.limitLoad = value; return this; } 
+    public setLimitUriParam( value ?: number ){ 
+        if( value && value != this.itemShift ){
+            value = this.globalStartLimitShift;
+        }
+        let limitVal = ( value ) ? value : this.limitDefault; 
+        this.limitLoad = limitVal; 
+        return this; 
+    } 
     private getLimitUriParam() : string {
         return (APIParams.limit + this.limitLoad).toString(); 
     }
     
+
+    resetStartLimitShifts(){
+        this.limitLoad = this.limitDefault;
+        this.currentItemShift = 0;
+    }
+
 
     /**
      * IF API HTTP | HTTPs
