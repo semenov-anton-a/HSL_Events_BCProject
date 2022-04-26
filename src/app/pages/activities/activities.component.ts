@@ -35,7 +35,11 @@ export class ActivitiesComponent implements OnInit {
     /**
      *  ngOnInit
      */
-    ngOnInit(): void { this.getData(); }
+    ngOnInit(): void { 
+        this.langService.getObsData().subscribe( (lang : any) => {
+            this.getData(); 
+        })
+    }
 
 
     /**
@@ -83,7 +87,7 @@ export class ActivitiesComponent implements OnInit {
      */
     selectedIndex : number = -1;
     setIndex(index: number) {  this.selectedIndex = index; }
-    setTag( tag:string, i: number) : any {
+    setTag( tag:string ) : any {
         window.scrollTo( 0, 0 );
         this._reloadComponent()._reloadApiVariables();
         this.getData();
@@ -130,6 +134,10 @@ export class ActivitiesComponent implements OnInit {
 
 
     /**  */
+    resetComponentOfTags(){
+        this._reloadComponent();
+        this._reloadApiVariables();
+    }
     private _reloadComponent(){ this.allowLoadMoreData = true; return this; }
     private _reloadApiVariables(){ this.apiService.currentItemShift = 0 }
     /**  */

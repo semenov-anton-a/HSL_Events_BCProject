@@ -12,13 +12,13 @@
             -->
             <a  class="link-light"
                 *ngFor="let tag of tags; let i = index;" 
-                (click)="setTag(tag, i)"
+                (click)="setTag( tag )"
                 routerLink="/activities/{{tag}}" 
                 routerLinkActive="active"> 
                 {{tag | tagsActivities }}
             </a>
             
-            <a routerLink="/activities" class="mt-2 btn btn-primary">Reset</a>
+            <a routerLink="/activities" (click)="resetComponentOfTags()" class="mt-2 btn btn-primary">Reset</a>
         </div>
     </div>
 
