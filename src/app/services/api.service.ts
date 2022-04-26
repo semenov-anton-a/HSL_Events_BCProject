@@ -33,7 +33,7 @@ export class ApiService {
     private readonly apiURL: string = '/api';
 
     //
-    public readonly itemShift = 10;
+    public readonly itemShift = 4;
     public currentItemShift : number = 0;
 
     constructor(
@@ -97,7 +97,9 @@ export class ApiService {
         if (lng.value == "") {
             return this.apiURL + '/' + category + '?' + tagParam + this.getItemsShiftUrl() ;
         }
-        return this.apiURL + '/' + category + '/' + APIParams.lang + lng.value + ( ( tagParam ) ? '&' + tagParam : ''); 
+        return this.apiURL + '/' 
+            + category + '/' 
+            + APIParams.lang + lng.value + (( tagParam )?'&'+tagParam:'') + this.getItemsShiftUrl(); 
     }
 
 
