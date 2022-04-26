@@ -16,7 +16,7 @@ export class DetailsComponent implements OnInit {
     public itemCategoryName ? : string; 
 
 
-    @Output() public itemData : any;
+    itemData : any;
 
     constructor(
         private router: Router,

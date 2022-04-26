@@ -30,6 +30,9 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { TagPipe } from './pipes/tagsActivities.pipe';
+import { DetailsEventComponent } from './components/details/details-event/details-event.component';
+import { DetailsPlaceComponent } from './components/details/details-place/details-place.component';
+import { DetailsActivityComponent } from './components/details/details-activity/details-activity.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
 
 
@@ -50,6 +53,9 @@ import { TagPipe } from './pipes/tagsActivities.pipe';
         EventsCardsComponent,
         WeatherComponent,
         TagPipe,
+        DetailsEventComponent,
+        DetailsPlaceComponent,
+        DetailsActivityComponent,
         // FutureweatherComponent
     ],
     imports: [
