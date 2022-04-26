@@ -10,6 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class MonthModalComponent implements OnInit {
 
   @Input()  fromParent1 : any;
+  
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {

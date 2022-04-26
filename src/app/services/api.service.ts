@@ -50,8 +50,10 @@ export class ApiService {
      *  @returns 
      */
     getOnceItemByUrl(qUrl: string) {
-         return this.http.get(this.generateApiUrl(qUrl)); }
+         return this.http.get(this.generateApiUrl(qUrl));
 
+         } 
+         
     /**
      *  Get Data from
      *  @param category 

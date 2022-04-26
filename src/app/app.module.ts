@@ -30,12 +30,13 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { PlaceComponent } from './components/details/place/place.component';
-import { ActivityComponent, ModalContentComponent } from './components/details/activity/activity.component';
+import { ActivityComponent } from './components/details/activity/activity.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { MonthModalComponent } from './components/details/activity/month-modal/month-modal.component';
+import { MonthModalComponent } from './components/details/activity/modals/month-modal/month-modal.component';
+import { OpeningHoursModalComponent } from './components/details/activity/modals/opening-hours-modal/opening-hours-modal.component';
 
 @NgModule({
     declarations: [
@@ -55,8 +56,8 @@ import { MonthModalComponent } from './components/details/activity/month-modal/m
         WeatherComponent,
         PlaceComponent,
         ActivityComponent,
-        ModalContentComponent,
         MonthModalComponent,
+        OpeningHoursModalComponent,
     
         // FutureweatherComponent
     ],

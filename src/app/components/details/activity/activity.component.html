@@ -1,7 +1,7 @@
 <div class="row mt-2">
   <div class="col-md-3">
     <app-category-list></app-category-list>
-    <app-google-map [cardsData]="activityDetailData"></app-google-map>
+    <!-- <app-google-map [cardsData]="activityDetailData"></app-google-map> -->
     <app-weather></app-weather>
   </div>
   <div
@@ -35,7 +35,6 @@
           <button
             class="carousel-control-prev"
             type="button"
-            (click)="reloadItems()"
             [attr.data-bs-target]="'#carousel_' + activityDetailData.id"
             data-bs-slide="prev"
           >
@@ -45,7 +44,6 @@
           <button
             class="carousel-control-next"
             type="button"
-            (click)="reloadItems()"
             [attr.data-bs-target]="'#carousel_' + activityDetailData.id"
             data-bs-slide="next"
           >
@@ -113,6 +111,7 @@
           Available months
         </button>
       </div>
+      <div class="col"></div>
     </div>
   </div>
 </div>
