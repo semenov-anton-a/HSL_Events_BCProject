@@ -10,6 +10,9 @@ import { LangService } from 'src/app/services/lang.service';
 })
 export class ActivitiesComponent implements OnInit {
 
+    // Limit items load of this category
+    private readonly limitLoad = 4;
+
     @Output() cardsData: any;
     
 
@@ -47,7 +50,7 @@ export class ActivitiesComponent implements OnInit {
      * @param callback 
      */
     async getData( callback ?: Function ): Promise<any> {
-        await this.apiService
+        await this.apiService.setLimitUriParam( this.limitLoad )
             .getAllByCategory( this.category, this.currentTag )
             .subscribe( ( json: any ) =>  {
                 

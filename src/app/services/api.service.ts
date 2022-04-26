@@ -14,7 +14,8 @@ export enum APICategories {
 export enum APIParams {
     lang  = "?language_filter=",
     tags  = "?tags_search=",
-    shift = "&start="
+    shift = "&start=",
+    limit = "&limit="
 }
 
 @Injectable({
@@ -32,7 +33,11 @@ export class ApiService {
     //
     private readonly apiURL: string = '/api';
 
-    //
+    // Limit load items
+    public readonly limitDefault = 10;
+    public limitLoad = 9;
+
+    // Shift of load data
     public readonly itemShift = 4;
     public currentItemShift : number = 0;
 
@@ -95,11 +100,21 @@ export class ApiService {
         let tagParam = this.addTagParam(tag);
 
         if (lng.value == "") {
-            return this.apiURL + '/' + category + '?' + tagParam + this.getItemsShiftUrl() ;
+            return this.apiURL 
+                + '/' 
+                + category 
+                + '?' 
+                + tagParam 
+                + this.getItemsShiftUrl() 
+                + this.getLimitUriParam();
         }
         return this.apiURL + '/' 
             + category + '/' 
-            + APIParams.lang + lng.value + (( tagParam )?'&'+tagParam:'') + this.getItemsShiftUrl(); 
+            + APIParams.lang 
+            + lng.value 
+            + (( tagParam )?'&'+tagParam:'') 
+            + this.getItemsShiftUrl()
+            + this.getLimitUriParam(); 
     }
 
 
@@ -116,7 +131,10 @@ export class ApiService {
     }
 
 
-
+    public setLimitUriParam( value : number ){ this.limitLoad = value; return this; } 
+    private getLimitUriParam() : string {
+        return (APIParams.limit + this.limitLoad).toString(); 
+    }
     
 
     /**
