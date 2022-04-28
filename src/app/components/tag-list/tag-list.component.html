@@ -1,0 +1,15 @@
+<div class="row mx-auto">
+    <h3 class="text-light mx-auto d-block"># TAGs</h3>
+    <a class="link-light" *ngFor="let tag of tags; let i = index;" 
+        onClick="window.scroll(0, 0)"
+        (click)="setTag( tag )"
+        routerLink="/{{categoryName}}/{{tag}}" routerLinkActive="active">
+        <ng-container [ngSwitch]="categoryName">
+            <ng-container *ngSwitchCase="categoryName">{{tag | tagsActivities}}</ng-container>
+            <ng-container *ngSwitchCase="2">{{tag}}</ng-container>
+        </ng-container>
+    </a>
+
+    <a routerLink="/{{categoryName}}" (click)="resetComponentOfTags()" class="mt-2 btn btn-primary">Reset</a>
+</div>
+

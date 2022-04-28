@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LangsComponent } from './langs.component';
+import { BtnLoaddataComponent } from './btn-loaddata.component';
 
-describe('LangsComponent', () => {
-  let component: LangsComponent;
-  let fixture: ComponentFixture<LangsComponent>;
+describe('BtnLoaddataComponent', () => {
+  let component: BtnLoaddataComponent;
+  let fixture: ComponentFixture<BtnLoaddataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LangsComponent ]
+      declarations: [ BtnLoaddataComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LangsComponent);
+    fixture = TestBed.createComponent(BtnLoaddataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

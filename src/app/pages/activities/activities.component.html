@@ -3,23 +3,7 @@
         <app-category-list></app-category-list>
         <app-google-map [cardsData]="cardsData"></app-google-map>
         <app-weather></app-weather>
-
-        <div class="row mx-auto">
-            <h3 class="text-light mx-auto d-block"># TAGs</h3>
-            <!-- <a *ngFor="let tag of tags; let i = index;" (click)="setTag(tag, i)"
-                [class.active]="selectedIndex === i || currentTag === tag" routerLink="/activities/{{tag}}"
-                class="link-light"> {{tag | tagsActivities }}</a>
-            -->
-            <a  class="link-light"
-                *ngFor="let tag of tags; let i = index;" 
-                (click)="setTag( tag )"
-                routerLink="/activities/{{tag}}" 
-                routerLinkActive="active"> 
-                {{tag | tagsActivities }}
-            </a>
-            
-            <a routerLink="/activities" (click)="resetComponentOfTags()" class="mt-2 btn btn-primary">Reset</a>
-        </div>
+        <app-tag-list [tags]="tags" categoryName={{category}} (loadByTag)="loadByTag($event)"></app-tag-list>
     </div>
 
     <div class="col-md-9">

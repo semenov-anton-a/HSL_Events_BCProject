@@ -4,7 +4,8 @@ import {
     faCoffee,
     faStar,
     faEarthAmerica,
-    faPlus
+    faPlus,
+    faBan
 } from '@fortawesome/free-solid-svg-icons';
 import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
 import { LangService } from 'src/app/services/lang.service';
@@ -26,6 +27,7 @@ export class ActivitiesCardsComponent implements OnInit {
     faStar = faStar;
     faEarthAmerica = faEarthAmerica;
     faPlus = faPlus;
+    faBan = faBan;
 
     @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
 

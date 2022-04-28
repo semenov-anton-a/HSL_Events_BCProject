@@ -33,6 +33,8 @@ import { TagPipe } from './pipes/tagsActivities.pipe';
 import { DetailsEventComponent } from './components/details/details-event/details-event.component';
 import { DetailsPlaceComponent } from './components/details/details-place/details-place.component';
 import { DetailsActivityComponent } from './components/details/details-activity/details-activity.component';
+import { TagListComponent } from './components/tag-list/tag-list.component';
+import { BtnLoaddataComponent } from './components/btn-loaddata/btn-loaddata.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
 
 
@@ -56,6 +58,8 @@ import { DetailsActivityComponent } from './components/details/details-activity/
         DetailsEventComponent,
         DetailsPlaceComponent,
         DetailsActivityComponent,
+        TagListComponent,
+        BtnLoaddataComponent,
         // FutureweatherComponent
     ],
     imports: [

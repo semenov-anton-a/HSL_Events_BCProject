@@ -1,0 +1,19 @@
+<ng-container *ngIf="!allowLoadMoreData then empty else noEmpty"></ng-container>
+
+<ng-template #empty>
+    <div class="col-12 btn-group me-2" role="group" aria-label="First group">
+        <button type="button" class="me-1 btn btn-primary" onClick="window.scroll(0, 0)">Scroll top</button>
+        <button type="button" class="me-1 btn btn-danger" [disabled]="!allowLoadMoreData">Empty
+            <fa-icon [icon]="faBan"></fa-icon>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #noEmpty>
+    <div class="col-12 btn-group me-2" role="group" aria-label="First group">
+        <button type="button" class="me-1 btn btn-primary" onClick="window.scroll(0, 0)">Scroll top</button>
+        <button type="button" class="me-1 btn btn-primary" [disabled]="!allowLoadMoreData" (click)="loadModeItems.emit()">ADD
+            <fa-icon [icon]="faPlus"></fa-icon>
+        </button>
+    </div>
+</ng-template>
