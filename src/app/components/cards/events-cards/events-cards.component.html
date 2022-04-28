@@ -3,11 +3,10 @@
 
         <div class="card" *ngIf="( card.description.body.length > 0 )">
             <div class="card-body">
-                <h1>{{card.id}}</h1>
+                <!-- Do not Remove this ROW --> <!-- <h1>{{card.id}}</h1> -->
                 <h5 class="card-title fs-3 ">
                     {{ setTitleByLanguage(card) | slice : 0 : maxTitleLength }}
                 </h5>
-
                 <!-- CAROUSEL -->
                 <div class="carousel slide" data-bs-ride="carousel" data-bs-interval="false"
                     *ngIf="card.description.images" id="carousel_{{replaseWordFromID(card.id)}}">

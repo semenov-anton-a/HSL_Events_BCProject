@@ -3,8 +3,25 @@
 ##### 
 NEVER COMMIT TO MASTER BRACH
 
+
+# laisy UPLOAD CARDs 
+
+
+## IMPORTANT REMENBER #
+Count load cards.
+Please set some variable value in both files
+server/.*/.*/server/APIOptions.java `private static final Number limitOfData = 4;` 
+src/app/sevices/api.service.ts `public readonly itemShift = 4;`
+## IMPORTANT REMENBER #
+
+
 # GitHub Page URL
------> not yet
+
+# INSTRUCTIONS
+npm install
+ng serve
+.\mvnw spring-boot:run
+
 
 # HSLEventsBCProject
 

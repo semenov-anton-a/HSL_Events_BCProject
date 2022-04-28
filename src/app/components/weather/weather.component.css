@@ -1,12 +1,16 @@
 #divWeatherMain{
     display: block;
     border-radius: 10px;
-    width: 200px;
-    height: 220px;
+    width: 305px;
+    height: 280px;
     /* background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%); */
     color: white;;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 0.5px rgb(8, 68, 114) outset;
+    padding-top: 20px;
+    background: linear-gradient(to top, #30cfd0 0%, #330867 50%);
+
 }
 
 .weatherWidgetRow{

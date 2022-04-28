@@ -1,4 +1,5 @@
-<ngx-masonry [options]="{ gutter: 10, percentPosition: true }" [ordered]="true">
+<ngx-masonry (layoutComplete)="layoutCompleteRender()" [options]="{ gutter: 10, percentPosition: true }"
+    [ordered]="true">
     <ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData">
         <div class="card">
             <div class="card-body">
@@ -8,14 +9,11 @@
                 </h3>
 
                 <div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false"
-
-                    *ngIf="card.media"
-                    id="carousel_{{card.id}}">
+                    *ngIf="card.media" id="carousel_{{card.id}}">
                     <div class="carousel-inner">
-                        <div
-                            class="carousel-item" *ngFor="let img of card.media; let i = index; first as isFirst"
+                        <div class="carousel-item" *ngFor="let img of card.media; let i = index; first as isFirst"
                             [class.active]="(isFirst)?'active':''">
-                            <img src={{img.smallUrl}} class="d-block" >
+                            <img src={{img.smallUrl}} class="d-block">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" (click)="reloadItems()"
@@ -30,9 +28,7 @@
                     </button>
                 </div>
 
-                <!-- CARD TEXT -->
                 <div class="card-text">
-
                     <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation"
                             *ngFor="let desc of card.descriptions | keyvalue;  let i = index; ">
@@ -45,7 +41,7 @@
                         </li>
                     </ul>
 
-                    <div class="tab-content p-3" id="myTabContent">
+                    <div class="tab-content p-3">
                         <div class="tab-pane fade show"
                             *ngFor="let desc of card.descriptions | keyvalue; let i = index;"
                             [class.active]="setActiveClassByLang(desc.key)" [attr.id]="'target-'+card.id+'-i'+i"
@@ -53,21 +49,22 @@
                             <h5>{{ getEventNameByLang(card.descriptions, desc.key) }}</h5>
                             <div style="font-size: 14px; color: rgb(22, 77, 116)">{{
                                 ( getDescriptionByLang(card.descriptions, desc.key).length > maxDescriptionLength )
-                                    ? (getDescriptionByLang(card.descriptions, desc.key)
-                                        | slice:0:maxDescriptionLength) + "..."
-                                    : getDescriptionByLang(card.descriptions, desc.key)
+                                ? (getDescriptionByLang(card.descriptions, desc.key)
+                                | slice:0:maxDescriptionLength) + "..."
+                                : getDescriptionByLang(card.descriptions, desc.key)
                                 }}</div>
-                            <hr class="mb-0"/>
+                            <hr class="mb-0" />
                         </div>
                         <div class="row ">
                             <span class="d-block">{{card.address?.city}},&nbsp;{{card.address?.streetName}}</span>
                             <span class="d-block">{{card.company?.email}}</span>
-                            <span class="d-block"><a [href]="card?.storeUrl" target="_blank">{{card?.storeUrl}}</a></span>
+                            <span class="d-block"><a [href]="card?.storeUrl"
+                                    target="_blank">{{card?.storeUrl}}</a></span>
                         </div>
                     </div>
                 </div>
+
                 <div class="justify-content-between d-flex input-group-sm">
-                    <!-- TODO:: Make route activity -->
                     <a routerLink="/activity/{{card.id}}" type="button"
                         class="btn btn-outline-primary col-md-2">Details</a>
                     <button class="btn btn-outline-primary">Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
@@ -77,3 +74,11 @@
         </div>
     </ngxMasonryItem>
 </ngx-masonry>
+
+
+<ng-container *ngIf="cardsData">
+    <button [disabled]="!allowLoadMoreData"
+        (click)="addItem()" class="mt-3 btn btn-primary col-12">ADD 
+        <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+</ng-container>

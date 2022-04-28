@@ -19,23 +19,26 @@ const routes: Routes = [
      *  @RouteName
      *  PLACEs ROUTE
      */
-    { path: 'places',    component: PlacesComponent },
-    { path: 'place/:id', component: DetailsComponent },
+    { path: 'places',       component: PlacesComponent },
+    { path: 'places/:tag',  component: PlacesComponent },
+    { path: 'place/:id',    component: DetailsComponent },
     
 
     /**
      *  @RouteName
      *  ACTIVITIEs ROUTE
      */
-    { path: 'activities',   component: ActivitiesComponent },
-    { path: 'activity/:id', component: DetailsComponent },
+    { path: 'activities',       component: ActivitiesComponent },
+    { path: 'activities/:tag',  component: ActivitiesComponent },
+    { path: 'activity/:id',     component: DetailsComponent },
     
     /**
      *  @RouteName
      *  EVENTs ROUTE
      */
-    { path: 'events',     component: EventsComponent },
-    { path: 'event/:id',  component: DetailsComponent },
+    { path: 'events',       component: EventsComponent },
+    { path: 'events/:tag',  component: EventsComponent },
+    { path: 'event/:id',    component: DetailsComponent },
 
 ];
 

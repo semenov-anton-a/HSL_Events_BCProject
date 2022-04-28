@@ -12,6 +12,8 @@ export class PlacesComponent implements OnInit {
 
     @Output() cardsData: any;
 
+    private readonly limitLoad = 8;
+
     private readonly category: string = "places";
 
     public error: string | null = null;
@@ -21,15 +23,23 @@ export class PlacesComponent implements OnInit {
         private langService: LangService,
     ) { }
     
+    tags = new Array<string>();
+
+
     // Data Items
     ngOnInit(): void {
         
         this.langService.getObsData().subscribe( (lang : any) => {
-            
+            this.apiService.resetStartLimitShifts();
             this.apiService.getAllByCategory( this.category ).subscribe((json: any) => {
                 console.log( json )
                 
+                let tags = new Array();
+                
+                console.log( Object.values( json.tags ));
+                
                 if( ! json.error ){ return this.cardsData = json.data.reverse(); }
+                
                 this.error = "Error : not found";
             });
 

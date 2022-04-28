@@ -1,30 +1,24 @@
 <div class="container ">
 
+    <!-- ERROR Message -->
     <ng-container *ngIf="error != null"><h1 class="text-danger">{{error}}</h1></ng-container>
-
-
-    <!--
-        place
-    -->
+    
+    <!-- Place -->
     <ng-container *ngIf="( itemCategoryName == 'place' )">
-        <h2>THIS IS <div class="text-danger">PLACE</div> CONTAINER</h2>
+        <app-details-place [itemData]="itemData" ></app-details-place>
     </ng-container>
-
-    <!--
-        activity
-    -->
+    <!-- END -->
+    
+    <!-- Pctivity -->
     <ng-container *ngIf="( itemCategoryName == 'activity' )">
-        <h2>THIS IS <div class="text-danger">ACTIVITY</div> CONTAINER</h2>
+        <app-details-activity [itemData]="itemData"></app-details-activity>
     </ng-container>
-
-    <!--
-        Event
-        not ready yet base <events> component
-    -->
-    <!-- <ng-container *ngIf="( itemCategoryName == 'Event' )">
-        <h2>THIS IS <div class="text-danger">EVENT</div> CONTAINER</h2>
-    </ng-container> -->
-
-
+    <!-- END -->
+    
+    <!-- Event -->
+    <ng-container *ngIf="( itemCategoryName == 'event' )">
+        <app-details-event [itemData]="itemData"></app-details-event>
+    </ng-container>
+    <!-- END -->
 
 </div>

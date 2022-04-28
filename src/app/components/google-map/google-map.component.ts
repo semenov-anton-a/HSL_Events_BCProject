@@ -119,8 +119,14 @@ export class GoogleMapComponent implements OnInit {
     ngOnInit(): void {
         navigator.geolocation.getCurrentPosition((position) => {
             this.center = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
+
+                // Get Position from Browser 
+                // lat: position.coords.latitude,
+                // lng: position.coords.longitude,
+                
+                // Static Position < HELSINKI >
+                lat: 60.192059,
+                lng: 24.945831,
             }
         })
     }

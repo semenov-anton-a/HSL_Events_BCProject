@@ -14,10 +14,11 @@ export class LangService {
 
     // typeof LangObj = {value: string, name: string};
 
-    private readonly langsData: ILangObject[] = 
-        [{ value: 'fi', name: "Fin" },
-        { value: 'en', name: "Eng" }
-            // { value: 'sv', name: "Sv" },
+    private readonly langsData: ILangObject[] = [
+            { value: '', name: 'All Languages' },
+            { value: 'fi', name: "Fin" },
+            { value: 'en', name: "Eng" },
+            { value: 'sv', name: "Sv" },
         ];
 
     constructor() { }
