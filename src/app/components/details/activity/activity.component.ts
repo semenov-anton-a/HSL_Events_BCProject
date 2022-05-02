@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgxMasonryComponent } from 'ngx-masonry';
-import { faHouseChimney, faLink, faSackDollar, faClock, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faHouseChimney, faLink, faSackDollar, faClock, faCalendar,faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { MonthModalComponent } from './modals/month-modal/month-modal.component';
 import { OpeningHoursModalComponent } from './modals/opening-hours-modal/opening-hours-modal.component';
+import { MoreInfoModalComponent } from './modals/more-info-modal/more-info-modal.component';
 @Component({
     selector: 'app-activity',
     templateUrl: './activity.component.html',
@@ -21,6 +21,7 @@ export class ActivityComponent implements OnInit {
     public faLink = faLink;
     public faClock = faClock;
     public faCalendar = faCalendar;
+    public faCircleInfo = faCircleInfo;
 
     constructor(private modalService: NgbModal) { }
 
@@ -34,6 +35,9 @@ export class ActivityComponent implements OnInit {
   }
   openMonthModal(){
     this.openMonthModalComponent();
+  }
+  openMoreInfo(){
+    this.openMoreInfoModalComponent();
   }
 
   openModalWithComponent() {
@@ -58,6 +62,17 @@ export class ActivityComponent implements OnInit {
     let detail = this.activityDetailData;
     console.log(this.activityDetailData.availableMonths);
     modalRef.componentInstance.fromParent1 = detail;
+  }
+  openMoreInfoModalComponent(){
+    const modalRef = this.modalService.open(MoreInfoModalComponent,{
+      scrollable: true,
+        // windowClass: 'myCustomModalClass',
+        // keyboard: false,
+        // backdrop: 'static'
+    });
+    let detail = this.activityDetailData;
+    console.log(this.activityDetailData.availableMonths);
+    modalRef.componentInstance.fromParent = detail;
   }
 
 }

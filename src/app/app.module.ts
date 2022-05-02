@@ -37,6 +37,8 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MonthModalComponent } from './components/details/activity/modals/month-modal/month-modal.component';
 import { OpeningHoursModalComponent } from './components/details/activity/modals/opening-hours-modal/opening-hours-modal.component';
+import { MoreInfoModalComponent } from './components/details/activity/modals/more-info-modal/more-info-modal.component';
+import { EventComponent } from './components/details/event/event.component';
 
 @NgModule({
     declarations: [
@@ -58,6 +60,8 @@ import { OpeningHoursModalComponent } from './components/details/activity/modals
         ActivityComponent,
         MonthModalComponent,
         OpeningHoursModalComponent,
+        MoreInfoModalComponent,
+        EventComponent,
     
         // FutureweatherComponent
     ],
