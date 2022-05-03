@@ -36,9 +36,10 @@ export class ActivityComponent implements OnInit {
   openMonthModal(){
     this.openMonthModalComponent();
   }
-  openMoreInfo(){
+  openContactInfo(){
     this.openMoreInfoModalComponent();
   }
+
 
   openModalWithComponent() {
     const modalRef = this.modalService.open(OpeningHoursModalComponent,{

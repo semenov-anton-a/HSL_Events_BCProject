@@ -53,6 +53,7 @@ export class DetailsComponent implements OnInit {
     private _routerParse() : string {
         let routerArr = this.router.url.split("/").slice(1);        
         this.itemCategoryName = routerArr[0];
+        console.log(this.itemCategoryName);
         let option = this.apiService.getApiExcludeParamsFromURLReqex( routerArr[0] );
         return this.queryApiUrl = ( option )
             ? this.router.url.replace( option, "" )

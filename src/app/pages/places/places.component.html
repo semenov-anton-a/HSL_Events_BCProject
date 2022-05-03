@@ -1,17 +1,16 @@
 <div class="row mt-2">
-    <!-- <p>CURRENT Lang from Places.Conponent {{ currentLanguage.name }}</p>
+  <!-- <p>CURRENT Lang from Places.Conponent {{ currentLanguage.name }}</p>
     <p  [innerText]="currentLanguage.name"></p> -->
-    <div class="col-3">
-        <app-category-list></app-category-list>
-        <app-google-map [cardsData]="cardsData"></app-google-map>
-        
-        <app-weather></app-weather>
-    </div>
+  <div class="col-3">
+    <app-category-list></app-category-list>
+    <app-google-map [cardsData]="cardsData"></app-google-map>
+    <app-weather></app-weather>
+  </div>
 
-    <div class="col-md-9">
-        <h4 class="text-secondary" *ngIf="( error != null )">{{error}}</h4>
-        <!-- <app-cards [cardsData]="cardsData"></app-cards> -->
-        <!-- <app-places-cards [cardsData]="cardsData"></app-places-cards> -->
-        <app-places-cards [cardsData]="cardsData"></app-places-cards>
-    </div>
+  <div class="col-md-9">
+    <h4 class="text-secondary" *ngIf="error != null">{{ error }}</h4>
+    <!-- <app-cards [cardsData]="cardsData"></app-cards> -->
+    <!-- <app-places-cards [cardsData]="cardsData"></app-places-cards> -->
+    <app-places-cards [cardsData]="cardsData"></app-places-cards>
+  </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {faHouseChimney,faLink,faClock} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-event',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventComponent implements OnInit {
 
-  constructor() { }
+  @Input() public eventDetailData : any;
+  @Input() public selectedLang: any;
+  public faHouseChimney = faHouseChimney;
+  public faLink = faLink;
+  public faClock = faClock;
+  constructor() {
+  
+   }
 
   ngOnInit(): void {
+
   }
 
 }

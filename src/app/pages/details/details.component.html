@@ -27,7 +27,10 @@
         Event
         not ready yet base <events> component
     -->
-  <!-- <ng-container *ngIf="( itemCategoryName == 'Event' )">
-        <h2>THIS IS <div class="text-danger">EVENT</div> CONTAINER</h2>
-    </ng-container> -->
+  <ng-container *ngIf="itemCategoryName == 'event'">
+    <app-event
+      [eventDetailData]="itemData"
+      [selectedLang]="selectedLanguage"
+    ></app-event>
+  </ng-container>
 </div>

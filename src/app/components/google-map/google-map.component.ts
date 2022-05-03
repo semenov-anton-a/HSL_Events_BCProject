@@ -120,7 +120,7 @@ export class GoogleMapComponent implements OnInit {
 
     ngOnInit(): void {
         navigator.geolocation.getCurrentPosition((position) => {
-            console.log(this.cardsData)
+            
             this.center = {
 
                 // Get Position from Browser 
