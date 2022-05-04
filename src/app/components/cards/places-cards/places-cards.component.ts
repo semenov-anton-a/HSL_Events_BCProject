@@ -1,48 +1,61 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
 
 import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
-  selector: 'app-places-cards',
-  templateUrl: './places-cards.component.html',
-  styleUrls: ['./places-cards.component.css']
+    selector: 'app-places-cards',
+    templateUrl: './places-cards.component.html',
+    styleUrls: ['./places-cards.component.css']
 })
 export class PlacesCardsComponent implements OnInit {
 
-    public readonly maxTitleLength:  number = 50;
-    public readonly maxDescriptionLength:  number = 200;
+    public readonly maxTitleLength: number = 50;
+    public readonly maxDescriptionLength: number = 200;
 
     faCoffee = faCoffee;
     faStar = faStar;
 
-    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any ;
+    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
 
     @Input() cardsData: any[] | undefined;
 
-    constructor() { }
+    @Input() allowLoadMoreData: boolean = true;
+    currentLanguage: any;
 
-    reloadItems(){
-        // if( this.masonry !== undefined){
-        //     this.masonry.reloadItems();
-        //     this.masonry.layout();
-        //     // return ;
-        // }
+    constructor(private langService: LangService) { }
 
-        setTimeout(() => { 
+    reloadItems() {
+        setTimeout(() => {
             this.masonry.reloadItems();
-            this.masonry.layout();  
+            this.masonry.layout();
         }, 500)
-    }   
+    }
 
-    ngOnInit(): void {  
+    ngOnInit(): void {
+        this.langService.getObsData().subscribe((lang: any) => {
+            this.currentLanguage = lang;
+        })
     }
 
 
-     /**
-     *  Ser address format 
-     *  @param data 
+   /**
+     *  Load mode data
      */
-      setAddressFormat( data : any){ return data.locality + ", " + data.street_address; }
+    private _uploadItemClick = false;
+    @Output() addItemEmitter = new EventEmitter();
+    async addItem() {
+        this._uploadItemClick = true;
+        await this.addItemEmitter.emit();
+        await this.reloadItems;
+    }
+
+
+    /**
+    *  Ser address format 
+    *  @param data 
+    */
+    setAddressFormat(data: any) { return data.locality + ", " + data.street_address; }
 
 }

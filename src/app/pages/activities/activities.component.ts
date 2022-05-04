@@ -39,9 +39,8 @@ export class ActivitiesComponent implements OnInit {
      *  ngOnInit
      */
     ngOnInit(): void {
-        this.langService.getObsData().subscribe((lang: any) => {
-            this.getData();
-        })
+        // 
+        this.langService.getObsData().subscribe((lang: any) => { this.getData(); })
     }
 
 
@@ -51,25 +50,25 @@ export class ActivitiesComponent implements OnInit {
      */
     async getData(callback?: Function): Promise<any> 
     {   
-        await this.apiService.setLimitUriParam(this.limitLoad)
+        await this.apiService
+            .setLimitUriParam(this.limitLoad)
             .getAllByCategory(this.category, this.currentTag)
             .subscribe((json: any) => {
 
                 if (json.count == 0) { return this.allowLoadMoreData = false }
 
                 if (callback) {
-                    return callback(this.dataJsonHendler(json));
+                    return callback( this.dataJsonHendler(json) );
                     // return callback( json.rows );
                 }
-                this.cardsData = this.dataJsonHendler(json);
+
+                this.dataJsonHendler(json);
+                this.cardsData = json.rows;
             }
         );
 
     } // Get Data END
 
-    addItemTest(){
-        alert(1)
-    }
     /**
      *  Append DATA
      */
@@ -82,11 +81,7 @@ export class ActivitiesComponent implements OnInit {
             }
 
             for (var i = 0; i < json.length; i++) { this.cardsData.push(json[i]) }
-        })
-        //     for( let i in json.rows ){
-        //         this.cardsData.push( json.rows[i] )
-        //     }
-        //     // this.cardsData.push( json.rows.values() )
+        })        
     }
 
     /**

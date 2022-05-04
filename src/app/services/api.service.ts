@@ -12,8 +12,8 @@ import { LangService } from './lang.service';
 // }
 
 export enum APIParams {
-    lang  = "?language_filter=",
-    tags  = "?tags_search=",
+    lang = "?language_filter=",
+    tags = "?tags_search=",
     shift = "&start=",
     limit = "&limit="
 }
@@ -22,70 +22,78 @@ export enum APIParams {
     providedIn: "root",
 })
 export class ApiService {
+
     // Fix CORS error 
     // private apiURL : string = 'https://open-api.myhelsinki.fi/v2/';
 
+    /**
+     * @API URL
+     */
+    private readonly apiURL: string = '/api';
+
+
     private apiExcludeParamsFromURLReqex: any = {
-        // activity : /(\? +APIParams.lang+ ).*/g,
         activity: { reqex: new RegExp("(\/" + APIParams.lang + ").*", "g") },
     }
 
     // 
     private readonly globalStartLimitShift = 4;
 
-    //
-    private readonly apiURL: string = '/api';
 
     // Limit load items
-    public readonly limitDefault = 4;
+    private readonly limitDefault = 4;
     public limitLoad = 0;
 
     // Shift of load data
-    public readonly itemShift = 4;
-    public currentItemShift : number = 0;
+    private _itemShift = 4;
+    public get itemShift() { return this._itemShift; }
+    public currentItemShift: number = 0;
 
+    /**
+     * @CONSTRUCTOR
+     * @param http 
+     * @param langService 
+     */
     constructor(
         private http: HttpClient,
         private langService: LangService
-    ) { }
+    ) { this.limitLoad = this.limitDefault; }
 
 
-    getApiExcludeParamsFromURLReqex(byName: string): any {
+    /**
+     * 
+     * @param byName 
+     * @returns 
+     */
+    public getApiExcludeParamsFromURLReqex(byName: string): any {
         return (this.apiExcludeParamsFromURLReqex[byName] != undefined)
             ? this.apiExcludeParamsFromURLReqex[byName]
             : false
-    }    
+    }
 
     /**
      *  Get ITEM
      *  @param qUrl 
      *  @returns 
      */
-    getOnceItemByUrl(qUrl: string) { return this.http.get(this.apiURL + qUrl); }
+    public getOnceItemByUrl(qUrl: string) { return this.http.get(this.apiURL + qUrl); }
 
     /**
      *  Make Shift of load items
      *  @returns void
      */
-    loadMoreItems() : void { this.currentItemShift += this.itemShift; }
-
-    private getItemsShiftUrl() : string { 
-        if( this.currentItemShift == 0 ){
-            return "";
-        }
-
-        return (APIParams.shift + this.currentItemShift).toString();
-    }
+    public loadMoreItems(): void { this.currentItemShift += this.itemShift; }
 
     /**
      *  Get Data from
      *  @param category 
      *  @returns 
      */
-    getAllByCategory(category: string, tag?: string) { 
-        let url = this.generateApiUrl( category , tag);
-        console.log(url);
-        return this.http.get( url ); }
+    public getAllByCategory(category: string, tag?: string) {
+        let url = this.generateApiUrl(category, tag);
+        console.log("API.SERVICE::getAllByCategory -->>> ", url);
+        return this.http.get(url);
+    }
 
     /**
      *  Generate API url
@@ -97,66 +105,113 @@ export class ApiService {
     //     return this.apiURL + '/' + category + '/' + APIParams.lang + this.langService.getLanguage().value
     // }
 
-    private generateApiUrl(category: string, tag ?: string): string {
+    /**
+     * 
+     * @param value 
+     * @returns 
+     */
+    public setLimitUriParam(value?: number) { return this.setLoadItemsShift(value); }
+
+    /**
+     * 
+     */
+    public resetStartLimitShifts() {
+        this.limitLoad = this.limitDefault;
+        this.currentItemShift = 0;
+    }
+
+    /*****************
+     * 
+     * @PRIVATE_METHODS
+     * 
+     ******************/
+
+    /**
+     * Genrate URL request
+     * @param category 
+     * @param tag 
+     * @returns 
+     */
+    private generateApiUrl(category: string, tag?: string): string {
         let lng: { value: string, name: string } = this.langService.getLanguage();
 
         let tagParam = this.addTagParam(tag);
 
         if (lng.value == "") {
-            return this.apiURL 
-                + '/' 
-                + category 
-                + '?' 
-                + tagParam 
-                + this.getItemsShiftUrl() 
+            return this.apiURL
+                + '/'
+                + category
+                + '?'
+                + tagParam
+                + this.getItemsShiftUrl()
                 + this.getLimitUriParam();
         }
-        return this.apiURL + '/' 
-            + category + '/' 
-            + APIParams.lang 
-            + lng.value 
-            + (( tagParam )?'&'+tagParam:'') 
+
+        return this.apiURL + '/'
+            + category + '/'
+            + APIParams.lang
+            + lng.value
+            + ((tagParam) ? '&' + tagParam : '')
             + this.getItemsShiftUrl()
-            + this.getLimitUriParam(); 
-    }
-
-
-    private addTagParam( tag ?: string ) : string {
-        let tagParam = '';
-
-        if( tag ){
-            tagParam = APIParams.tags + tag;
-        }else{
-            return '';
-        }
-
-        return tagParam.replace('?','');
-    }
-
-
-    public setLimitUriParam( value ?: number ){ 
-        if( value && value != this.itemShift ){
-            value = this.globalStartLimitShift;
-        }
-        let limitVal = ( value ) ? value : this.limitDefault; 
-        this.limitLoad = limitVal; 
-        return this; 
-    } 
-    private getLimitUriParam() : string {
-        return (APIParams.limit + this.limitLoad).toString(); 
-    }
-    
-
-    resetStartLimitShifts(){
-        this.limitLoad = this.limitDefault;
-        this.currentItemShift = 0;
+            + this.getLimitUriParam();
     }
 
 
     /**
-     * IF API HTTP | HTTPs
-     * @returns String
+     * Generate tag param
+     * @param tag 
+     * @returns 
      */
-    private checkURL(): string { return this.apiURL.match(/^http|https/g) ? "?" : ""; }
+    private addTagParam(tag?: string): string {
+        let tagParam = '';
+
+        if (tag) {
+            tagParam = APIParams.tags + tag;
+        } else {
+            return '';
+        }
+
+        return tagParam.replace('?', '');
+    }
+
+    /**
+     * Genrate start of load items
+     * @returns String 
+     */
+    private getItemsShiftUrl(): string {
+        if (this.currentItemShift == 0) { return ""; }
+        return (APIParams.shift + this.currentItemShift).toString();
+    }
+    /**
+     * Genrate limit param
+     * @return String
+     */
+    private getLimitUriParam(): string { return (APIParams.limit + this.limitLoad).toString(); }
+
+    /**
+     * 
+     * @param value 
+     * @returns 
+     */
+    private setLoadItemsShift(value?: number) {
+        if (!value) {
+            this.limitLoad = this.globalStartLimitShift;
+            this._itemShift = this.globalStartLimitShift;
+        } else {
+            let limitVal = (value) ? value : this.limitDefault;
+            this.limitLoad = limitVal;
+            this._itemShift = value;
+            console.log(limitVal)
+        }
+        return this;
+    }
+
+
+    /**
+    //  * IF API HTTP | HTTPs
+    //  * @returns String
+    //  */
+    // private checkURL(): string { return this.apiURL.match(/^http|https/g) ? "?" : ""; }
+
 
 }
