@@ -43,22 +43,23 @@ export class GoogleMapComponent implements OnInit {
     @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow
     @ViewChildren(MapInfoWindow) infoWindowsView?: QueryList<MapInfoWindow> | any;
 
-    zoom = 8
-    center: google.maps.LatLngLiteral | any;
-    options: google.maps.MapOptions = {
+    public zoom : number = 8
+    public center: google.maps.LatLngLiteral | any;
+    
+    public options: google.maps.MapOptions = {
         mapTypeId: 'roadmap',
         zoomControl: true,
         scrollwheel: true,
         disableDoubleClickZoom: false,
-        // maxZoom: 15,
-        // minZoom: 8,
+        maxZoom: 15,
+        minZoom: 8,
         clickableIcons: true
     }
     /* GOOGLE OPTIONS END */
 
     constructor() { }
 
-    @Input() cardsData?: any[];
+    @Input() cardsData?: any;
 
 
     // openInfoWindow( marker: MapMarker, infoWindow: MapInfoWindow ) { infoWindow.open(marker) }
@@ -67,6 +68,7 @@ export class GoogleMapComponent implements OnInit {
         /// stores the current index in forEach
         let curIdx = 0;
         this.infoWindowsView.forEach((window: MapInfoWindow) => {
+            
             if (windowIndex === curIdx) {
                 window.open(marker);
                 curIdx++;
@@ -76,17 +78,19 @@ export class GoogleMapComponent implements OnInit {
             }
         });
     }
+    
+    setZoom( cardsData: any ){ return (cardsData?.id) ? 13 : 8 }
+    setMarkerCenter( data: any){ this.center = this.setPosition( data ); }
 
-    setTitle(data: any) {
-        return {};
-    }
-    setLabel(data: any) {
-        return {};
-    }
+    setTitle(data: any) { return {}; }
+    
+    setLabel(data: any) { return {}; }
 
-    // test(cardsData : any) {
-    //     console.log( "GOOGLE MAP ", cardsData )
-    // }
+
+
+    test(mydata : any) {
+        console.log( "GOOGLE MAP ", mydata )
+    }
 
     /**
      * 

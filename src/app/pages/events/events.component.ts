@@ -16,7 +16,7 @@ export class EventsComponent implements OnInit {
 
     public error: string | null = null;
 
-    private readonly limitLoad = 10;
+    private readonly limitLoad = 6;
 
     public allowLoadMoreData = true;
 
