@@ -1,126 +1,94 @@
 <div class="row mt-2">
-  <div class="col-md-3">
-    <app-category-list></app-category-list>
-    <app-google-map [cardsData]="eventDetailData"></app-google-map>
-    <app-weather></app-weather>
-  </div>
-
-  <div
-    class="col-md-9 mt-4"
-    style="color: white; text-align: center; letter-spacing: 2px;"
-  >
-    <h1>{{ eventDetailData.name.fi }}</h1>
-    <div class="row">
-      <div
-        class="col-md-12 mt-2"
-        *ngIf="eventDetailData.description.images.length > 0"
-      >
-        <!-- <div>
+	<div class="col-md-3">
+		<app-category-list></app-category-list>
+		<app-google-map [cardsData]="eventDetailData"></app-google-map>
+		<app-weather></app-weather>
+	</div>
+	<ng-container *ngIf="eventDetailData">
+		<div class="col-md-9 mt-4" style="color: white; text-align: center; letter-spacing: 2px;">
+			<h1>{{ eventDetailData.name.fi }}</h1>
+			<div class="row">
+				<div class="col-md-12 mt-2" *ngIf="eventDetailData.description.images.length > 0">
+					<!-- <div>
           <img
             src="{{ itemData.description.images[0].url }}"
             alt=""
             class="d-block w-100 h-100 place-img"
           />
         </div> -->
-        <div
-          class="carousel slide"
-          data-bs-ride="carousel"
-          data-bs-interval="false"
-          *ngIf="eventDetailData.description.images"
-          id="carousel_{{ eventDetailData.id }}"
-        >
-          <div class="carousel-inner">
-            <div
-              class="carousel-item"
-              *ngFor="
-                let img of eventDetailData.description.images;
-                let i = index;
-                first as isFirst
-              "
-              [class.active]="isFirst ? 'active' : ''"
-            >
-              <img src="{{ img.url }}" class="d-block w-100 h-50" />
-            </div>
-          </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            [attr.data-bs-target]="'#carousel_' + eventDetailData.id"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            [attr.data-bs-target]="'#carousel_' + eventDetailData.id"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
+					<div class="carousel slide" data-bs-ride="carousel" data-bs-interval="false"
+						*ngIf="eventDetailData.description.images"
+						id="carousel_{{ replaseWordFromID(eventDetailData.id) }}">
+						<div class="carousel-inner">
+							<div class="carousel-item" 
+								*ngFor=" let img of eventDetailData.description.images; 
+									let i = index; first as isFirst
+              						"[class.active]="isFirst ? 'active' : ''">
+								<img src="{{ img.url }}" class="d-block w-100 h-50" />
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button"
+							[attr.data-bs-target]="'#carousel_' + replaseWordFromID(eventDetailData.id)"
+							data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button"
+							[attr.data-bs-target]="'#carousel_' + replaseWordFromID(eventDetailData.id)"
+							data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+				</div>
 
-      <div class="col mt-4" *ngIf="eventDetailData.description.body">
-        <span [innerHTML]="eventDetailData.description.body"></span>
-      </div>
-    </div>
-    <hr />
-    <div class="row">
-      <div
-        class="col"
-        *ngIf="
-          eventDetailData.location.address &&
-          eventDetailData.location.address.postal_code
-        "
-      >
-        <fa-icon [icon]="faHouseChimney"></fa-icon>
-        <!-- <p>
+				<div class="col mt-4" *ngIf="eventDetailData.description.body">
+					<span [innerHTML]="eventDetailData.description.body"></span>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col" *ngIf="eventDetailData.location.address && eventDetailData.location.address.postal_code">
+					<fa-icon [icon]="faHouseChimney"></fa-icon>
+					<!-- <p>
           <span>Place :</span>
           {{ eventDetailData.description.body | slice: 137:274 }}
         </p> -->
-        <p>
-          {{ eventDetailData.location.address.street_address }}
-          {{ eventDetailData.location.address.postal_code }}
-        </p>
-      </div>
-      <div class="col" *ngIf="eventDetailData.info_url">
-        <fa-icon [icon]="faLink"></fa-icon>
-        <p>
-          <a
-            [href]="eventDetailData?.info_url"
-            target="_blank"
-            style="text-decoration: none; color: white;"
-          >
-            <!-- {{ eventDetailData?.info_url | slice: 0:45 }}
+					<p>
+						{{ eventDetailData.location.address.street_address }}
+						{{ eventDetailData.location.address.postal_code }}
+					</p>
+				</div>
+				<div class="col" *ngIf="eventDetailData.info_url">
+					<fa-icon [icon]="faLink"></fa-icon>
+					<p>
+						<a [href]="eventDetailData?.info_url" target="_blank"
+							style="text-decoration: none; color: white;">
+							<!-- {{ eventDetailData?.info_url | slice: 0:45 }}
             {{ eventDetailData?.info_url | slice: 76:90 }} -->
-            Event Url
-          </a>
-        </p>
-      </div>
-      <div
-        class="col"
-        *ngIf="
-          eventDetailData.event_dates.starting_day &&
-          eventDetailData.event_dates.ending_day
-        "
-      >
-        <fa-icon [icon]="faClock"></fa-icon>
-        <p>
-          <span>Starts :</span>
-          {{ eventDetailData.event_dates.starting_day | slice: 0:10 }}
-          <span>at</span>
-          {{ eventDetailData.event_dates.starting_day | slice: 11:16 }}
-        </p>
-        <p>
-          <span>Ends :</span>
-          {{ eventDetailData.event_dates.ending_day | slice: 0:10 }}
-          <span>at</span>
-          {{ eventDetailData.event_dates.ending_day | slice: 11:16 }}
-        </p>
-      </div>
-    </div>
-  </div>
+							Event Url
+						</a>
+					</p>
+				</div>
+				<div class="col"
+					*ngIf=" eventDetailData.event_dates.starting_day && eventDetailData.event_dates.ending_day ">
+					<fa-icon [icon]="faClock"></fa-icon>
+					
+					<p>
+						<span>Starts :</span>
+							{{ eventDetailData.event_dates.starting_day | slice: 0:10 }}
+						<span>at</span>
+							{{ eventDetailData.event_dates.starting_day | slice: 11:16 }}
+					</p>
+					<p>
+						<span>Ends :</span>
+							{{ eventDetailData.event_dates.ending_day | slice: 0:10 }}
+						<span>at</span>
+							{{ eventDetailData.event_dates.ending_day | slice: 11:16 }}
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</ng-container>
 </div>
