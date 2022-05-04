@@ -1,60 +1,32 @@
-<div class="row" style="background-color: #1f3045;">
-  <h6 class="col-sm-10 mt-2" style="color: white; text-align: center;">
-    Contact Info
-  </h6>
-  <button
-    type="button"
-    class=""
-    data-dismiss="modal"
-    (click)="closeModal('close')"
-    style="color: white; text-decoration: none;"
-    class="btn btn-link col-sm-2"
-  >
-    X
-  </button>
-</div>
-<div style="text-align: center;" class="mt-2">
-  <p>
-    For more info call us or send us mail
-  </p>
-</div>
-<div class="row">
-  <div class="col">
-    <fa-icon [icon]="faEnvelope" class="ms-2 mt-2"></fa-icon>
-    <a
-      href="mailto:{{ fromParent.company.email }}"
-      *ngIf="fromParent.company.email"
-      class="ms-2 mt-2"
-      style="text-decoration: none; color: black;"
-    >
-      {{ fromParent.company.email }}
-    </a>
-  </div>
-  <div class="col">
-    <fa-icon [icon]="faPhone"></fa-icon>
-    <a style="text-decoration: none;" href="tel:{{ fromParent.company.phone }}">
-      {{ fromParent.company.phone }}
-    </a>
-  </div>
-
-  <!-- <div class="row mt-2 ms-4" *ngIf="fromParent.duration">
-  <div class="col-2">
-    <h6>Duration</h6>
-  </div>
-  <div class="col-4">
-    <p>{{ fromParent.duration }} {{ fromParent.durationType }}</p>
-  </div>
-</div>
-<div class="row mt-2 ms-4">
-  <div class="col-2">
-    <h6>Meant for</h6>
-  </div>
-  <div class="col-4" *ngIf="fromParent.duration">
-    <div *ngFor="let group of fromParent.meantFor">
-      <p>
-        {{ group }}
-      </p>
-    </div>
-  </div>
-</div> -->
-</div>
+<div class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel"
+	aria-modal="true" role="dialog" style="display: block;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLiveLabel">Contact Info</h5>
+			</div>
+			<div class="modal-body">
+				<div class="col-12 my-3">
+					<fa-icon [icon]="faEnvelope" class="me-3"></fa-icon>
+					<a  class="text-black" 
+						href="mailto:{{ fromParent.company.email }}" 
+						*ngIf="fromParent.company.email"
+						style="text-decoration: none;">
+						{{ fromParent.company.email }}
+					</a>
+					<div class="col-12 mt-2">
+						<fa-icon [icon]="faPhone" class="me-3"></fa-icon>
+						<a 	class="text-black"
+							style="text-decoration: none;" 
+							href="tel:{{ fromParent.company.phone }}">
+							{{ fromParent.company.phone }}
+						</a>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" (click)="closeModal('close')"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
