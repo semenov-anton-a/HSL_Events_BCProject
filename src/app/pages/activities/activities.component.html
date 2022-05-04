@@ -1,9 +1,11 @@
 <div class="row mt-2">
-    <div class="col-3">
+    <div class="col-md-3 col-sm-12">
         <app-category-list></app-category-list>
         <app-google-map [currentCategory]="category" [cardsData]="cardsData"></app-google-map>
         <app-weather></app-weather>
-        <app-tag-list [tags]="tags" categoryName={{category}} (loadByTag)="loadByTag($event)"></app-tag-list>
+        <div class="mb-2">
+            <app-tag-list [tags]="tags" categoryName={{category}} (loadByTag)="loadByTag($event)"></app-tag-list>
+        </div>
     </div>
 
     <div class="col-md-9">
