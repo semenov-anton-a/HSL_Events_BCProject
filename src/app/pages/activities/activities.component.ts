@@ -56,7 +56,8 @@ export class ActivitiesComponent implements OnInit {
             .subscribe((json: any) => {
 
                 if (json.count == 0) { return this.allowLoadMoreData = false }
-
+                console.log( json )
+                
                 if (callback) {
                     return callback( this.dataJsonHendler(json) );
                     // return callback( json.rows );

@@ -3,7 +3,7 @@
     <p  [innerText]="currentLanguage.name"></p> -->
     <div class="col-3">
         <app-category-list></app-category-list>
-        <app-google-map [cardsData]="cardsData"></app-google-map>
+        <app-google-map [currentCategory]="category" [cardsData]="cardsData"></app-google-map>
         <app-weather></app-weather>
         <app-tag-list [tags]="tags" categoryName={{category}} (loadByTag)="loadByTag($event)"></app-tag-list>
     </div>

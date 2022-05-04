@@ -11,7 +11,10 @@
 					{{ setMarkerCenter(cardsData) }}
 				</map-marker>
 				<map-info-window #infoWindow="mapInfoWindow">
-					<span>ID {{ cardsData.id }}</span>
+					{{ generateMarkerData(cardsData) }}
+					<div><strong>{{ markerDataTitle }}</strong></div>
+					<span>{{ markerDataAddress }}</span>
+					<!-- <a [href]="markerDataLink">More Details</a> -->
 				</map-info-window>
 		</ng-template>
 
@@ -26,7 +29,12 @@
 				</map-marker>
 
 				<map-info-window #infoWindow="mapInfoWindow">
-					<span>ID {{ elem.id }}</span>
+					{{ generateMarkerData(elem) }}
+					<div><strong>{{ markerDataTitle }}</strong></div>
+					<span>{{ markerDataAddress }}</span>
+					<hr class="p-0 my-2"/>
+					<a [href]="markerDataLink">More Details</a>
+					<!-- <a type="button" href="">{{ setDetailsBtn(elem) }}</a> -->
 				</map-info-window>
 				
 			</ng-container><!-- {{ test(cardsData) }} -->

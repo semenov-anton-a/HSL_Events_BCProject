@@ -25,6 +25,7 @@
 
 import { Component, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
+import { LangService } from 'src/app/services/lang.service';
 
 
 
@@ -43,9 +44,9 @@ export class GoogleMapComponent implements OnInit {
     @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow
     @ViewChildren(MapInfoWindow) infoWindowsView?: QueryList<MapInfoWindow> | any;
 
-    public zoom : number = 8
+    public zoom: number = 8
     public center: google.maps.LatLngLiteral | any;
-    
+
     public options: google.maps.MapOptions = {
         mapTypeId: 'roadmap',
         zoomControl: true,
@@ -57,9 +58,14 @@ export class GoogleMapComponent implements OnInit {
     }
     /* GOOGLE OPTIONS END */
 
-    constructor() { }
+    constructor(
+        private langService: LangService
+    ) { }
 
     @Input() cardsData?: any;
+
+
+    @Input() currentCategory?: string;
 
 
     // openInfoWindow( marker: MapMarker, infoWindow: MapInfoWindow ) { infoWindow.open(marker) }
@@ -68,7 +74,7 @@ export class GoogleMapComponent implements OnInit {
         /// stores the current index in forEach
         let curIdx = 0;
         this.infoWindowsView.forEach((window: MapInfoWindow) => {
-            
+
             if (windowIndex === curIdx) {
                 window.open(marker);
                 curIdx++;
@@ -78,18 +84,91 @@ export class GoogleMapComponent implements OnInit {
             }
         });
     }
-    
-    setZoom( cardsData: any ){ return (cardsData?.id) ? 13 : 8 }
-    setMarkerCenter( data: any){ this.center = this.setPosition( data ); }
 
-    setTitle(data: any) { return {}; }
-    
-    setLabel(data: any) { return {}; }
+    setZoom(cardsData: any) { return (cardsData?.id) ? 13 : 8 }
+    setMarkerCenter(data: any) { this.center = this.setPosition(data); }
+
+    /**
+     *  Get data
+     *  @param data 
+     *  @returns 
+     */
+    private getMarkerDataTitle(data: any) {
+
+        if ( data.name ) 
+        {
+            let lng = this.langService.getLanguage();
+
+            if ( (lng.value) in data.name ) {
+                return data.name[lng.value]
+            }
+
+            return data.name[Object.keys(data.name)[0]]
+        }
+
+
+        if( data.company?.name ){
+            return data.company?.name;
+        }
+
+        return "" 
+
+    }
+
+
+    private getMarkerDataAddress( data :any  ){
+        if( data.location?.address ){
+            let neighbourhood = data.location.address.neighbourhood ? data.location.address.neighbourhood : '';  
+            let locality = data.location.address.locality ? data.location.address.locality : '';  
+            let street = data.location.address.street_address ? data.location.address.street_address : '';  
+            
+            let str = (locality + ((neighbourhood == "")?'':` (${neighbourhood})`).toString() + ", " + street)
+            return str;
+        }   
+
+        // activity category
+        if( data?.address ){
+            let city    = data.address.city;
+            let street  = data.address.streetName;
+            return (city + ", " + street ).toString();
+        }
+
+        return "";
+    }
+    private getMarkerDataLink( data : any ){
+     
+        
+        switch( this.currentCategory )
+        {
+            case 'activities' : 
+                return 'activity/' + data.id;
+            
+            case 'places' : 
+                return 'place/' + data.id;
+
+            case 'events' : 
+                return 'event/' + data.id;
+        }
+
+        return ""
+
+
+    }
+
+    public markerDataTitle !: any;
+    public markerDataAddress !: any;
+    public markerDataLink !: any;
+    generateMarkerData( data : any ){
+        this.markerDataTitle    = this.getMarkerDataTitle(data)
+        this.markerDataAddress  = this.getMarkerDataAddress(data)
+        this.markerDataLink     = this.getMarkerDataLink(data)
+    }
 
 
 
-    test(mydata : any) {
-        console.log( "GOOGLE MAP ", mydata )
+
+    test(mydata: any) {
+        console.log("GOOGLE MAP ", mydata)
     }
 
     /**
@@ -98,23 +177,22 @@ export class GoogleMapComponent implements OnInit {
      * @returns 
      */
     setPosition(data: any) {
-        let lat = '0';   
+        let lat = '0';
         let lng = '0';
 
-        if( ( data.hasOwnProperty('location') ) )
-        {
-            lat = data.location?.lat 
+        if ((data.hasOwnProperty('location'))) {
+            lat = data.location?.lat
             lng = data.location?.lon
-        }       
+        }
 
-        if( data.hasOwnProperty('address') ) {
+        if (data.hasOwnProperty('address')) {
             lat = data.address.location?.lat;
             lng = data.address.location?.long;
         }
 
-        let pos = { 
-            lat : parseFloat(lat), 
-            lng : parseFloat(lng) 
+        let pos = {
+            lat: parseFloat(lat),
+            lng: parseFloat(lng)
         };
 
         return pos;
@@ -124,13 +202,13 @@ export class GoogleMapComponent implements OnInit {
 
     ngOnInit(): void {
         navigator.geolocation.getCurrentPosition((position) => {
-            
+
             this.center = {
 
                 // Get Position from Browser 
                 // lat: position.coords.latitude,
                 // lng: position.coords.longitude,
-                
+
                 // Static Position < HELSINKI >
                 lat: 60.192059,
                 lng: 24.945831,
