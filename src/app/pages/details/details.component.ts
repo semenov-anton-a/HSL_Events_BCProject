@@ -42,7 +42,7 @@ export class DetailsComponent implements OnInit {
                     // return this.cardsData = json.rows.reverse(); 
 
                 }
-                console.log(this.itemData)
+                // console.log(this.itemData)
                 this.error = "Error : not found";
             });
         });
