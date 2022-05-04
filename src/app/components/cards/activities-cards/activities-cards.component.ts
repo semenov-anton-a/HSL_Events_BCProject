@@ -116,6 +116,9 @@ export class ActivitiesCardsComponent implements OnInit {
     }
 
 
+    setAddressFormat(data: any) { return data.locality + ", " + data.street_address; }
+
+
     doOtherStuff(e: any) {
         // console.log("other")
     }
