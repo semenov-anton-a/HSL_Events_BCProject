@@ -5,10 +5,15 @@
         <app-category-list></app-category-list>
         <app-google-map [cardsData]="cardsData"></app-google-map>
         <app-weather></app-weather>
+        <app-tag-list [tags]="tags" categoryName={{category}} (loadByTag)="loadByTag($event)"></app-tag-list>
     </div>
     <div class="col-md-9">
         <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>
         <h4 class="text-secondary" *ngIf="error != null">{{error}}</h4>
-        <app-events-cards [cardsData]="cardsData"></app-events-cards>
+        <app-events-cards 
+            [allowLoadMoreData]="allowLoadMoreData"
+            (addItemEmitter)="addItem()" 
+            [cardsData]="cardsData">
+        </app-events-cards>
     </div>
 </div>

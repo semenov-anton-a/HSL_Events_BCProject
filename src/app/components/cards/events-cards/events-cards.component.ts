@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
 
 import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
@@ -20,11 +20,35 @@ export class EventsCardsComponent implements OnInit {
 
     @Input() cardsData: any[] | undefined;
 
+    @Input() allowLoadMoreData: boolean = true;
+
     constructor(
         private currentLanguage: LangService
     ) { }
+    
+    ngOnInit(): void {}
 
 
+    reloadItems() {
+        setTimeout(() => {
+            this.masonry.reloadItems();
+            this.masonry.layout();
+        }, 500)
+    }
+
+        /**
+     *  Load mode data
+     */
+    private _uploadItemClick = false;
+    @Output() addItemEmitter = new EventEmitter();
+    async addItem() {
+        this._uploadItemClick = true;
+        await this.addItemEmitter.emit();
+        await this.reloadItems;
+
+        console.log(" EVENT CARD ")
+
+    }
 
 
     /**
@@ -34,38 +58,28 @@ export class EventsCardsComponent implements OnInit {
      * @param item 
      * @returns 
      */
-    setTitleByLanguage(item: any) { return item.name[this.currentLanguage.getLanguage().value]; }
+    setTitleByLanguage(item: any) { 
+        return item.name[this.currentLanguage.getLanguage().value]; 
+    }
 
     /**
      * 
      * @param id 
      * @returns 
      */
-    replaseWordFromID(id: string) { 
+    replaseWordFromID(id: string) {
         // console.log(id)
-        let reg = new RegExp( /(helmet|kulke):/, "gm" );
-        return id.replace( reg , '') }
+        let reg = new RegExp(/(helmet|kulke):/, "gm");
+        return id.replace(reg, '')
+    }
 
-    
+
     /**
      *  Ser address format 
      *  @param data 
      */
-    setAddressFormat( data : any){ return data.locality + ", " + data.street_address; }
+    setAddressFormat(data: any) { return data.locality + ", " + data.street_address; }
 
-    reloadItems() {
-        // if( this.masonry !== undefined){
-        //     this.masonry.reloadItems();
-        //     this.masonry.layout();
-        //     // return ;
-        // }
+    
 
-        setTimeout(() => {
-            this.masonry.reloadItems();
-            this.masonry.layout();
-        }, 500)
-    }
-
-    ngOnInit(): void {
-    }
 }

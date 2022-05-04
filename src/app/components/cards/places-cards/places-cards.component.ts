@@ -24,8 +24,12 @@ export class PlacesCardsComponent implements OnInit {
     @Input() allowLoadMoreData: boolean = true;
     currentLanguage: any;
 
-    constructor(private langService: LangService) { }
+    constructor(
+        private langService: LangService
+    ) { }
+    ngOnInit(): void {}
 
+    
     reloadItems() {
         setTimeout(() => {
             this.masonry.reloadItems();
@@ -33,11 +37,7 @@ export class PlacesCardsComponent implements OnInit {
         }, 500)
     }
 
-    ngOnInit(): void {
-        this.langService.getObsData().subscribe((lang: any) => {
-            this.currentLanguage = lang;
-        })
-    }
+  
 
 
    /**
@@ -56,6 +56,7 @@ export class PlacesCardsComponent implements OnInit {
     *  Ser address format 
     *  @param data 
     */
-    setAddressFormat(data: any) { return data.locality + ", " + data.street_address; }
+    setAddressFormat(data: any) { 
+        return data.locality + ", " + data.street_address; }
 
 }
