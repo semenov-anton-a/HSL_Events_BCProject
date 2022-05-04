@@ -39,6 +39,9 @@ import { MonthModalComponent } from './components/details/activity/modals/month-
 import { OpeningHoursModalComponent } from './components/details/activity/modals/opening-hours-modal/opening-hours-modal.component';
 import { MoreInfoModalComponent } from './components/details/activity/modals/more-info-modal/more-info-modal.component';
 import { EventComponent } from './components/details/event/event.component';
+import { BtnLoaddataComponent } from './components/btn-loaddata/btn-loaddata.component';
+import { TagListComponent } from './components/tag-list/tag-list.component';
+import { tagsActivities } from './pipes/tagsActivities.pipe';
 
 @NgModule({
     declarations: [
@@ -62,6 +65,9 @@ import { EventComponent } from './components/details/event/event.component';
         OpeningHoursModalComponent,
         MoreInfoModalComponent,
         EventComponent,
+        BtnLoaddataComponent,
+        TagListComponent,
+        tagsActivities
     
         // FutureweatherComponent
     ],

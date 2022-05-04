@@ -77,10 +77,10 @@ export class ApiService {
      *  @returns 
      */
     getOnceItemByUrl(qUrl: string) {
-         return this.http.get(this.generateApiUrl(qUrl));
+        return this.http.get(this.generateApiUrl(qUrl));
 
-         } 
-         
+    }
+
     /**
      *  Get Data from
      *  @param category 
@@ -116,7 +116,13 @@ export class ApiService {
         this.limitLoad = this.limitDefault;
         this.currentItemShift = 0;
     }
+    /**
+         *  Make Shift of load items
+         *  @returns void
+         */
+    public loadMoreItems(): void { this.currentItemShift += this.itemShift; }
 
+    
     /*****************
      * 
      * @PRIVATE_METHODS
