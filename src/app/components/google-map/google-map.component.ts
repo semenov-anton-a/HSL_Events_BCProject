@@ -84,7 +84,9 @@ export class GoogleMapComponent implements OnInit {
         return {};
     }
 
-
+    // test(cardsData : any) {
+    //     console.log( "GOOGLE MAP ", cardsData )
+    // }
 
     /**
      * 
@@ -118,6 +120,7 @@ export class GoogleMapComponent implements OnInit {
 
     ngOnInit(): void {
         navigator.geolocation.getCurrentPosition((position) => {
+            
             this.center = {
 
                 // Get Position from Browser 
@@ -127,6 +130,14 @@ export class GoogleMapComponent implements OnInit {
                 // Static Position < HELSINKI >
                 lat: 60.192059,
                 lng: 24.945831,
+
+
+
+                // Static Position < VESIRATTAANMÄKI >
+                // lat:60.224307,
+                // lng:24.687411,
+
+
             }
         })
     }

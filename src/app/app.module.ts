@@ -29,14 +29,16 @@ import { ActivitiesCardsComponent } from './components/cards/activities-cards/ac
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
 import { WeatherComponent } from './components/weather/weather.component';
-import { TagPipe } from './pipes/tagsActivities.pipe';
-import { DetailsEventComponent } from './components/details/details-event/details-event.component';
-import { DetailsPlaceComponent } from './components/details/details-place/details-place.component';
-import { DetailsActivityComponent } from './components/details/details-activity/details-activity.component';
-import { TagListComponent } from './components/tag-list/tag-list.component';
-import { BtnLoaddataComponent } from './components/btn-loaddata/btn-loaddata.component';
+import { PlaceComponent } from './components/details/place/place.component';
+import { ActivityComponent } from './components/details/activity/activity.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MonthModalComponent } from './components/details/activity/modals/month-modal/month-modal.component';
+import { OpeningHoursModalComponent } from './components/details/activity/modals/opening-hours-modal/opening-hours-modal.component';
+import { MoreInfoModalComponent } from './components/details/activity/modals/more-info-modal/more-info-modal.component';
+import { EventComponent } from './components/details/event/event.component';
 
 @NgModule({
     declarations: [
@@ -54,12 +56,13 @@ import { BtnLoaddataComponent } from './components/btn-loaddata/btn-loaddata.com
         GoogleMapComponent,
         EventsCardsComponent,
         WeatherComponent,
-        TagPipe,
-        DetailsEventComponent,
-        DetailsPlaceComponent,
-        DetailsActivityComponent,
-        TagListComponent,
-        BtnLoaddataComponent,
+        PlaceComponent,
+        ActivityComponent,
+        MonthModalComponent,
+        OpeningHoursModalComponent,
+        MoreInfoModalComponent,
+        EventComponent,
+    
         // FutureweatherComponent
     ],
     imports: [
@@ -71,8 +74,12 @@ import { BtnLoaddataComponent } from './components/btn-loaddata/btn-loaddata.com
         ReactiveFormsModule,
         FontAwesomeModule,
         HttpClientModule,
-        NgxMasonryModule
+        NgxMasonryModule,
+        // ModalModule.forRoot(),
+        NgbModule
+
     ],
+    entryComponents: [],
     providers: [],
     bootstrap: [AppComponent]
 })

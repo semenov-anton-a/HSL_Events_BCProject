@@ -20,8 +20,8 @@ import { LangService } from 'src/app/services/lang.service';
 })
 export class ActivitiesCardsComponent implements OnInit {
 
-    public readonly maxTitleLength: number = 50;
-    public readonly maxDescriptionLength: number = 500;
+    public readonly maxTitleLength:  number = 50;
+    public readonly maxDescriptionLength:  number = 200;
 
     faCoffee = faCoffee;
     faStar = faStar;

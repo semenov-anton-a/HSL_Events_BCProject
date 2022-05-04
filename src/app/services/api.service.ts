@@ -76,14 +76,11 @@ export class ApiService {
      *  @param qUrl 
      *  @returns 
      */
-    public getOnceItemByUrl(qUrl: string) { return this.http.get(this.apiURL + qUrl); }
+    getOnceItemByUrl(qUrl: string) {
+         return this.http.get(this.generateApiUrl(qUrl));
 
-    /**
-     *  Make Shift of load items
-     *  @returns void
-     */
-    public loadMoreItems(): void { this.currentItemShift += this.itemShift; }
-
+         } 
+         
     /**
      *  Get Data from
      *  @param category 
