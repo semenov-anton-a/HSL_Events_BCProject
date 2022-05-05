@@ -2,33 +2,44 @@
 
 <div class="container">
 
+    <div class="w3-right w3-hide-small">
+        <a routerLink="blog" class="w3-bar-item w3-button" style="background-color: rgb(29, 88, 110);
+        color: rgb(255, 253, 245);
+        border-radius: 10px; margin-top: 4px;">Blog</a>
+      </div>
+
     <div class="row my-2">
 		<app-langs></app-langs>
-
 	</div>
 
 
 	<!-- NAV MENU -->
 	<nav class="navbar navbar-expand-lg navbar-light">
 		<div class="container-fluid">
+            <a class="nav" href="#">
+                <img src="../assets/images/logohslhslhsl.png">
+            </a>
+            <app-header></app-header>
+
             <div class="condition1">
-                <img src="../assets/images/hslhelsinki.png">
+
+                <!-- <img src="../assets/images/hsllogoevents.png"> -->
               </div>
-			<a class="navbar-brand" href="#"></a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+
+
+			<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+				<span class="navbar-toggler-icon">test</span>
+			</button> -->
 
 
-			<div class="collapse navbar-collapse" id="navbarNav">
+			<!-- <div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav mx-auto">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" routerLink="/"></a>
+						<a class="nav-link" routerLink="blog"></a>
 					</li>
 				</ul>
-			</div>
-
+			</div> -->
 
 
 
@@ -39,10 +50,14 @@
 	<!-- ROUTER END -->
 
 	<!-- FOOTER -->
-	<footer class="py-3 my-4 border-top">
-		<p class="text-center text-muted">© 2022 Bussiness College</p>
-	</footer>
 
+    <app-contact></app-contact>
+
+    <!-- <footer class="py-3 my-4 border-top">
+		<p class="text-center text-muted">© 2022 Bussiness College</p>
+	</footer> -->
 
 </div>
+
+
 

@@ -9,9 +9,35 @@
   <script
     async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUfJ-6Q92_u2vqmK0UCKRNxiKQen5oFfY"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+    </style>
+
 </head>
 <body>
 
   <app-root></app-root>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+      function sendEmail() {
+  Email.send({
+  Host: "smtp.gmail.com",
+  Username : "email",
+  Password : "",
+  To : 'email',
+  From : document.getElementById("email").value,
+  Subject : "New Contact Form Enquiry",
+  Body : "Hello",
+  }).then(
+      message => alert(message)
+  );
+}
+  </script>
 </body>
 </html>

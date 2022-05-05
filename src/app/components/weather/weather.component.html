@@ -1,26 +1,42 @@
-<div id="divWeatherMain" class="mt-3" style="">
-	<div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
-		<i class="fas fa-3x fa-sun sun"></i>
-	</div>
-	<div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
-		<i class="fas fa-3x fa-moon moon"></i>
-	</div>
-	<div class="weatherWidgetRow cloudDiv">
-		<i class="fas fa-cloud fa-3x cloud"></i>
-	</div>
-	<div class="weatherWidgetRow" style="font-size: 32px; margin-top: 5px;">
-		{{ WeatherData.temp_celcius }}°
-	</div>
-	<div class="weatherWidgetRow" style="font-size: 12px;">
-		{{ WeatherData.temp_min }}° / {{ WeatherData.temp_max }}°
-	</div>
-	<div class="weatherWidgetRow" style="font-size: 12px;">
-		Feels Like: {{ WeatherData.temp_feels_like }}°
-	</div>
-	<div class="weatherWidgetRow" style="font-size: 25px; margin-top: 10px;">
-		{{ WeatherData.name }}
-	</div>
-	<div class="weatherWidgetRow" style="font-size: 12px;">
-		Humidity: {{ WeatherData.main.humidity }}%
-	</div>
+<div id="divWeatherMain" class="mt-3">
+    <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+        <i class="fas fa-3x fa-sun sun"></i>
+    </div>
+    <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+        <i class="fas fa-3x fa-moon moon"></i>
+    </div>
+    <div class="weatherWidgetRow cloudDiv">
+        <i class="fas fa-cloud fa-3x cloud"></i>
+
+    </div>
+    <div class="weatherWidgetRow" style="font-size: 30px;margin-top: 5px; color: rgb(202, 234, 248);">{{WeatherData.temp_celcius}}°</div>
+    <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 3px; color: rgb(95, 182, 219); font-weight:500;">{{WeatherData.name}}</div>
+    <div class="weatherWidgetRow" style="font-size: 10px; color: rgb(210, 234, 252);">Feels Like: {{WeatherData.temp_feels_like}}°</div>
+
+    <div class="container" style="margin-top: 40px;">
+        <div class="row">
+          <div class="col-sm">
+            <img src="../../../assets/images/min.png" alt="Wind icon" style="max-width: 35%;">
+            <div class="weatherWidgetRow" style="font-size: 18px; font-weight: 600;">{{WeatherData.temp_min}}° </div>
+          </div>
+          <div class="col-sm">
+            <img src="../../../assets/images/max.png" alt="Wind icon" style="max-width: 35%;">
+            <div class="weatherWidgetRow" style="font-size: 18px; font-weight:600;">{{WeatherData.temp_max}}°</div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <img src="../../../assets/images/humidity.png" alt="Wind icon" style="max-width: 32%;">
+    <div class="weatherWidgetRow" style="font-size: 16px; font-weight: 600;">{{WeatherData.main.humidity}}%</div>
+          </div>
+          <div class="col-sm">
+            <img src="../../../assets/images/wind.png" alt="Wind icon" style="max-width: 32%;">
+    <div class="weatherWidgetRow" style="font-size: 16px; font-weight: 600;"> {{WeatherData.wind.speed}}km/h</div>
+          </div>
+        </div>
+      </div>
 </div>

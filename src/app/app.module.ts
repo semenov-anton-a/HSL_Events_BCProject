@@ -33,6 +33,11 @@ import { PlaceComponent } from './components/details/place/place.component';
 import { ActivityComponent } from './components/details/activity/activity.component';
 // import { FutureweatherComponent } from './futureweather/futureweather.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { HeaderComponent } from './components/header/header.component';
+import { BlogComponent } from './blog/blog.component';
+import { TextComponent } from './components/text/text.component';
+import { ContactComponent } from './components/contact/contact.component';
+
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MonthModalComponent } from './components/details/activity/modals/month-modal/month-modal.component';
@@ -67,9 +72,13 @@ import { tagsActivities } from './pipes/tagsActivities.pipe';
         EventComponent,
         BtnLoaddataComponent,
         TagListComponent,
-        tagsActivities
+        tagsActivities,
     
         // FutureweatherComponent
+        HeaderComponent,
+        BlogComponent,
+        TextComponent,
+        ContactComponent,
     ],
     imports: [
         AppRoutingModule,

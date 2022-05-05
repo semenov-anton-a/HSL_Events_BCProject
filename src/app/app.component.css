@@ -4,17 +4,17 @@
     border-radius: 15px;
     margin-top: 22px;
     border: solid lightgrey 1px;
-
-
 }
 
 nav {
-
-    background: linear-gradient(65.5deg, rgb(23, 205, 205) -15.1%, rgb(23, 25, 95) 71.5%);
+    background: linear-gradient(68.2deg, rgb(31, 48, 69) 23%, rgb(70, 17, 155) 45%, rgb(248, 242, 250) 80.2%);
+    margin-top: 25px;
 }
 
 img {
-    max-width: 80%;
-}
+    max-width: 40%;
+    height: auto;
+    margin-left: 90px;
+  }
 
 
