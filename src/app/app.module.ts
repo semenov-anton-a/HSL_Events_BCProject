@@ -30,7 +30,10 @@ import { GoogleMapComponent } from './components/google-map/google-map.component
 import { EventsCardsComponent } from './components/cards/events-cards/events-cards.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { HeaderComponent } from './components/header/header.component';
-// import { FutureweatherComponent } from './futureweather/futureweather.component';
+import { BlogComponent } from './blog/blog.component';
+import { TextComponent } from './components/text/text.component';
+import { ContactComponent } from './components/contact/contact.component';
+
 
 
 @NgModule({
@@ -50,7 +53,9 @@ import { HeaderComponent } from './components/header/header.component';
         EventsCardsComponent,
         WeatherComponent,
         HeaderComponent,
-        // FutureweatherComponent
+        BlogComponent,
+        TextComponent,
+        ContactComponent,
     ],
     imports: [
         AppRoutingModule,
