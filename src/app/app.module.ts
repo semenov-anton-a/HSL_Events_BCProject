@@ -47,6 +47,7 @@ import { EventComponent } from './components/details/event/event.component';
 import { BtnLoaddataComponent } from './components/btn-loaddata/btn-loaddata.component';
 import { TagListComponent } from './components/tag-list/tag-list.component';
 import { tagsActivities } from './pipes/tagsActivities.pipe';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 
 @NgModule({
     declarations: [
@@ -79,6 +80,7 @@ import { tagsActivities } from './pipes/tagsActivities.pipe';
         BlogComponent,
         TextComponent,
         ContactComponent,
+        FavoritesComponent,
     ],
     imports: [
         AppRoutingModule,
