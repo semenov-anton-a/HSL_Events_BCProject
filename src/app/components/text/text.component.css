@@ -1,0 +1,38 @@
+
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: rgb(4, 24, 60);
+    font-size: 40px;
+    margin: 50px;
+    background-color: lightgrey;
+    padding: 30px;
+    font-family: 'Square Peg', cursive;
+}
+
+span::before {
+    content: "Collect moments. Not things.";
+    animation: animate infinite 20s;
+    /* padding-left: 10px; */
+    text-align: center;
+}
+
+@keyframes animate {
+
+    25% {
+        content: '"And I think to myself, what a wonderful world"';
+    }
+
+    50% {
+        content: '“The world is a book and those who do not travel read only one page”';
+    }
+
+    75% {
+        content: '"Wherever you go, go with all your heart."';
+    }
+
+    100% {
+        content: '"Why, I’d like nothing better than to achieve some bold adventure, worthy of our trip."';
+    }
+}
