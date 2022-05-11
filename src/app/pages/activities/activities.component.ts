@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxMasonryComponent } from 'ngx-masonry';
 import { ApiService } from 'src/app/services/api.service';
 import { LangService } from 'src/app/services/lang.service';
 
@@ -9,6 +10,8 @@ import { LangService } from 'src/app/services/lang.service';
     styleUrls: ['./activities.component.css']
 })
 export class ActivitiesComponent implements OnInit {
+
+    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
 
     // Limit items load of this category
     private readonly limitLoad = 6;
@@ -43,6 +46,21 @@ export class ActivitiesComponent implements OnInit {
         this.langService.getObsData().subscribe((lang: any) => { this.getData(); })
     }
 
+
+    masonryReloadItemsEmitter(){
+        this.reloadItems();
+    }
+
+    reloadItems() {
+        // this.activeClassSetted = true
+        setTimeout(() => {
+            this.masonry.reloadItems();
+            this.masonry.layout();
+
+        }, 500)
+
+        return this;
+    }
 
     /**
      * 

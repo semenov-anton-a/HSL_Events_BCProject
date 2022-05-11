@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgxMasonryComponent } from 'ngx-masonry';
 import { FavoriteService } from 'src/app/services/favorite.service';
 
 @Component({
@@ -8,39 +9,50 @@ import { FavoriteService } from 'src/app/services/favorite.service';
 })
 export class FavoritesComponent implements OnInit {
 
+    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
+
     constructor(
         private favoriteService: FavoriteService
     ) { }
 
-    
+
     public error: string | null = null;
 
 
     cardItems: any;
 
 
-    ngOnInit() : void {
+    ngOnInit(): void {
         this.cardItems = this.favoriteService.getItems();
-        console.log( this.cardItems );
+        console.log(this.cardItems);
     }
 
-    
-    getItm(itm:any){ return [itm] }
 
+    getItm(itm: any) { return [itm] }
 
+    reloadItems() {
+        // this.activeClassSetted = true
+        setTimeout(() => {
+            this.masonry.reloadItems();
+            this.masonry.layout();
+
+        }, 500)
+
+        return this;
+    }
 
 
     /******************************************************************** */
     /***
      *  TESTs
      */
-    private testSaveItems(){
+    private testSaveItems() {
         // let act = {"activity" : "actID"};
         // let act2 = {"activity" : "actID2"};
-        
+
         // let evt = {"event" : "evtID"};
         // let evt2 = {"event" : "evtID2"};
-        
+
         // this.fArray.push( act )
         // this.fArray.push( act2 )
         // this.fArray.push( evt )

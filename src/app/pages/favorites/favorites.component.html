@@ -10,36 +10,31 @@
     <div class="col-md-9">
         <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>
         <h4 class="text-secondary" *ngIf="error != null">{{error}}</h4>
+        <ngx-masonry (layoutComplete)="reloadItems()" [options]="{ gutter: 10, percentPosition: true }"
+            [ordered]="true">
+            <ng-container *ngFor="let itm of cardItems">
+                <!-- <h1 class="text-primary">{{itm.category}}</h1> -->
+                <ng-container [ngSwitch]="itm.category">
+                    <ng-container *ngSwitchCase="'activity'">
+                        <app-activities-cards [showBottomButtons]="false" [showFavoriteButton]="false"
+                            [cardsData]="getItm(itm)">
+                        </app-activities-cards>
+                    </ng-container>
 
-        <ng-container *ngFor="let itm of cardItems">
-            <!-- <h1 class="text-primary">{{itm.category}}</h1> -->
-            <ng-container [ngSwitch]="itm.category">
-                <ng-container *ngSwitchCase="'activity'">
-                    <app-activities-cards
-                        [showBottomButtons]="false"
-                        [showFavoriteButton]="false"
-                        [cardsData]="getItm(itm)">
-                    </app-activities-cards>
-                </ng-container>
+                    <ng-container *ngSwitchCase="'place'">
+                        <app-places-cards [showBottomButtons]="false" [showFavoriteButton]="false"
+                            [cardsData]="getItm(itm)">
+                        </app-places-cards>
+                    </ng-container>
 
-                <ng-container *ngSwitchCase="'place'">
-                    <app-places-cards
-                        [showBottomButtons]="false"
-                        [showFavoriteButton]="false"
-                        [cardsData]="getItm(itm)">
-                    </app-places-cards>
-                </ng-container>
-
-                <ng-container *ngSwitchCase="'event'">
-                    <app-events-cards
-                        [showBottomButtons]="false"
-                        [showFavoriteButton]="false"
-                        [cardsData]="getItm(itm)">
-                    </app-events-cards>
+                    <ng-container *ngSwitchCase="'event'">
+                        <app-events-cards [showBottomButtons]="false" [showFavoriteButton]="false"
+                            [cardsData]="getItm(itm)">
+                        </app-events-cards>
+                    </ng-container>
                 </ng-container>
             </ng-container>
-        </ng-container>
-
+        </ngx-masonry>
         <!-- <app-events-cards 
             [allowLoadMoreData]="allowLoadMoreData"
             (addItemEmitter)="addItem()" 
