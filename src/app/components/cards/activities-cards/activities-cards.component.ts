@@ -75,7 +75,6 @@ export class ActivitiesCardsComponent implements OnInit {
         }, 500)
 
         this.masonryReloadLayout.emit();
-        console.log("ok")
 
         return this;
     }
@@ -112,7 +111,7 @@ export class ActivitiesCardsComponent implements OnInit {
     async addItem() {
         this._uploadItemClick = true;
         await this.addItemEmitter.emit();
-        this.layoutCompleteRender();
+        await this.layoutCompleteRender();
     }
 
 

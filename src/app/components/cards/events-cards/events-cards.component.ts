@@ -43,10 +43,10 @@ export class EventsCardsComponent implements OnInit {
 
 
     reloadItems() {
-        setTimeout(() => {
-            this.masonry.reloadItems();
-            this.masonry.layout();
-        }, 500)
+        // setTimeout(() => {
+        //     this.masonry.reloadItems();
+        //     this.masonry.layout();
+        // }, 500)
     }
 
         /**

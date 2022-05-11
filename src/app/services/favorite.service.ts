@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class FavoriteService {
 
-    private readonly maxSaveItems : number = 3;
+    private readonly maxSaveItems : number = 10;
     private readonly localStorageKeyName = 'favorites';
 
     

@@ -1,4 +1,4 @@
-<ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData">
+<ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData; let last = last">
 
     <div class="card">
         <div class="card-body">
@@ -71,6 +71,7 @@
             
         </div>
     </div>
+    <ng-container *ngIf="(last)?layoutCompleteRender():null "></ng-container>
 </ngxMasonryItem>
 
 
