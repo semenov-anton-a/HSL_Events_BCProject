@@ -48,6 +48,16 @@ export class ActivitiesComponent implements OnInit {
     }
 
     /**
+     * MasonryReload
+     */
+    masonryReload(){
+        setTimeout(() => {
+            this.masonry.reloadItems();
+            this.masonry.layout();
+        }, 500)
+    }
+
+    /**
      * 
      * @param callback 
      */
