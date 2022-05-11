@@ -14,7 +14,9 @@
 
         <div class="h-100">
 
-            <ngx-masonry [options]="{ gutter: 10, percentPosition: true }">
+            <ngx-masonry 
+                
+                [options]="{ gutter: 10, percentPosition: true }">
                 <app-activities-cards [allowLoadMoreData]="allowLoadMoreData" (addItemEmitter)="addItem()"
                     [cardsData]="cardsData">
                 </app-activities-cards>

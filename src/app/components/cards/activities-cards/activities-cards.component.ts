@@ -66,15 +66,12 @@ export class ActivitiesCardsComponent implements OnInit {
      *  Masonry
      *  @params reload items 
      */
-
-    @Output() masonryReloadItemsEmitter = new EventEmitter();
     reloadItems() {
         this.activeClassSetted = true
-        this.masonryReloadItemsEmitter.emit();
-        // setTimeout(() => {
-        //     this.masonry.reloadItems();
-        //     this.masonry.layout();
-        // }, 500)
+        setTimeout(() => {
+            this.masonry.reloadItems();
+            this.masonry.layout();
+        }, 500)
 
         return this;
     }

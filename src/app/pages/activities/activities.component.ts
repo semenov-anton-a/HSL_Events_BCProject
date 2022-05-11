@@ -33,6 +33,7 @@ export class ActivitiesComponent implements OnInit {
         private router: Router,
         private apiService: ApiService,
         private langService: LangService,
+        
     ) {
         let currentTag = this.router.url.split("/").slice(1);
         if (currentTag.length > 1) { this.currentTag = currentTag[1] }
@@ -44,22 +45,6 @@ export class ActivitiesComponent implements OnInit {
     ngOnInit(): void {
         // 
         this.langService.getObsData().subscribe((lang: any) => { this.getData(); })
-    }
-
-
-    masonryReloadItemsEmitter(){
-        this.reloadItems();
-    }
-
-    reloadItems() {
-        // this.activeClassSetted = true
-        setTimeout(() => {
-            this.masonry.reloadItems();
-            this.masonry.layout();
-
-        }, 500)
-
-        return this;
     }
 
     /**
