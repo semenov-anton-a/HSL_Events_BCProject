@@ -1,4 +1,4 @@
-<ngx-masonry [options]="{ gutter: 10 }" [ordered]="true">
+
 	<ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData">
 		<div class="card" *ngIf="card.description.body.length > 0">
 			<div class="card-body">
@@ -57,12 +57,4 @@
 			</div>
 		</div>
 	</ngxMasonryItem>
-</ngx-masonry>
 
-
-<!-- Button Load More Items -->
-<app-btn-loaddata
-    *ngIf="showBottomButtons"
-    (loadModeItems)="addItem()" 
-    [allowLoadMoreData]="allowLoadMoreData">
-</app-btn-loaddata>
