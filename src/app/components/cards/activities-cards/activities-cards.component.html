@@ -58,8 +58,9 @@
                         <div class="row ">
                             <span class="d-block">{{card.address?.city}},&nbsp;{{card.address?.streetName}}</span>
                             <span class="d-block">{{card.company?.email}}</span>
-                            <span class="d-block"><a [href]="card?.storeUrl"
-                                    target="_blank">{{card?.storeUrl}}</a></span>
+                            <span class="d-block">
+                                <a [href]="card?.storeUrl" target="_blank">{{card?.storeUrl}}</a>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -67,7 +68,9 @@
                 <div class="justify-content-between d-flex input-group-sm">
                     <a routerLink="/activity/{{card.id}}" type="button"
                         class="btn btn-outline-primary col-md-2">Details</a>
-                    <button class="btn btn-outline-primary">Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
+                    <button *ngIf="showFavoriteButton"
+                        (click)="setToFavourite(card)"
+                        class="btn btn-outline-primary">Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
                     </button>
                 </div>
             </div>
@@ -77,4 +80,8 @@
 
 
 <!-- Button Load More Items -->
-<app-btn-loaddata (loadModeItems)="addItem()" [allowLoadMoreData]="allowLoadMoreData"></app-btn-loaddata>
+<app-btn-loaddata
+    *ngIf="showBottomButtons"
+    (loadModeItems)="addItem()" 
+    [allowLoadMoreData]="allowLoadMoreData">
+</app-btn-loaddata>

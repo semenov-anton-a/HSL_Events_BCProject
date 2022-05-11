@@ -33,7 +33,8 @@
 					<div><strong>{{ markerDataTitle }}</strong></div>
 					<span>{{ markerDataAddress }}</span>
 					<hr class="p-0 my-2"/>
-					<a [href]="markerDataLink">More Details</a>
+					<!-- <a [href]="markerDataLink">More Details</a> -->
+					<a [routerLink]="markerDataLink">More Details</a>
 					<!-- <a type="button" href="">{{ setDetailsBtn(elem) }}</a> -->
 				</map-info-window>
 				

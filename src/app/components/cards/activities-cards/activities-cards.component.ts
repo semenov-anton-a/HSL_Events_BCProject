@@ -8,6 +8,7 @@ import {
     faBan
 } from '@fortawesome/free-solid-svg-icons';
 import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
+import { FavoriteService } from 'src/app/services/favorite.service';
 import { LangService } from 'src/app/services/lang.service';
 // import { NgxMasonryComponent } from 'ngx-masonry/lib/ngx-masonry.component';
 
@@ -20,8 +21,8 @@ import { LangService } from 'src/app/services/lang.service';
 })
 export class ActivitiesCardsComponent implements OnInit {
 
-    public readonly maxTitleLength:  number = 50;
-    public readonly maxDescriptionLength:  number = 200;
+    public readonly maxTitleLength: number = 50;
+    public readonly maxDescriptionLength: number = 200;
 
     faCoffee = faCoffee;
     faStar = faStar;
@@ -33,11 +34,17 @@ export class ActivitiesCardsComponent implements OnInit {
 
     @Input() cardsData: any[] | undefined;
 
-    @Input() allowLoadMoreData : boolean = true;
+    @Input() allowLoadMoreData: boolean = true;
+
+    @Input() showFavoriteButton: boolean = true;
+    @Input() showBottomButtons: boolean = true;
 
     private currentLanguage = this.langService.getLanguage();
 
-    constructor(private langService: LangService) { }
+    constructor(
+        private langService: LangService,
+        private favoriteService: FavoriteService
+    ) { }
 
 
     ngOnInit(): void {
@@ -46,6 +53,14 @@ export class ActivitiesCardsComponent implements OnInit {
         })
     }
 
+
+    /**
+     * Save to favorite
+     * @param cardItem 
+     */
+    setToFavourite(cardItem: {}) {
+        this.favoriteService.saveItem(cardItem, 'activity');
+    }
 
     /**
      *  Masonry
@@ -103,7 +118,7 @@ export class ActivitiesCardsComponent implements OnInit {
 
         if (this.currentLanguage.value != "") { this.activeClassSetted = false; }
         if (this.currentLanguage.value != "" || this.activeClassSetted) return;
-        
+
         let button = document.querySelectorAll('.masonry-item .card .nav-item:first-child button');
         button.forEach((el) => { el.classList.add('active') })
 

@@ -3,6 +3,7 @@ import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
 
 import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
 import { LangService } from 'src/app/services/lang.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
 @Component({
     selector: 'app-events-cards',
     templateUrl: './events-cards.component.html',
@@ -22,11 +23,23 @@ export class EventsCardsComponent implements OnInit {
 
     @Input() allowLoadMoreData: boolean = true;
 
+    @Input() showFavoriteButton: boolean = true;
+    @Input() showBottomButtons: boolean = true;
+
     constructor(
-        private currentLanguage: LangService
+        private currentLanguage: LangService,
+        private favoriteService: FavoriteService
     ) { }
     
+    
     ngOnInit(): void {}
+
+    /**
+         * Save to favorite
+         * @param cardItem 
+         */
+     setToFavourite(cardItem: {}) { this.favoriteService.saveItem( cardItem, 'event' ); }
+
 
 
     reloadItems() {

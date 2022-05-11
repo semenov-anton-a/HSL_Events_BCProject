@@ -48,8 +48,9 @@
 					<a routerLink="/event/{{ card.id }}" type="button" class="btn btn-outline-primary col-md-2">
 						Details
 					</a>
-					<button class="btn btn-outline-primary">
-						Favorite&nbsp;
+					<button *ngIf="showFavoriteButton"
+						(click)="setToFavourite(card)"
+						class="btn btn-outline-primary">Favorite&nbsp;
 						<fa-icon [icon]="faStar"></fa-icon>
 					</button>
 				</div>
@@ -60,4 +61,8 @@
 
 
 <!-- Button Load More Items -->
-<app-btn-loaddata (loadModeItems)="addItem()" [allowLoadMoreData]="allowLoadMoreData"></app-btn-loaddata>
+<app-btn-loaddata
+    *ngIf="showBottomButtons"
+    (loadModeItems)="addItem()" 
+    [allowLoadMoreData]="allowLoadMoreData">
+</app-btn-loaddata>
