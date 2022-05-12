@@ -59,7 +59,9 @@ export class CommonCars {
      * @param lang 
      * @returns 
      */
-    removeToFavourite(item: any) { }
+    removeToFavourite( item: any ){
+        this.favoriteService.removeFromFavourite( item.id );
+    }
 
 
     /**

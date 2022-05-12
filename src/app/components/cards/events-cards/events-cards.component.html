@@ -1,4 +1,4 @@
-<ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData">
+<ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData; ">
 	<div class="card" *ngIf="card.description.body.length > 0">
 		<div class="card-body">
 			<!-- Do not Remove this ROW -->
@@ -50,6 +50,10 @@
 					class="btn btn-outline-primary">Favorite&nbsp;
 					<fa-icon [icon]="faStar"></fa-icon>
 				</button>
+				<button 
+                    *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
+                    class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
+                </button>
 			</div>
 		</div>
 	</div>
