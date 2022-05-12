@@ -1,7 +1,6 @@
 <div class="row mt-2">
 	<div class="col-md-3">
 		<app-category-list></app-category-list>
-		<app-google-map [cardsData]="eventDetailData"></app-google-map>
 		<app-weather></app-weather>
 		<app-google-map [cardsData]="eventDetailData"></app-google-map>
 	</div>
@@ -25,7 +24,7 @@
 								*ngFor=" let img of eventDetailData.description.images; 
 									let i = index; first as isFirst
               						"[class.active]="isFirst ? 'active' : ''">
-								<img src="{{ img.url }}" class="d-block w-100 h-50" />
+								<img src="{{ img.url }}" class="mx-auto d-block w-50 h-50" />
 							</div>
 						</div>
 						<button class="carousel-control-prev" type="button"
