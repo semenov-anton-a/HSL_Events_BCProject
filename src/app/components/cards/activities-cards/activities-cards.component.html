@@ -1,3 +1,5 @@
+<ng-container (loadModeItems)="reloadItems()"></ng-container>
+
 <ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData; let last = last">
 
     <div class="card">
@@ -64,8 +66,14 @@
 
             <div class="justify-content-between d-flex input-group-sm">
                 <a routerLink="/activity/{{card.id}}" type="button" class="btn btn-outline-primary col-md-2">Details</a>
-                <button *ngIf="showFavoriteButton" (click)="setToFavourite(card)"
+                <button 
+                    *ngIf="showFavoriteButton" (click)="setToFavourite(card)"
                     class="btn btn-outline-primary">Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
+                </button>
+                
+                <button 
+                    *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
+                    class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
                 </button>
             </div>
             

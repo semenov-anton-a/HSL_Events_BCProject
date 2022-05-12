@@ -1,51 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-
-import {
-    faCoffee,
-    faStar,
-    faEarthAmerica,
-    faPlus,
-    faBan
-} from '@fortawesome/free-solid-svg-icons';
-import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
-import { FavoriteService } from 'src/app/services/favorite.service';
-import { LangService } from 'src/app/services/lang.service';
-// import { NgxMasonryComponent } from 'ngx-masonry/lib/ngx-masonry.component';
-
-
+import { CommonCars } from '../common-cards';
 
 @Component({
     selector: 'app-activities-cards',
     templateUrl: './activities-cards.component.html',
     styleUrls: ['./activities-cards.component.css']
 })
-export class ActivitiesCardsComponent implements OnInit {
-
-    public readonly maxTitleLength: number = 50;
-    public readonly maxDescriptionLength: number = 200;
-
-    faCoffee = faCoffee;
-    faStar = faStar;
-    faEarthAmerica = faEarthAmerica;
-    faPlus = faPlus;
-    faBan = faBan;
-
-    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
-
-    @Input() cardsData: any[] | undefined;
-
-    @Input() allowLoadMoreData: boolean = true;
-
-    @Input() showFavoriteButton: boolean = true;
-    @Input() showBottomButtons: boolean = true;
-
-    private currentLanguage = this.langService.getLanguage();
-
-    constructor(
-        private langService: LangService,
-        private favoriteService: FavoriteService
-    ) { }
-
+export class ActivitiesCardsComponent extends CommonCars implements OnInit {
 
     ngOnInit(): void {
         this.langService.getObsData().subscribe((lang: any) => {
@@ -53,38 +14,12 @@ export class ActivitiesCardsComponent implements OnInit {
         })
     }
 
-
     /**
-     * Save to favorite
-     * @param cardItem 
+     * Call from from tempalate.
+     * Save to local storage
+     * @param item 
      */
-    setToFavourite(cardItem: {}) {
-        this.favoriteService.saveItem(cardItem, 'activity');
-    }
-
-    /**
-     *  Masonry
-     *  @params reload items 
-     */
-    @Output() masonryReloadLayout = new EventEmitter();
-    reloadItems() {
-        this.activeClassSetted = true
-        setTimeout(() => {
-            // this.masonry.reloadItems();
-            // this.masonry.layout();
-        }, 500)
-
-        this.masonryReloadLayout.emit();
-
-        return this;
-    }
-
-    /**
-     * Object key convert to string && toUpperCase
-     * @param value 
-     * @returns 
-     */
-    keyAsString(value: any) { return value.toUpperCase(); }
+    public setToFavourite(item: any): void { this._setToFavourite(item, 'activity'); }
 
     /**
      * set active for tab by current language
@@ -92,10 +27,8 @@ export class ActivitiesCardsComponent implements OnInit {
      * @returns 
      */
     setActiveClassByLang(lang: any) {
-        let langStr = lang.toString();
         return (this.currentLanguage.value === lang) ? "active" : "";
     }
-
 
     // 
     getEventNameByLang(desc: any, lang: any) { return desc[lang].name; }
@@ -104,57 +37,37 @@ export class ActivitiesCardsComponent implements OnInit {
     getDescriptionByLang(desc: any, lang: any): string { return desc[lang].description; }
 
     /**
-     *  Load mode data
+     *  Masonry
+     *  @params reload items 
      */
-    private _uploadItemClick = false;
-    @Output() addItemEmitter = new EventEmitter();
-    async addItem() {
-        this._uploadItemClick = true;
-        await this.addItemEmitter.emit();
-        await this.layoutCompleteRender();
+    private activeClassSetted: boolean = false;
+    @Output() masonryReloadLayout = new EventEmitter();
+    reloadItems() {
+        this.activeClassSetted = true
+        this.masonryReloadLayout.emit();
+        return this;
     }
 
-
-    private activeClassSetted: boolean = false;
+    /**
+     * Set active class each in a card item
+     * @returns 
+     */
     layoutCompleteRender(): any {
 
         if (this.currentLanguage.value != "") { this.activeClassSetted = false; }
         if (this.currentLanguage.value != "" || this.activeClassSetted) return;
 
         let button = document.querySelectorAll('.masonry-item .card .nav-item:first-child button');
-        button.forEach((el) => { el.classList.add('active') })
+        button.forEach((el) => { el.classList.add('active') });
 
         let content = document.querySelectorAll('.masonry-item .card .tab-content .tab-pane:first-child');
-        content.forEach((el) => { el.classList.add('active') })
+            content.forEach((el) => { el.classList.add('active') });
 
-        this.reloadItems()
+        this.reloadItems();
+
         this.activeClassSetted = false;
         return this;
     }
-
-
-    setAddressFormat(data: any) { return data.locality + ", " + data.street_address; }
-
-
-    doOtherStuff(e: any) {
-        // console.log("other")
-    }
-
-    objectKeys(obj: any) {
-        return Object.values(obj.tags);
-    }
-
-    getTags(obj: any) {
-        return Object.values(obj.tags);
-        console.log();
-        return ""
-    }
-
-
-    console(obj: any) {
-        console.log(obj);
-    }
-
 
 }
 
