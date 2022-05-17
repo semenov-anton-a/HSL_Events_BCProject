@@ -165,7 +165,7 @@ export class ApiService {
         if (lng.value == "") {
             return this.apiURL
                 // + '/'
-                + this.categoryDelimiter(category)
+                + category
                 + '?'
                 + tagParam
                 + this.getItemsShiftUrl()
@@ -174,7 +174,7 @@ export class ApiService {
 
         return this.apiURL 
             // + '/'
-            + this.categoryDelimiter(category)
+            + category
             + APIParams.lang
             + lng.value
             + ((tagParam) ? '&' + tagParam : '')
