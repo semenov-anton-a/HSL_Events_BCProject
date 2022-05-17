@@ -23,13 +23,29 @@ export enum APIParams {
 })
 export class ApiService {
 
+    
+
+
     // Fix CORS error 
     // private apiURL : string = 'https://open-api.myhelsinki.fi/v2/';
 
     /**
      * @API URL
      */
-    private readonly apiURL: string = '/api';
+    /**
+     * @PRODUCTION 
+     * */ 
+    private readonly BussinessCollegeID = "s2101154";
+
+    // public  readonly baseURL = "/"+this.BussinessCollegeID+"/";
+    // private readonly apiURL: string = 'https://public.bc.fi/'+this.BussinessCollegeID+'/api/';
+
+    /**
+     * @DEVELOPMENT  
+     * */ 
+    public  readonly baseURL = "http://localhost:4200/";
+    // private readonly apiURL: string = '/api/';
+    private readonly apiURL: string = 'http://hslevents.loc/api/';
 
 
     private apiExcludeParamsFromURLReqex: any = {
@@ -141,9 +157,14 @@ export class ApiService {
 
         let tagParam = this.addTagParam(tag);
 
+
+        if( category[0] == '/' ){
+            return this.apiURL + this.categoryDelimiter(category);
+        }
+
         if (lng.value == "") {
             return this.apiURL
-                + '/'
+                // + '/'
                 + category
                 + '?'
                 + tagParam
@@ -151,8 +172,9 @@ export class ApiService {
                 + this.getLimitUriParam();
         }
 
-        return this.apiURL + '/'
-            + category + '/'
+        return this.apiURL 
+            // + '/'
+            + category
             + APIParams.lang
             + lng.value
             + ((tagParam) ? '&' + tagParam : '')
@@ -160,6 +182,16 @@ export class ApiService {
             + this.getLimitUriParam();
     }
 
+
+
+    private categoryDelimiter(category: string ){
+        if( category[0] == '/' ){
+            category = category.substring(1);
+        } 
+        console.log(category);
+        this.resetStartLimitShifts()
+        return category
+    }
 
     /**
      * Generate tag param

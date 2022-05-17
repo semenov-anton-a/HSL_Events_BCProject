@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 
 
@@ -10,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class WeatherComponent implements OnInit {
     
     WeatherData: any;
-    constructor() { }
+    constructor(
+        public apiService: ApiService
+    ) { }
 
     ngOnInit() {
         this.WeatherData = { main: {}, isDay: true };

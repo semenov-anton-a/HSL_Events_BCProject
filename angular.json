@@ -18,6 +18,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/hsl-events-bcproject",
+            // "outputPath": "server/src/main/resources/static",
+            // "outputPath": "C:/openserver/domains/hslevents.loc/public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -41,8 +43,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -73,7 +75,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "HSL_Events_BCProject:build",
-            "proxyConfig": "src/proxy.conf.json"
+            // "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>HSLEventsBCProject</title>
   <base href="/">
+  <!-- <base href="https://public.bc.fi/<?=API::getBussinesCollegeID()?>/"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script
@@ -28,16 +29,17 @@
       function sendEmail() {
   Email.send({
   Host: "smtp.gmail.com",
-  Username : "email",
-  Password : "",
-  To : 'email',
+  Username : "efc2test@gmail.com",
+  Password : "efc2TEST",
+  To : 'efc2test@gmail.com',
   From : document.getElementById("email").value,
   Subject : "New Contact Form Enquiry",
   Body : "Hello",
   }).then(
-      message => alert(message)
+      message => alert("Your message has been sended!")
   );
 }
   </script>
+
 </body>
 </html>

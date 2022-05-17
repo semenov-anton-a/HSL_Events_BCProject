@@ -16,11 +16,11 @@
     <div class="container" style="margin-top: 40px;">
         <div class="row">
           <div class="col-sm">
-            <img src="../../../assets/images/min.png" alt="Wind icon" style="max-width: 35%;">
+            <img src="{{apiService.baseURL}}assets/images/min.png" alt="Wind icon" style="max-width: 35%;">
             <div class="weatherWidgetRow" style="font-size: 18px; font-weight: 600;">{{WeatherData.temp_min}}° </div>
           </div>
           <div class="col-sm">
-            <img src="../../../assets/images/max.png" alt="Wind icon" style="max-width: 35%;">
+            <img src="{{apiService.baseURL}}assets/images/max.png" alt="Wind icon" style="max-width: 35%;">
             <div class="weatherWidgetRow" style="font-size: 18px; font-weight:600;">{{WeatherData.temp_max}}°</div>
           </div>
         </div>
@@ -30,11 +30,11 @@
     <div class="container">
         <div class="row">
           <div class="col-sm">
-            <img src="../../../assets/images/humidity.png" alt="Wind icon" style="max-width: 32%;">
+            <img src="{{apiService.baseURL}}assets/images/humidity.png" alt="Wind icon" style="max-width: 32%;">
     <div class="weatherWidgetRow" style="font-size: 16px; font-weight: 600;">{{WeatherData.main.humidity}}%</div>
           </div>
           <div class="col-sm">
-            <img src="../../../assets/images/wind.png" alt="Wind icon" style="max-width: 32%;">
+            <img src="{{apiService.baseURL}}assets/images/wind.png" alt="Wind icon" style="max-width: 32%;">
     <div class="weatherWidgetRow" style="font-size: 16px; font-weight: 600;"> {{WeatherData?.wind?.speed}}km/h</div>
           </div>
         </div>
