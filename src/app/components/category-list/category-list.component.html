@@ -1,0 +1,22 @@
+<div class="list-group col-md-12 col-12">
+	<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+		class="list-group-item list-group-item-action" (click)="resetLoadItemsShift()">
+		Home
+	</a>
+	<a routerLink="/favorites"  routerLinkActive="active"
+		class="list-group-item list-group-item-action" (click)="resetLoadItemsShift()">
+		Show favorites
+	</a>
+	<a routerLink="/activities" routerLinkActive="active" class="list-group-item list-group-item-action"
+		(click)="resetLoadItemsShift()">
+		Activities
+	</a>
+	<a routerLink="/events" routerLinkActive="active" class="list-group-item list-group-item-action"
+		(click)="resetLoadItemsShift()">
+		Events
+	</a>
+	<a routerLink="/places" routerLinkActive="active" class="list-group-item list-group-item-action"
+		(click)="resetLoadItemsShift()">
+		Places
+	</a>
+</div>

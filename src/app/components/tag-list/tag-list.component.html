@@ -1,0 +1,17 @@
+
+
+<div class="tags" style="background-color:rgb(3, 34, 63); margin-top: 15px; border-radius: 10px; background: linear-gradient(109.6deg, rgb(31, 48, 69) 19.2%, rgb(31, 48, 69) 51.2%, rgb(1, 18, 34) 96.6%);">
+
+    <div class="row mx-auto">
+        <h3 class="text-light mx-auto d-block" style="margin: 15px;">Search by tags</h3>
+        <a class="link-light" *ngFor="let tag of tags; let i = index;"
+            onClick="window.scroll(0, 0)"
+            (click)="setTag( tag )"
+            routerLink="/{{categoryName}}/{{tag}}" routerLinkActive="active">{{tag | tagsActivities}}
+        </a>
+
+        <a routerLink="/{{categoryName}}" (click)="resetComponentOfTags()" class="mt-2 btn btn-primary">Reset</a>
+    </div>
+
+</div>
+

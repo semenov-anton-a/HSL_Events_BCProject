@@ -1,0 +1,32 @@
+<div class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel"
+	aria-modal="true" role="dialog" style="display: block;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLiveLabel">Contact Info</h5>
+			</div>
+			<div class="modal-body">
+				<div class="col-12 my-3">
+					<fa-icon [icon]="faEnvelope" class="me-3"></fa-icon>
+					<a  class="text-black" 
+						href="mailto:{{ fromParent.company.email }}" 
+						*ngIf="fromParent.company.email"
+						style="text-decoration: none;">
+						{{ fromParent.company.email }}
+					</a>
+					<div class="col-12 mt-2">
+						<fa-icon [icon]="faPhone" class="me-3"></fa-icon>
+						<a 	class="text-black"
+							style="text-decoration: none;" 
+							href="tel:{{ fromParent.company.phone }}">
+							{{ fromParent.company.phone }}
+						</a>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" (click)="closeModal('close')"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>

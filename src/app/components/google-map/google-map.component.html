@@ -1,0 +1,45 @@
+<div class="mt-3 embed-responsive embed-responsive-1by1">
+	<google-map [zoom]="setZoom(cardsData)" [center]="center" [options]="options" height="350px" width="100%">
+		<ng-container *ngIf="cardsData?.id then setOnce else setEach"></ng-container>
+
+		<ng-template #setOnce>
+			<map-marker #marker="mapMarker" 
+					[position]="setPosition(cardsData)" 
+					[options]="cardsData.markerOptions"
+					(mapClick)="openInfoWindow(marker,0)">
+					<!-- {{ setZoom(10) }} -->
+					{{ setMarkerCenter(cardsData) }}
+				</map-marker>
+				<map-info-window #infoWindow="mapInfoWindow">
+					{{ generateMarkerData(cardsData) }}
+					<div><strong>{{ markerDataTitle }}</strong></div>
+					<span>{{ markerDataAddress }}</span>
+					<!-- <a [href]="markerDataLink">More Details</a> -->
+				</map-info-window>
+		</ng-template>
+
+		<!-- forEach Marker collection -->
+		<ng-template #setEach>
+			<ng-container *ngFor="let elem of cardsData; let i = index">
+				
+				<map-marker #marker="mapMarker" 
+					[position]="setPosition(elem)" 
+					[options]="elem.markerOptions"
+					(mapClick)="openInfoWindow(marker, i)">
+				</map-marker>
+
+				<map-info-window #infoWindow="mapInfoWindow">
+					{{ generateMarkerData(elem) }}
+					<div><strong>{{ markerDataTitle }}</strong></div>
+					<span>{{ markerDataAddress }}</span>
+					<hr class="p-0 my-2"/>
+					<!-- <a [href]="markerDataLink">More Details</a> -->
+					<a [routerLink]="markerDataLink">More Details</a>
+					<!-- <a type="button" href="">{{ setDetailsBtn(elem) }}</a> -->
+				</map-info-window>
+				
+			</ng-container><!-- {{ test(cardsData) }} -->
+		</ng-template>
+
+	</google-map>
+</div>

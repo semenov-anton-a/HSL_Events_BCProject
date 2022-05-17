@@ -1,0 +1,36 @@
+<div class="container">
+  <ng-container *ngIf="error != null">
+    <h1 class="text-danger">{{ error }}</h1>
+  </ng-container>
+
+  <!--
+        place
+    -->
+  <ng-container *ngIf="itemCategoryName == 'place'">
+    <app-place
+      [placeDetailData]="itemData"
+      [selectedLang]="selectedLanguage"
+    ></app-place>
+  </ng-container>
+
+  <!--
+        activity
+    -->
+  <ng-container *ngIf="itemCategoryName == 'activity'">
+    <app-activity
+      [activityDetailData]="itemData"
+      [selectedLang]="selectedLanguage"
+    ></app-activity>
+  </ng-container>
+
+  <!--
+        Event
+        not ready yet base <events> component
+    -->
+  <ng-container *ngIf="itemCategoryName == 'event'">
+    <app-event
+      [eventDetailData]="itemData"
+      [selectedLang]="selectedLanguage"
+    ></app-event>
+  </ng-container>
+</div>

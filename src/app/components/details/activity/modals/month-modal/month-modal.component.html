@@ -1,0 +1,28 @@
+<div class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel"
+	aria-modal="true" role="dialog" style="display: block;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLiveLabel">Available Months</h5>
+			</div>
+			<div class="modal-body">
+				<p *ngIf="fromParent1.availableMonths.length == 12; else months" class="mt-2">
+					Open All Around the year
+				</p>
+
+				<ng-template #months>
+					<ul *ngFor="let month of fromParent1.availableMonths"
+						style="list-style-type: none; text-align: center;">
+						<li>
+							{{ month | titlecase }}
+						</li>
+					</ul>
+				</ng-template>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" (click)="closeModal('close')"
+					data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

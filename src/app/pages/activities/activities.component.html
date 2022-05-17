@@ -1,0 +1,33 @@
+<div class="row mt-2">
+    <div class="col-md-3 col-sm-12">
+        <app-category-list></app-category-list>
+        <app-google-map [currentCategory]="category" [cardsData]="cardsData"></app-google-map>
+        <app-weather></app-weather>
+        <div class="mb-2">
+            <app-tag-list [tags]="tags" categoryName={{category}} (loadByTag)="loadByTag($event)"></app-tag-list>
+        </div>
+    </div>
+
+    <div class="col-md-9 col-sm-12">
+        <div class="alert alert-danger" *ngIf="error != null" role="alert">{{error}}</div>
+        <h4 class="text-secondary" *ngIf="error != null">{{error}}</h4>
+
+        <div class="h-100">
+
+            <ngx-masonry 
+                [options]="{ gutter: 10, percentPosition: true }">
+                <app-activities-cards 
+                    (masonryReloadLayout)="masonryReload()"
+                    [allowLoadMoreData]="allowLoadMoreData" 
+                    (addItemEmitter)="addItem()"
+                    [cardsData]="cardsData">
+                </app-activities-cards>
+            </ngx-masonry>
+            <app-btn-loaddata  
+                (loadModeItems)="addItem()"
+                [allowLoadMoreData]="allowLoadMoreData">
+            </app-btn-loaddata>
+        </div>
+        <!-- <app-cards [cardsData]="cardsData"></app-cards> -->
+    </div>
+</div>
