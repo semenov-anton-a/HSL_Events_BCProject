@@ -9,7 +9,9 @@ import { ApiService } from 'src/app/services/api.service';
 
 export class IndexComponent implements OnInit {
 
-    // constructor(private allData: AlldataService) { }
+    constructor(
+        public apiService : ApiService
+    ) { }
 
     // myData : any;
 

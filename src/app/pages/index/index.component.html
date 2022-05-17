@@ -5,8 +5,171 @@
   </div>
 
   <div class="col-md-9">
-    <h1 class="text-white">HELLO INDEX</h1>
-    <!-- FAVORITES -->
-    <!-- <app-cards></app-cards> -->
+    
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Karma", sans-serif;
+        background-color: rgb(31, 48, 69);
+      }
+    
+      .w3-bar-block .w3-bar-item {
+        padding: 20px;
+        background-color: rgb(31, 48, 69);
+      }
+      .w3-quarter{
+        color: #fff;
+      }
+    </style>
+    
+    
+    
+    
+    
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:7px; background-color: rgb(31, 48, 69);">
+    
+      <!-- First Photo Grid-->
+      <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki.jpeg" alt="Sandwich" style="width:100%">
+          <span><i class="far fa-heart"></i> 22</span>
+          <h6>Attraction, Dec 7, 2017</h6>
+          <h3>The Perfect Sandwich, A Real NYC Classic</h3>
+          <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum. Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Dicta accusantium consequuntur velit aspernatur explicabo. Temporibus
+            blanditiis distinctio harum saepe expedita hic consequatur cum accusamus. Deleniti optio quaerat
+            doloribus fugit. Et? Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero rem magni nihil fugit
+            quis corrupti dolores, dignissimos eum eaque sint porro similique aperiam ea quas, ut, voluptate harum
+            provident facere.</p>
+          <a href="#">Read More</a>
+        </div>
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki1.jpeg" alt="Steak" style="width:100%">
+          <span><i class="far fa-heart"></i> 40</span>
+          <h6>Restaurants, Dec 7, 2017</h6>
+          <h3>Let Me Tell You About This Steak</h3>
+          <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Fuga doloremque harum delectus blanditiis facilis
+            nisi nam natus similique labore laboriosam vero provident consequatur nihil excepturi incidunt quis
+            nemo, deleniti suscipit?</p>
+          <a href="#">Read more...</a>
+        </div>
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki3.jpeg" alt="Cherries" style="width:100%">
+          <span><i class="far fa-heart"></i> 19</span>
+          <h6>Connections, Dec 7, 2017</h6>
+          <h3>Have you already visited</h3>
+          <p>Lorem ipsum text praesent tincidunt ipsum lipsum. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Fuga illo ipsum, fugit qui ab, accusamus aspernatur tenetur maxime numquam deserunt iste quidem
+            quis sint earum doloribus et iusto voluptate. Explicabo. Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Aliquid consequatur repellat veniam inventore earum unde tenetur doloremque
+            voluptatem, est natus temporibus, dolor fugit ratione odit porro laboriosam labore deserunt quam.</p>
+          <p>What else?</p>
+          <a href="#">Read more...</a>
+        </div>
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki2.jpeg" alt="Pasta and Wine" style="width:100%">
+          <span><i class="far fa-heart"></i> 16</span>
+          <h6>Attraction, Dec 7, 2017</h6>
+          <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
+          <p>Lorem ipsum text praesent tincidunt ipsum lipsum. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Sed ea inventore, illum soluta dicta magnam repellendus vitae molestias enim, obcaecati accusamus
+            fuga eius atque cum. Minima mollitia quaerat optio omnis. Lorem ipsum dolor, sit amet consectetur
+            adipisicing elit. Sequi labore non, numquam esse accusamus aspernatur recusandae ab animi quae nesciunt
+            vero officiis porro perspiciatis ad neque adipisci quod officia reiciendis.</p>
+          <a href="#">Read more...</a>
+        </div>
+      </div>
+    
+      <app-text></app-text>
+    
+      <!-- Second Photo Grid-->
+      <div class="w3-row-padding w3-padding-16 w3-center">
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki4.webp" alt="Salmon" style="width:100%">
+          <span><i class="far fa-heart"></i> 27</span>
+          <h6>Attractions, Dec 7, 2017</h6>
+          <h3>Salmon For Your Skin</h3>
+          <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Accusamus, excepturi magni dicta veniam
+            exercitationem dolorem, quasi blanditiis maxime soluta tempore tempora quibusdam quos numquam
+            laudantium, sapiente vero vel esse nam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos,
+            iste in deleniti laudantium labore molestias quas? Dolorum accusantium deleniti, praesentium cupiditate
+            sequi tenetur explicabo repudiandae deserunt a magni ad? Fugit?</p>
+          <a href="#">Read more...</a>
+        </div>
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki5.jpeg" alt="Sandwich" style="width:100%">
+          <span><i class="far fa-heart"></i> 30</span>
+          <h6>Attractions, Dec 7, 2017</h6>
+          <h3>The Perfect Sandwich, A Real Classic</h3>
+          <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum. Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Repudiandae, molestiae nulla voluptatibus alias quasi obcaecati fuga,
+            ipsa veritatis temporibus ex, harum iste sed ipsam voluptas minima nemo neque amet quo. Lorem ipsum,
+            dolor sit amet consectetur adipisicing elit. Ad iste eum tenetur tempore laboriosam corrupti iure.
+            Eveniet delectus alias minus animi consectetur praesentium architecto quidem debitis in? Aliquam, ab
+            magni?</p>
+          <a href="#">Read more...</a>
+        </div>
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki4.jpeg" alt="Popsicle" style="width:100%">
+          <span><i class="far fa-heart"></i> 33</span>
+          <h6>Title description, Dec 7, 2017</h6>
+          <h3>All I Need Is a Popsicle</h3>
+          <p>Lorem ipsum text praesent tincidunt ipsum lipsum. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Maiores asperiores nemo sint! Possimus blanditiis impedit placeat autem expedita facere, velit
+            deserunt perspiciatis eos sit incidunt, rerum maiores adipisci eligendi porro. Lorem ipsum dolor, sit
+            amet consectetur adipisicing elit. Error reiciendis quis delectus cumque, fugit exercitationem et
+            molestiae, minus eum perspiciatis vel voluptates quasi quae, mollitia quisquam? Voluptatum voluptas
+            quaerat incidunt?</p>
+          <a href="#">Read more...</a>
+        </div>
+        <div class="w3-quarter">
+          <img src="{{apiService.baseURL}}assets/images/helsinki6.jpeg" alt="Croissant" style="width:100%">
+          <span><i class="far fa-heart"></i> 29</span>
+          <h6>Title description, Dec 7, 2017</h6>
+          <h3>Le French</h3>
+          <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum. Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit. Incidunt earum quidem quas possimus repudiandae obcaecati molestiae
+            voluptatem, deleniti ex atque quaerat temporibus eveniet fuga aliquam delectus, consequatur distinctio
+            necessitatibus inventore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam odit hic
+            eligendi ut temporibus. Accusantium, aliquam minus iure impedit cupiditate mollitia hic fuga, pariatur
+            eum at maiores. Voluptas, quidem accusantium.</p>
+          <a href="#">Read more...</a>
+        </div>
+      </div>
+    
+    
+      <!-- <div class="w3-center w3-padding-32">
+            <div class="w3-bar">
+              <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+              <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+              <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+              <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+              <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+              <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+            </div>
+          </div> -->
+    
+    
+    
+      <!-- End page content -->
+    </div>
+    
+    <script>
+      // Script to open and close sidebar
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+      }
+    
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+      }
+    </script>
   </div>
 </div>

@@ -2,19 +2,19 @@
 
 <ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData; let last = last">
 
-    <div class="card">
+    <div class="card col-sm-12">
         <div class="card-body">
             <!-- <span>ID: {{card.id}}</span> -->
             <h3 class="card-title mb-3">
                 <a [href]="card.siteUrl" target="_blank">{{card.company.name}}</a>
             </h3>
 
-            <div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false"
+            <div class="carousel slide col-md-6 col-sm-12 mx-auto" data-bs-ride="carousel" data-bs-interval="false"
                 *ngIf="card.media" id="carousel_{{card.id}}">
                 <div class="carousel-inner">
                     <div class="carousel-item" *ngFor="let img of card.media; let i = index; first as isFirst"
                         [class.active]="(isFirst)?'active':''">
-                        <img src={{img.smallUrl}} class="d-block">
+                        <img src={{img.smallUrl}} class="d-block w-100">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" (click)="reloadItems()"

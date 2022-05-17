@@ -23,7 +23,8 @@
     margin-top: 5px;
     color: yellow;
     filter: drop-shadow( 1px 1px 10px yellow);
-    height: 70px;
+    /* height: 70px; */
+    height: auto;
 }
 
 .moon{
