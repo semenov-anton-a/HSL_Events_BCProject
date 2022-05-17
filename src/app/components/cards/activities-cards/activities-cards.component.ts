@@ -19,7 +19,10 @@ export class ActivitiesCardsComponent extends CommonCars implements OnInit {
      * Save to local storage
      * @param item 
      */
-    public setToFavourite(item: any): void { this._setToFavourite(item, 'activity'); }
+    public setToFavourite(item: any): void { 
+        console.log(item)
+        this._setToFavourite(item, 'activity'); 
+    }
 
     /**
      * set active for tab by current language

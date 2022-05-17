@@ -68,12 +68,18 @@
                 <a routerLink="/activity/{{card.id}}"
                     style="background-color: rgb(16, 142, 153); color: white; border: none;" type="button"
                     class="btn btn-outline-primary col-md-2 ">Details</a>
-                <button class="btn btn-outline-primary"
-                    style="background-color: rgb(16, 142, 153); color: white; border: none;">Favorite&nbsp;<fa-icon
+                <button 
+                        *ngIf="showFavoriteButton" (click)="setToFavourite(card)" 
+                        class="btn btn-outline-primary"
+                        style="background-color: rgb(16, 142, 153); color: white; border: none;">Favorite&nbsp;<fa-icon
                         [icon]="faStar"></fa-icon>
                 </button>
+                <button 
+                    *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
+                    class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
+                </button>
             </div>
-        </div>        
+        </div>
     </div>
 
     <ng-container *ngIf="(last)?layoutCompleteRender():null "></ng-container>

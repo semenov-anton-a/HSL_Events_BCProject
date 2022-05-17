@@ -31,30 +31,39 @@
 			</div>
 			<!-- CAROUSEL END -->
 
-				<p class="card-text"
-					[innerHTML]="
+			<p class="card-text" [innerHTML]="
 						card.description.body.length > maxDescriptionLength
               				? (card.description.body | slice: 0:maxDescriptionLength) + '...'
               				: card.description.body ">
-				</p>
+			</p>
 
-				<hr />
-				<span class="d-block" style="color: rgb(12, 88, 143);">{{ setAddressFormat( card?.location.address )}}</span>
-                <span class="d-block" style="color: rgb(12, 88, 143);">{{ card?.event_dates.starting_day  | date:"d/M/YYYY" }}</span>
-                <span class="d-block mb-3" style="color: rgb(12, 88, 143);"><a [href]="card?.info_url" target="_blank">{{card?.info_url}}</a></span>
+			<hr />
+			<span class="d-block" style="color: rgb(12, 88, 143);">{{ setAddressFormat( card?.location.address
+				)}}</span>
+			<span class="d-block" style="color: rgb(12, 88, 143);">{{ card?.event_dates.starting_day | date:"d/M/YYYY"
+				}}</span>
+			<span class="d-block mb-3" style="color: rgb(12, 88, 143);"><a [href]="card?.info_url"
+					target="_blank">{{card?.info_url}}</a></span>
 
-				<div class="justify-content-between d-flex input-group-sm">
-					<a routerLink="/event/{{ card.id }}" style="background-color: rgb(16, 142, 153); color: white; border: none;" type="button" class="btn btn-outline-primary col-md-2">
-						Details
-					</a>
-					<button class="btn btn-outline-primary" style="background-color: rgb(16, 142, 153); color: white; border: none;">
-						Favorite&nbsp;
-						<fa-icon [icon]="faStar"></fa-icon>
-					</button>
-				</div>
+			<div class="justify-content-between d-flex input-group-sm">
+				<a routerLink="/event/{{ card.id }}"
+					style="background-color: rgb(16, 142, 153); color: white; border: none;" type="button"
+					class="btn btn-outline-primary col-md-2">
+					Details
+				</a>
+				<button *ngIf="showFavoriteButton" (click)="setToFavourite(card)" class="btn btn-outline-primary"
+					style="background-color: rgb(16, 142, 153); color: white; border: none;">
+					Favorite&nbsp;
+					<fa-icon [icon]="faStar"></fa-icon>
+				</button>
+				<button 
+					*ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
+					class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
+				</button>
 			</div>
 		</div>
-	</ngxMasonryItem>
+	</div>
+</ngxMasonryItem>
 
 
 

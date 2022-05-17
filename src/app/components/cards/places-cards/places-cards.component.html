@@ -48,10 +48,15 @@
 					class="btn btn-outline-primary col-md-2">
 					Details
 				</a>
-				<button style="background-color: rgb(16, 142, 153); color: white; border: none;"
+				<button
+					*ngIf="showFavoriteButton" (click)="setToFavourite(card)" 
+					style="background-color: rgb(16, 142, 153); color: white; border: none;"
 					class="btn btn-outline-primary">
 					Favorite&nbsp;
 					<fa-icon [icon]="faStar"></fa-icon>
+				</button>
+				<button *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
+					class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
 				</button>
 			</div>
 		</div>

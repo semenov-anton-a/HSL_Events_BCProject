@@ -24,7 +24,7 @@ export class FavoritesComponent implements OnInit {
 
     ngOnInit(): void {
         this.cardItems = this.favoriteService.getItems();
-        console.log(this.cardItems);
+        console.log(this.cardItems.length);
     }
 
 
