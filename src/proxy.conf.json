@@ -1,6 +1,8 @@
 {
     "/api": {
-        "target": "http://localhost:8080",
+        // "target": "http://localhost:8080/",
+        "target": "http://hslevents.loc/",
+        // "target": "https://public.bc.fi/s2101154/api",
         "secure": false
     }
 }

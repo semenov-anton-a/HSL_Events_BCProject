@@ -23,13 +23,19 @@ export enum APIParams {
 })
 export class ApiService {
 
+    
+
+
     // Fix CORS error 
     // private apiURL : string = 'https://open-api.myhelsinki.fi/v2/';
 
     /**
      * @API URL
      */
+    public  readonly baseURL = "/s2101154/";
+    // public  readonly baseURL = "http://localhost:4200/";
     private readonly apiURL: string = '/api';
+    // private readonly apiURL: string = 'https://public.bc.fi/s2101154/api';
 
 
     private apiExcludeParamsFromURLReqex: any = {
