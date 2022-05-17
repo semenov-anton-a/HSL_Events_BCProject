@@ -8,7 +8,8 @@
 }
 
 nav {
-    background: linear-gradient(68.2deg, rgb(31, 48, 69) 23%, rgb(70, 17, 155) 45%, rgb(248, 242, 250) 80.2%);
+    /* background: linear-gradient(68.2deg, rgb(31, 48, 69) 23%, rgb(70, 17, 155) 45%, rgb(248, 242, 250) 80.2%); */
+    background: linear-gradient(68.2deg, rgb(31, 48, 69) 23%, rgb(9, 109, 155) 55%, rgb(248, 242, 250) 80.2%);
     margin-top: 25px;
 }
 

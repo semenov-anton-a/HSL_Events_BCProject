@@ -28,16 +28,17 @@
       function sendEmail() {
   Email.send({
   Host: "smtp.gmail.com",
-  Username : "email",
-  Password : "",
-  To : 'email',
+  Username : "efc2test@gmail.com",
+  Password : "efc2TEST",
+  To : 'efc2test@gmail.com',
   From : document.getElementById("email").value,
   Subject : "New Contact Form Enquiry",
   Body : "Hello",
   }).then(
-      message => alert(message)
+      message => alert("Your message has been sended!")
   );
 }
   </script>
+
 </body>
 </html>
