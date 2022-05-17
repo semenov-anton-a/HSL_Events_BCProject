@@ -37,15 +37,15 @@ export class ApiService {
      * */ 
     private readonly BussinessCollegeID = "s2101154";
 
-    // public  readonly baseURL = "/"+this.BussinessCollegeID+"/";
-    // private readonly apiURL: string = 'https://public.bc.fi/'+this.BussinessCollegeID+'/api/';
+    public  readonly baseURL = "/"+this.BussinessCollegeID+"/";
+    private readonly apiURL: string = 'https://public.bc.fi/'+this.BussinessCollegeID+'/api/';
 
     /**
      * @DEVELOPMENT  
      * */ 
-    public  readonly baseURL = "http://localhost:4200/";
+    //public  readonly baseURL = "http://localhost:4200/";
     // private readonly apiURL: string = '/api';
-    private readonly apiURL: string = 'http://hslevents.loc/api/';
+    // private readonly apiURL: string = 'http://hslevents.loc/api/';
 
 
     private apiExcludeParamsFromURLReqex: any = {
