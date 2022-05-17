@@ -8,8 +8,10 @@
     color: rgb(4, 21, 51);;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: 0.5px rgb(8, 68, 114) outset;
-    padding-top: 30px;
-    background: linear-gradient(to top, #6999cd 0%, #261555 55%);
+    padding-top: 28px;
+    padding-bottom: 30px;
+    /* background: linear-gradient(to top, #6999cd 0%, #261555 55%); */
+    background: linear-gradient(to top, #6999cd 0%, rgb(31, 48, 69) 55%);
 
 }
 

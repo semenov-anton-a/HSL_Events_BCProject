@@ -4,3 +4,10 @@ a.active {
     font-size: 18px;
     color: red;
 }
+
+.btn-primary {
+    color: #fff;
+    /* background-color: rgb(3, 32, 78); */
+    background-color: rgb(26, 78, 112);
+    border-color: black;
+}
