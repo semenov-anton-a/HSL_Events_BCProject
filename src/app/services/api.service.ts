@@ -44,8 +44,8 @@ export class ApiService {
      * @DEVELOPMENT  
      * */ 
     public  readonly baseURL = "http://localhost:4200/";
-    private readonly apiURL: string = '/api';
-    // private readonly apiURL: string = 'http://hslevents.loc/api/';
+    // private readonly apiURL: string = '/api/';
+    private readonly apiURL: string = 'http://hslevents.loc/api/';
 
 
     private apiExcludeParamsFromURLReqex: any = {
