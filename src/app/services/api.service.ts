@@ -32,20 +32,25 @@ export class ApiService {
     /**
      * @API URL
      */
-    /**
-     * @PRODUCTION 
-     * */ 
-    // private readonly BussinessCollegeID = "s2101154";
 
-    // public  readonly baseURL = "/"+this.BussinessCollegeID+"/";
-    // private readonly apiURL: string = 'https://public.bc.fi/'+this.BussinessCollegeID+'/api/';
+
+
+
+    /**
+     * @PRODUCTION_TO_BUSSINESS_COLLEGE
+     * ng build --base-href https://public.bc.fi/s2101154/
+     * ng build --base-href https://public.bc.fi/YOUR-ID/
+    */ 
+    private readonly BussinessCollegeID = "s2101154";
+    public  readonly baseURL = "/"+this.BussinessCollegeID+"/";
+    private readonly apiURL: string = 'https://public.bc.fi/'+this.BussinessCollegeID+'/api/';
 
     /**
      * @DEVELOPMENT  
      * */ 
-    public  readonly baseURL = "http://localhost:4200/";
-    // private readonly apiURL: string = '/api';
-    private readonly apiURL: string = 'http://hslevents.loc/api/';
+    // public  readonly baseURL = "https://semenov-anton-a.github.io/hslBuild/dist/";
+    // private readonly apiURL: string = 'https://public.bc.fi/s2101154/api/';
+    // private readonly apiURL: string = 'http://hslevents.loc/api/';
 
 
     private apiExcludeParamsFromURLReqex: any = {

@@ -17,9 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hsl-events-bcproject",
+            // "outputPath": "dist/hsl-events-bcproject",
             // "outputPath": "server/src/main/resources/static",
             // "outputPath": "C:/openserver/domains/hslevents.loc/public",
+            "outputPath": "C:/SERVER/hslBuild/dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
