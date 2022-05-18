@@ -12,14 +12,18 @@ export class LangService {
     private readonly LOCAL_STORAGE_KEYNAME: string = 'langindex';
     private readonly DEFAULT_LANGUAGE_INDEX: number = 0;
 
-    // typeof LangObj = {value: string, name: string};
+    // typeof LangObj = {value: string, name: string}
 
     private readonly langsData: ILangObject[] = [
-            { value: '', name: 'All Languages' },
-            { value: 'fi', name: "Fin" },
-            { value: 'en', name: "Eng" },
-            { value: 'sv', name: "Sv" },
-        ];
+            // { value: '', name: 'All Languages' },
+            { value: 'fi', name: "Suomi" },
+            { value: 'en', name: "English" },
+            { value: 'sv', name: "Svenska" },
+            { value: 'de', name: "Deutschland" },
+            { value: 'it', name: "Italy" },
+            { value: 'ru', name: "Русский" },
+            { value: 'zh', name: "中國人" },
+    ];
 
     constructor() { }
 
