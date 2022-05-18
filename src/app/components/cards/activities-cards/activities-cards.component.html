@@ -31,14 +31,14 @@
 
             <div class="card-text">
                 <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation"
-                        *ngFor="let desc of card.descriptions | keyvalue;  let i = index; ">
+                    <li class="nav-item" role="presentation">
+                        <!-- *ngFor="let desc of card.descriptions | keyvalue;  let i = index; "
 
                         <button (click)="reloadItems()" [class.active]="setActiveClassByLang(desc.key)" class="nav-link"
                             id="home-tab" data-bs-toggle="tab" [attr.data-bs-target]="'#target-'+card.id+'-i'+i"
                             type="button" role="tab" aria-controls="home" aria-selected="true">{{ keyAsString(desc.key)
                             }}
-                        </button>
+                        </button> -->
                     </li>
                 </ul>
 
@@ -47,12 +47,13 @@
                         [class.active]="setActiveClassByLang(desc.key)" [attr.id]="'target-'+card.id+'-i'+i"
                         role="tabpanel" aria-labelledby="home-tab">
                         <h5>{{ getEventNameByLang(card.descriptions, desc.key) }}</h5>
-                        <div style="font-size: 14px; color: rgb(22, 77, 116)">{{
-                            ( getDescriptionByLang(card.descriptions, desc.key).length > maxDescriptionLength )
-                            ? (getDescriptionByLang(card.descriptions, desc.key)
-                            | slice:0:maxDescriptionLength) + "..."
-                            : getDescriptionByLang(card.descriptions, desc.key)
-                            }}</div>
+                        <div style="font-size: 14px; color: rgb(22, 77, 116)">
+                            {{
+                                ( getDescriptionByLang(card.descriptions, desc.key).length > maxDescriptionLength )
+                                    ? (getDescriptionByLang(card.descriptions, desc.key) | slice:0:maxDescriptionLength) + " ..."
+                                    : getDescriptionByLang(card.descriptions, desc.key)
+                            }}
+                        </div>
                         <hr class="mb-0" />
                     </div>
                     <div class="row ">
@@ -64,25 +65,23 @@
                     </div>
                 </div>
             </div>
+
             <div class="justify-content-between d-flex input-group-sm ">
                 <a routerLink="/activity/{{card.id}}"
                     style="background-color: rgb(16, 142, 153); color: white; border: none;" type="button"
                     class="btn btn-outline-primary col-md-2 ">Details</a>
-                <button 
-                        *ngIf="showFavoriteButton" (click)="setToFavourite(card)" 
-                        class="btn btn-outline-primary"
-                        style="background-color: rgb(16, 142, 153); color: white; border: none;">Favorite&nbsp;<fa-icon
+                <button *ngIf="showFavoriteButton" (click)="setToFavourite(card)" class="btn btn-outline-primary"
+                    style="background-color: rgb(16, 142, 153); color: white; border: none;">Favorite&nbsp;<fa-icon
                         [icon]="faStar"></fa-icon>
                 </button>
-                <button 
-                    *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
+                <button *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
                     class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
                 </button>
             </div>
         </div>
     </div>
 
-    <ng-container *ngIf="(last)?layoutCompleteRender():null "></ng-container>
+    <!-- <ng-container *ngIf="(last)?layoutCompleteRender():null "></ng-container> -->
 </ngxMasonryItem>
 
 
