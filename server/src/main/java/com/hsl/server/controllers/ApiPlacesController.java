@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.hsl.server.APIMyHelsinkiService;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 // @RequestMapping(headers = "Accept=application/json", produces = "text/plain;charset=UTF-8")
+@CrossOrigin(origins = "*")
 @RestController
 public class ApiPlacesController {
 
@@ -31,9 +33,9 @@ public class ApiPlacesController {
             @PathVariable("id") int id,
             HttpServletRequest request) throws MalformedURLException {
 
-        System.out.println("=================================");
-        System.out.println(id);
-        System.out.println("=================================");
+        // System.out.println("=================================");
+        // System.out.println(id);
+        // System.out.println("=================================");
 
         return APIMyHelsinkiService.getOnceItem("place/" + id, request, 2);
         // return requestParams.toString();

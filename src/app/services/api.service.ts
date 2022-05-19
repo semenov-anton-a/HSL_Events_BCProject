@@ -41,14 +41,16 @@ export class ApiService {
      * ng build --base-href https://public.bc.fi/s2101154/
      * ng build --base-href https://public.bc.fi/YOUR-ID/
     */ 
-    private readonly BussinessCollegeID = "s2101154";
-    public  readonly baseURL = "/"+this.BussinessCollegeID+"/";
-    private readonly apiURL: string = 'https://public.bc.fi/'+this.BussinessCollegeID+'/api/';
+    // private readonly BussinessCollegeID = "s2101154";
+    // public  readonly baseURL = "/"+this.BussinessCollegeID+"/";
+    // private readonly apiURL: string = 'https://public.bc.fi/'+this.BussinessCollegeID+'/api/';
 
     /**
      * @DEVELOPMENT  
      * */ 
     // public  readonly baseURL = "https://semenov-anton-a.github.io/hslBuild/dist/";
+    public  readonly baseURL = "localhost:4200/";
+    private readonly apiURL: string = 'https://hslbcproject.herokuapp.com/api/';
     // private readonly apiURL: string = 'https://public.bc.fi/s2101154/api/';
     // private readonly apiURL: string = 'http://hslevents.loc/api/';
 
