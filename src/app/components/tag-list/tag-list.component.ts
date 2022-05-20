@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
     selector: 'app-tag-list',
@@ -12,7 +13,10 @@ export class TagListComponent implements OnInit {
     @Input() categoryName !: string
     @Output() loadByTag = new EventEmitter<string>();
 
-    constructor(private apiService: ApiService) { }
+    constructor(
+        private apiService: ApiService,
+        public langService: LangService
+    ) { }
 
     ngOnInit(): void { }
     

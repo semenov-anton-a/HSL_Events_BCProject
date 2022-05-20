@@ -26,7 +26,7 @@ export class ActivityComponent implements OnInit {
 
     constructor(
         private modalService: NgbModal,
-        private langService: LangService
+        public langService: LangService
     ) { }
 
     ngOnInit(): void {

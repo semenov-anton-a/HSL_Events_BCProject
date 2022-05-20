@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { TranslateService } from './translate.service';
 
 interface ILangObject{ value: string; name: string; }
 
@@ -25,9 +26,11 @@ export class LangService {
             { value: 'zh', name: "中國人" },
     ];
 
-    constructor() { }
+    constructor(
+        private translateService: TranslateService
+    ) { }
 
-
+    translate( value: string){ return this.translateService.translate( value , this.currentLanguage.value ); }
     /*******************************
      *  BehaviorSubject
      *  

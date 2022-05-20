@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faHouseChimney, faLink, faClock } from '@fortawesome/free-solid-svg-icons';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
     selector: 'app-event',
@@ -13,7 +14,9 @@ export class EventComponent implements OnInit {
     public faHouseChimney = faHouseChimney;
     public faLink = faLink;
     public faClock = faClock;
-    constructor() {
+    constructor(
+        public langService: LangService
+    ) {
 
     }
 

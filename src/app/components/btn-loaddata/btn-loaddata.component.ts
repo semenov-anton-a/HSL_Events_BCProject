@@ -6,6 +6,7 @@ import {
     faPlus,
     faBan
 } from '@fortawesome/free-solid-svg-icons';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
     selector: 'app-btn-loaddata',
@@ -23,7 +24,9 @@ export class BtnLoaddataComponent implements OnInit {
     @Input() allowLoadMoreData : boolean = true;
     @Output() loadModeItems = new EventEmitter();
 
-    constructor() { }
+    constructor(
+        public langService: LangService
+    ) { }
     ngOnInit(): void {}
 
 }

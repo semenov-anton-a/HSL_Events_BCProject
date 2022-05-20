@@ -30,20 +30,15 @@
 						<button class="carousel-control-prev" type="button"
 							[attr.data-bs-target]="'#carousel_' + replaseWordFromID(eventDetailData.id)"
 							data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
 						</button>
 						<button class="carousel-control-next" type="button"
 							[attr.data-bs-target]="'#carousel_' + replaseWordFromID(eventDetailData.id)"
 							data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
 						</button>
 					</div>
 				</div>
 
 				<div class="col mt-4" *ngIf="eventDetailData.description.body">
-					<span [innerHTML]="eventDetailData.description.body"></span>
 				</div>
 			</div>
 			<hr />
@@ -51,11 +46,12 @@
 				<div class="col" *ngIf="eventDetailData.location.address && eventDetailData.location.address.postal_code">
 					<fa-icon [icon]="faHouseChimney"></fa-icon>
 					<!-- <p>
-          <span>Place :</span>
           {{ eventDetailData.description.body | slice: 137:274 }}
         </p> -->
 					<p>
 						{{ eventDetailData.location.address.street_address }}
+						<br/>
+						{{ eventDetailData.location.address.locality}},
 						{{ eventDetailData.location.address.postal_code }}
 					</p>
 				</div>
@@ -65,8 +61,8 @@
 						<a [href]="eventDetailData?.info_url" target="_blank"
 							style="text-decoration: none; color: white;">
 							<!-- {{ eventDetailData?.info_url | slice: 0:45 }}
-            {{ eventDetailData?.info_url | slice: 76:90 }} -->
-							Event Url
+            				{{ eventDetailData?.info_url | slice: 76:90 }} -->
+							{{ langService.translate( "Link" ) }}
 						</a>
 					</p>
 				</div>
@@ -74,16 +70,17 @@
 					*ngIf=" eventDetailData.event_dates.starting_day && eventDetailData.event_dates.ending_day ">
 					<fa-icon [icon]="faClock"></fa-icon>
 					
+					<!--
+						БЛЯ ПРОВЕРЪ !!!!
+						ВРЕМЯ / DATA НЕ ВЕРТО !!!!
+						Должен быль Mетод для даты -> PIPE , а не SLICE  
+						TODO: SET (GTM) TimeZone Rectally  
+					-->
 					<p>
-						<span>Starts :</span>
 							{{ eventDetailData.event_dates.starting_day | slice: 0:10 }}
-						<span>at</span>
 							{{ eventDetailData.event_dates.starting_day | slice: 11:16 }}
-					</p>
-					<p>
-						<span>Ends :</span>
+					<br/>
 							{{ eventDetailData.event_dates.ending_day | slice: 0:10 }}
-						<span>at</span>
 							{{ eventDetailData.event_dates.ending_day | slice: 11:16 }}
 					</p>
 

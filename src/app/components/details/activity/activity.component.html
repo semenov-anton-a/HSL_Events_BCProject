@@ -45,7 +45,7 @@
 				<div class="col" *ngIf="activityDetailData.priceEUR.from">
 					<fa-icon [icon]="faSackDollar"></fa-icon>
 					<p>
-						Starts from
+						{{langService.translate("Starts") }}
 						<span>{{ activityDetailData.priceEUR.from }}&euro;</span>
 					</p>
 				</div>
@@ -54,7 +54,7 @@
 					<p>
 						{{ activityDetailData.address.streetName }}
 						<br />
-						{{ activityDetailData.address.city }}
+						{{ activityDetailData.address.city }},
 
 						{{ activityDetailData.address.postalCode }}
 					</p>
@@ -64,7 +64,8 @@
 					<p>
 						<a [href]="activityDetailData?.siteUrl" target="_blank"
 							style="text-decoration: none; color: white;">
-							{{ activityDetailData?.siteUrl }}
+							{{ langService.translate("Link") }}
+							<!-- {{ activityDetailData?.siteUrl }} -->
 						</a>
 					</p>
 				</div>
@@ -74,21 +75,21 @@
 					<fa-icon [icon]="faClock"></fa-icon>
 					<button type="button" class="btn btn-link" style="text-decoration: none; color: white;"
 						(click)="openClockModal()">
-						Opening hours
+						{{ langService.translate("Opening hours") }}
 					</button>
 				</div>
 				<div class="col">
 					<fa-icon [icon]="faCalendar"></fa-icon>
 					<button type="button" class="btn btn-link" style="text-decoration: none; color: white;"
 						(click)="openMonthModal()">
-						Available months
+						{{ langService.translate("Available months") }}
 					</button>
 				</div>
 				<div class="col">
 					<fa-icon [icon]="faCircleInfo"></fa-icon>
 					<button type="button" class="btn btn-link" style="text-decoration: none; color: white;"
 						(click)="openContactInfo()">
-						Contact info
+						{{ langService.translate("Contact info") }}
 					</button>
 				</div>
 			</div>

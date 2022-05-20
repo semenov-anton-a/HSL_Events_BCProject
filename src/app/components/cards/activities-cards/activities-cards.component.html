@@ -69,13 +69,14 @@
             <div class="justify-content-between d-flex input-group-sm ">
                 <a routerLink="/activity/{{card.id}}"
                     style="background-color: rgb(16, 142, 153); color: white; border: none;" type="button"
-                    class="btn btn-outline-primary col-md-2 ">Details</a>
+                    class="btn btn-outline-primary col-md-2 ">{{ langService.translate( "Details" ) }}</a>
                 <button *ngIf="showFavoriteButton" (click)="setToFavourite(card)" class="btn btn-outline-primary"
-                    style="background-color: rgb(16, 142, 153); color: white; border: none;">Favorite&nbsp;<fa-icon
+                    style="background-color: rgb(16, 142, 153); color: white; border: none;">{{ langService.translate( "Favorite" ) }}&nbsp;<fa-icon
                         [icon]="faStar"></fa-icon>
                 </button>
                 <button *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
-                    class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
+                    class="btn btn-outline-danger">
+                    {{ langService.translate( "Remove" ) }}&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
                 </button>
             </div>
         </div>

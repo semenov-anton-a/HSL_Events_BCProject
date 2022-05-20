@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
     selector: 'app-category-list',
@@ -9,13 +10,9 @@ import { ApiService } from 'src/app/services/api.service';
 export class CategoryListComponent implements OnInit {
 
     constructor( 
-        private apiService : ApiService
+        private apiService : ApiService,
+        public langService: LangService,
     ) { }
-
-    ngOnInit(): void {
-    }
-
-
-
+    ngOnInit(): void {}
     public resetLoadItemsShift(){ this.apiService.resetStartLimitShifts(); }
 }

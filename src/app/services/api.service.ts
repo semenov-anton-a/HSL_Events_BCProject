@@ -49,10 +49,10 @@ export class ApiService {
      * @DEVELOPMENT  
      * */ 
     // public  readonly baseURL = "https://semenov-anton-a.github.io/hslBuild/dist/";
-    public  readonly baseURL = "localhost:4200/";
-    private readonly apiURL: string = 'https://hslbcproject.herokuapp.com/api/';
+    public  readonly baseURL = "http://localhost:4200/";
+    // private readonly apiURL: string = 'https://hslbcproject.herokuapp.com/api/';
     // private readonly apiURL: string = 'https://public.bc.fi/s2101154/api/';
-    // private readonly apiURL: string = 'http://hslevents.loc/api/';
+    private readonly apiURL: string = 'http://hslevents.loc/api/';
 
 
     private apiExcludeParamsFromURLReqex: any = {

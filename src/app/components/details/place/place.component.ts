@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import {  NgxMasonryComponent } from 'ngx-masonry';
 import {faHouseChimney,faLink} from '@fortawesome/free-solid-svg-icons';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
   selector: 'app-place',
@@ -16,7 +17,7 @@ export class PlaceComponent implements OnInit {
    
 
 
-  constructor() { }
+  constructor(public langService : LangService) { }
 
   ngOnInit(): void {
  

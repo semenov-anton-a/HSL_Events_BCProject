@@ -51,6 +51,8 @@
 					<fa-icon [icon]="faHouseChimney"></fa-icon>
 					<p>
 						{{ placeDetailData.location.address.street_address }}
+						<br/>
+						{{ placeDetailData.location.address.locality }},
 						{{ placeDetailData.location.address.postal_code }}
 					</p>
 				</div>
@@ -59,7 +61,7 @@
 					<p>
 						<a [href]="placeDetailData?.info_url" target="_blank"
 							style="text-decoration: none; color: white;">
-							{{ placeDetailData?.info_url }}
+							{{ langService.translate( "Link" ) }}
 						</a>
 					</p>
 				</div>
