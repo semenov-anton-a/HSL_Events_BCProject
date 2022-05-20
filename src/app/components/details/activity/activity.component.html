@@ -1,97 +1,136 @@
 <div class="row mt-2">
-	<div class="col-md-3">
-		<app-category-list></app-category-list>
-		<app-weather></app-weather>
-		<app-google-map [cardsData]="activityDetailData"></app-google-map>
-	</div>
-	
-	<ng-container *ngIf="activityDetailData">
-		
-		<div class="col-md-9 mt-4" style="color: white; text-align: center; letter-spacing: 2px;">
-			
-			<h1>{{ activityDetailData.company.name }}</h1>
-			<div class="row">
-				<div class="col-md-12 mt-2">
-					<div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false"
-						*ngIf="activityDetailData.media" id="carousel_{{ activityDetailData.id }}">
-						<div class="carousel-inner">
-							<div class="carousel-item" *ngFor="
-                let img of activityDetailData.media;
-                let i = index;
-                first as isFirst
-              " [class.active]="isFirst ? 'active' : ''">
-								<img src="{{ img.largeUrl }}" class="d-block h-100 w-100" />
-							</div>
-						</div>
-						<button class="carousel-control-prev" type="button"
-							[attr.data-bs-target]="'#carousel_' + activityDetailData.id" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button"
-							[attr.data-bs-target]="'#carousel_' + activityDetailData.id" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-					</div>
-				</div>
-				<div class="col mt-4">
-					<!-- <p>{{ activityDetailData.descriptions[selectedLang].description }}</p> -->
-					<p>{{ setDescriptionByLang( activityDetailData.descriptions ) }}</p>
-				</div>
-			</div>
-			<hr />
-			<div class="row">
-				<div class="col" *ngIf="activityDetailData.priceEUR.from">
-					<fa-icon [icon]="faSackDollar"></fa-icon>
-					<p>
-						Starts from
-						<span>{{ activityDetailData.priceEUR.from }}&euro;</span>
-					</p>
-				</div>
-				<div class="col" *ngIf="activityDetailData.address">
-					<fa-icon [icon]="faHouseChimney"></fa-icon>
-					<p>
-						{{ activityDetailData.address.streetName }}
-						<br />
-						{{ activityDetailData.address.city }}
+  <div class="col-md-3">
+    <app-category-list></app-category-list>
+    <app-google-map [cardsData]="activityDetailData"></app-google-map>
+    <app-weather></app-weather>
+  </div>
 
-						{{ activityDetailData.address.postalCode }}
-					</p>
-				</div>
-				<div class="col">
-					<fa-icon [icon]="faLink"></fa-icon>
-					<p>
-						<a [href]="activityDetailData?.siteUrl" target="_blank"
-							style="text-decoration: none; color: white;">
-							{{ activityDetailData?.siteUrl }}
-						</a>
-					</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<fa-icon [icon]="faClock"></fa-icon>
-					<button type="button" class="btn btn-link" style="text-decoration: none; color: white;"
-						(click)="openClockModal()">
-						Opening hours
-					</button>
-				</div>
-				<div class="col">
-					<fa-icon [icon]="faCalendar"></fa-icon>
-					<button type="button" class="btn btn-link" style="text-decoration: none; color: white;"
-						(click)="openMonthModal()">
-						Available months
-					</button>
-				</div>
-				<div class="col">
-					<fa-icon [icon]="faCircleInfo"></fa-icon>
-					<button type="button" class="btn btn-link" style="text-decoration: none; color: white;"
-						(click)="openContactInfo()">
-						Contact info
-					</button>
-				</div>
-			</div>
-		</div>
-	</ng-container>
+  <ng-container *ngIf="activityDetailData">
+    <div
+      class="col-md-9 mt-4"
+      style="color: white; text-align: center; letter-spacing: 2px;"
+    >
+      <h1>{{ activityDetailData.company.name }}</h1>
+      <div class="row">
+        <div class="col-md-12 mt-2">
+          <div
+            class="carousel slide col-6 mx-auto"
+            data-bs-ride="carousel"
+            data-bs-interval="false"
+            *ngIf="activityDetailData.media"
+            id="carousel_{{ activityDetailData.id }}"
+          >
+            <div class="carousel-inner">
+              <div
+                class="carousel-item"
+                *ngFor="
+                  let img of activityDetailData.media;
+                  let i = index;
+                  first as isFirst
+                "
+                [class.active]="isFirst ? 'active' : ''"
+              >
+                <img src="{{ img.largeUrl }}" class="d-block h-100 w-100" />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              [attr.data-bs-target]="'#carousel_' + activityDetailData.id"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              [attr.data-bs-target]="'#carousel_' + activityDetailData.id"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        <div class="col mt-4">
+          <!-- <p>{{ activityDetailData.descriptions[selectedLang].description }}</p> -->
+          <p>{{ setDescriptionByLang(activityDetailData.descriptions) }}</p>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col" *ngIf="activityDetailData.priceEUR.from">
+          <fa-icon [icon]="faSackDollar"></fa-icon>
+          <p>
+            Starts from
+            <span>{{ activityDetailData.priceEUR.from }}&euro;</span>
+          </p>
+        </div>
+        <div class="col" *ngIf="activityDetailData.address">
+          <fa-icon [icon]="faHouseChimney"></fa-icon>
+          <p>
+            {{ activityDetailData.address.streetName }}
+            <br />
+            {{ activityDetailData.address.city }}
+
+            {{ activityDetailData.address.postalCode }}
+          </p>
+        </div>
+        <div class="col">
+          <fa-icon [icon]="faLink"></fa-icon>
+          <p>
+            <a
+              [href]="activityDetailData?.siteUrl"
+              target="_blank"
+              style="text-decoration: none; color: white;"
+            >
+              {{ activityDetailData?.siteUrl }}
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <fa-icon [icon]="faClock"></fa-icon>
+          <button
+            type="button"
+            class="btn btn-link"
+            style="text-decoration: none; color: white;"
+            (click)="openClockModal()"
+          >
+            Opening hours
+          </button>
+        </div>
+        <div class="col">
+          <fa-icon [icon]="faCalendar"></fa-icon>
+          <button
+            type="button"
+            class="btn btn-link"
+            style="text-decoration: none; color: white;"
+            (click)="openMonthModal()"
+          >
+            Available months
+          </button>
+        </div>
+        <div class="col">
+          <fa-icon [icon]="faCircleInfo"></fa-icon>
+          <button
+            type="button"
+            class="btn btn-link"
+            style="text-decoration: none; color: white;"
+            (click)="openContactInfo()"
+          >
+            Contact info
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>

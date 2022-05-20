@@ -21,11 +21,10 @@ public class ApiController {
     // APIMyHelsinki myhelsinki;
 
     @RequestMapping(value = "/api", headers = "Accept=application/json")
-    public String getTest(){
-
+    public String getTest() {
 
         return "HELLO";
-        
+
         // String url = "http://open-api.myhelsinki.fi/v2/places/?language_filter=en";
         // // String url = "https://open-api.myhelsinki.fi/v2/place/10084";
         // APIMyHelsinki myhelsinki = new APIMyHelsinki();
@@ -35,6 +34,6 @@ public class ApiController {
     // @ResponseBody()
     // @GetMapping("/foos")
     // public String getFoos(@RequestParam(defaultValue = "test") String id) {
-    //     return "ID: " + id;
+    // return "ID: " + id;
     // }
 }
