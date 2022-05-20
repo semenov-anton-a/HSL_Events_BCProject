@@ -1,80 +1,86 @@
-<ngx-masonry (layoutComplete)="layoutCompleteRender()" [options]="{ gutter: 10, percentPosition: true }"
-    [ordered]="true">
-    <ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData">
-        <div class="card">
-            <div class="card-body">
-                <!-- <span>ID: {{card.id}}</span> -->
-                <h3 class="card-title mb-3">
-                    <a [href]="card.siteUrl" target="_blank">{{card.company.name}}</a>
-                </h3>
+<ng-container (loadModeItems)="reloadItems()"></ng-container>
 
-                <div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false"
-                    *ngIf="card.media" id="carousel_{{card.id}}">
-                    <div class="carousel-inner">
-                        <div class="carousel-item" *ngFor="let img of card.media; let i = index; first as isFirst"
-                            [class.active]="(isFirst)?'active':''">
-                            <img src={{img.smallUrl}} class="d-block">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" (click)="reloadItems()"
-                        [attr.data-bs-target]="'#carousel_'+card.id" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" (click)="reloadItems()"
-                        [attr.data-bs-target]="'#carousel_'+card.id" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+<ngxMasonryItem class="masonry-item" *ngFor="let card of cardsData; let last = last">
 
-                <div class="card-text">
-                    <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation"
-                            *ngFor="let desc of card.descriptions | keyvalue;  let i = index; ">
+    <div class="card">
+        <div class="card-body">
+            <!-- <span>ID: {{card.id}}</span> -->
+            <h3 class="card-title mb-3">
+                <a [href]="card.siteUrl" target="_blank">{{card.company.name}}</a>
+            </h3>
 
-                            <button (click)="reloadItems()" [class.active]="setActiveClassByLang(desc.key)"
-                                class="nav-link" id="home-tab" data-bs-toggle="tab"
-                                [attr.data-bs-target]="'#target-'+card.id+'-i'+i" type="button" role="tab"
-                                aria-controls="home" aria-selected="true">{{ keyAsString(desc.key) }}
-                            </button>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content p-3">
-                        <div class="tab-pane fade show"
-                            *ngFor="let desc of card.descriptions | keyvalue; let i = index;"
-                            [class.active]="setActiveClassByLang(desc.key)" [attr.id]="'target-'+card.id+'-i'+i"
-                            role="tabpanel" aria-labelledby="home-tab">
-                            <h5>{{ getEventNameByLang(card.descriptions, desc.key) }}</h5>
-                            <div style="font-size: 14px; color: rgb(22, 77, 116)">{{
-                                ( getDescriptionByLang(card.descriptions, desc.key).length > maxDescriptionLength )
-                                ? (getDescriptionByLang(card.descriptions, desc.key)
-                                | slice:0:maxDescriptionLength) + "..."
-                                : getDescriptionByLang(card.descriptions, desc.key)
-                                }}</div>
-                            <hr class="mb-0" />
-                        </div>
-                        <div class="row ">
-                            <span class="d-block">{{card.address?.city}},&nbsp;{{card.address?.streetName}}</span>
-                            <span class="d-block">{{card.company?.email}}</span>
-                            <span class="d-block"><a [href]="card?.storeUrl"
-                                    target="_blank">{{card?.storeUrl}}</a></span>
-                        </div>
+            <div class="carousel slide col-6 mx-auto" data-bs-ride="carousel" data-bs-interval="false"
+                *ngIf="card.media" id="carousel_{{card.id}}">
+                <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let img of card.media; let i = index; first as isFirst"
+                        [class.active]="(isFirst)?'active':''">
+                        <img src={{img.smallUrl}} class="d-block">
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" (click)="reloadItems()"
+                    [attr.data-bs-target]="'#carousel_'+card.id" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" (click)="reloadItems()"
+                    [attr.data-bs-target]="'#carousel_'+card.id" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
 
-                <div class="justify-content-between d-flex input-group-sm">
-                    <a routerLink="/activity/{{card.id}}" type="button"
-                        class="btn btn-outline-primary col-md-2">Details</a>
-                    <button class="btn btn-outline-primary">Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
-                    </button>
+            <div class="card-text">
+                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation"
+                        *ngFor="let desc of card.descriptions | keyvalue;  let i = index; ">
+
+                        <button (click)="reloadItems()" [class.active]="setActiveClassByLang(desc.key)" class="nav-link"
+                            id="home-tab" data-bs-toggle="tab" [attr.data-bs-target]="'#target-'+card.id+'-i'+i"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">{{ keyAsString(desc.key)
+                            }}
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content p-3">
+                    <div class="tab-pane fade show" *ngFor="let desc of card.descriptions | keyvalue; let i = index;"
+                        [class.active]="setActiveClassByLang(desc.key)" [attr.id]="'target-'+card.id+'-i'+i"
+                        role="tabpanel" aria-labelledby="home-tab">
+                        <h5>{{ getEventNameByLang(card.descriptions, desc.key) }}</h5>
+                        <div style="font-size: 14px; color: rgb(22, 77, 116)">{{
+                            ( getDescriptionByLang(card.descriptions, desc.key).length > maxDescriptionLength )
+                            ? (getDescriptionByLang(card.descriptions, desc.key)
+                            | slice:0:maxDescriptionLength) + "..."
+                            : getDescriptionByLang(card.descriptions, desc.key)
+                            }}</div>
+                        <hr class="mb-0" />
+                    </div>
+                    <div class="row ">
+                        <span class="d-block">{{card.address?.city}},&nbsp;{{card.address?.streetName}}</span>
+                        <span class="d-block">{{card.company?.email}}</span>
+                        <span class="d-block">
+                            <a [href]="card?.storeUrl" target="_blank">{{card?.storeUrl}}</a></span>
+                    </div>
                 </div>
             </div>
+
+            <div class="justify-content-between d-flex input-group-sm">
+                <a routerLink="/activity/{{card.id}}" type="button" class="btn btn-outline-primary col-md-2">Details</a>
+                <button 
+                    *ngIf="showFavoriteButton" (click)="setToFavourite(card)"
+                    class="btn btn-outline-primary">Favorite&nbsp;<fa-icon [icon]="faStar"></fa-icon>
+                </button>
+                
+                <button 
+                    *ngIf="!showFavoriteButton" (click)="removeToFavourite(card)"
+                    class="btn btn-outline-danger">Remove&nbsp;<fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+            </div>
+            
         </div>
-    </ngxMasonryItem>
-</ngx-masonry>
+    </div>
+    <ng-container *ngIf="(last)?layoutCompleteRender():null "></ng-container>
+</ngxMasonryItem>
 
 
 <!-- Button Load More Items -->
-<app-btn-loaddata (loadModeItems)="addItem()" [allowLoadMoreData]="allowLoadMoreData"></app-btn-loaddata>

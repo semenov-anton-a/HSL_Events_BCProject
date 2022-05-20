@@ -48,6 +48,7 @@ import { BtnLoaddataComponent } from './components/btn-loaddata/btn-loaddata.com
 import { TagListComponent } from './components/tag-list/tag-list.component';
 import { tagsActivities } from './pipes/tagsActivities.pipe';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -81,6 +82,7 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
         TextComponent,
         ContactComponent,
         FavoritesComponent,
+        FooterComponent,
     ],
     imports: [
         AppRoutingModule,

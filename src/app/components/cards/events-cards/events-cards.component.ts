@@ -3,38 +3,33 @@ import { NgxMasonryOptions, NgxMasonryComponent } from 'ngx-masonry';
 
 import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
 import { LangService } from 'src/app/services/lang.service';
+import { FavoriteService } from 'src/app/services/favorite.service';
+import { CommonCars } from '../common-cards';
 @Component({
     selector: 'app-events-cards',
     templateUrl: './events-cards.component.html',
     styleUrls: ['./events-cards.component.css']
 })
-export class EventsCardsComponent implements OnInit {
+export class EventsCardsComponent extends CommonCars implements OnInit {
 
-    public readonly maxTitleLength: number = 50;
-    public readonly maxDescriptionLength: number = 500;
-
-    faCoffee = faCoffee;
-    faStar = faStar;
-
-    @ViewChild(NgxMasonryComponent) masonry: NgxMasonryComponent | any;
-
-    @Input() cardsData: any[] | undefined;
-
-    @Input() allowLoadMoreData: boolean = true;
-
-    constructor(
-        private currentLanguage: LangService
-    ) { }
     
     ngOnInit(): void {}
 
+    /**
+         * Save to favorite
+         * @param cardItem 
+         */
+     setToFavourite(cardItem: {}) { this._setToFavourite( cardItem, 'event' ); }
+
 
     reloadItems() {
-        setTimeout(() => {
-            this.masonry.reloadItems();
-            this.masonry.layout();
-        }, 500)
+        // let masonry = this.masonry;
+        // setTimeout(( masonry : any ) => {
+        //     masonry.reloadItems();
+        //     masonry.layout();
+        // }, 500)
     }
+    
 
         /**
      *  Load mode data
@@ -44,10 +39,7 @@ export class EventsCardsComponent implements OnInit {
     async addItem() {
         this._uploadItemClick = true;
         await this.addItemEmitter.emit();
-        await this.reloadItems;
-
-        console.log(" EVENT CARD ")
-
+        // await this.reloadItems();
     }
 
 
@@ -59,7 +51,7 @@ export class EventsCardsComponent implements OnInit {
      * @returns 
      */
     setTitleByLanguage(item: any) { 
-        return item.name[this.currentLanguage.getLanguage().value]; 
+        return item.name[ this.langService.getLanguage().value ]; 
     }
 
     /**
@@ -69,17 +61,8 @@ export class EventsCardsComponent implements OnInit {
      */
     replaseWordFromID(id: string) {
         // console.log(id)
-        let reg = new RegExp(/(helmet|kulke):/, "gm");
+        let reg = new RegExp(/(helmet|kulke|ham):/, "gm");
         return id.replace(reg, '')
     }
-
-
-    /**
-     *  Ser address format 
-     *  @param data 
-     */
-    setAddressFormat(data: any) { return data.locality + ", " + data.street_address; }
-
-    
 
 }

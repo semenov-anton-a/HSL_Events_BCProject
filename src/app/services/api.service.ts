@@ -116,6 +116,7 @@ export class ApiService {
         this.limitLoad = this.limitDefault;
         this.currentItemShift = 0;
     }
+    
     /**
          *  Make Shift of load items
          *  @returns void

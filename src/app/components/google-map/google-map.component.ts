@@ -141,13 +141,13 @@ export class GoogleMapComponent implements OnInit {
         switch( this.currentCategory )
         {
             case 'activities' : 
-                return 'activity/' + data.id;
+                return '/activity/' + data.id;
             
             case 'places' : 
-                return 'place/' + data.id;
+                return '/place/' + data.id;
 
             case 'events' : 
-                return 'event/' + data.id;
+                return '/event/' + data.id;
         }
 
         return ""
